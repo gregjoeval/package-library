@@ -1,0 +1,9 @@
+// need this file so that eslint cli doesnt explode
+{
+  "extends": "./index.js",
+  "rules": {
+    // these rules are turned off so that the eslint json is easliy copy-paste-able to a real .eslintrc file
+    "quotes": "off",
+    "quote-props": "off"
+  }
+}
