@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "gregjoeval's ESLint config for TS",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib-core#readme",
+  "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -38,9 +38,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib-core.git"
+    "url": "git+https://github.com/gregjoeval/lib.git"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib-core/issues"
+    "url": "https://github.com/gregjoeval/lib/issues"
   }
 }

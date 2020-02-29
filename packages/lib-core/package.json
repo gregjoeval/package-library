@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Library of shared code",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib-core#readme",
+  "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
   "main": "lib/lib-core.js",
   "directories": {
@@ -15,12 +15,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib-core.git"
+    "url": "git+https://github.com/gregjoeval/lib.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib-core/issues"
+    "url": "https://github.com/gregjoeval/lib/issues"
   }
 }
