@@ -1,6 +1,7 @@
 {
   "name": "@gjv/lib-react",
   "version": "0.0.0",
+  "private": true,
   "description": "Library of shared code for React",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
@@ -8,6 +9,18 @@
   "main": "lib/lib-react.js",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/styles": "^4.9.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "react": "^16.13.0",
+    "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/styles": "^4.9.0",
+    "react": "^16.13.0"
   },
   "directories": {
     "lib": "lib",
