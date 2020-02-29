@@ -11,6 +11,9 @@
     "lint:fix": "eslint --fix ./",
     "lint:config": "eslint --print-config ./index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@gjv/eslint-config": "^0.0.1",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
@@ -39,5 +42,6 @@
   },
   "bugs": {
     "url": "https://github.com/gregjoeval/lib/issues"
-  }
+  },
+  "gitHead": "14a1ea9e404abc60a48eb6d19a3998f51bde2a18"
 }
