@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Library of shared code for React",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
