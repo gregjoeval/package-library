@@ -1,7 +1,7 @@
 {
-  "name": "@gjv/eslint-config",
+  "name": "@gjv/eslint-config-react",
   "version": "0.0.0",
-  "description": "gregjoeval's ESLint config for JS",
+  "description": "gregjoeval's ESLint config for react",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib-core#readme",
   "license": "MIT",
@@ -12,21 +12,32 @@
     "lint:config": "eslint --print-config ./index.js"
   },
   "devDependencies": {
+    "@gjv/eslint-config": "^0.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-react-app": "^5.2.0",
     "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-promise": "^4.2.1"
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0"
   },
   "peerDependencies": {
+    "@gjv/eslint-config": "^0.0.0",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-react-app": "^5.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-promise": "^4.2.1"
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
-# @jovial-dev/lib-core
+# lib-core
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-
+A place to put shared code.

@@ -1,6 +1,6 @@
 /*
 
-jovial-dev ESLint config
+gregjoeval ESLint config
 
 ESLint Rule Documentation: https://eslint.org/docs/rules/
 AirBnB Javascript Style Guide: https://github.com/airbnb/javascript
@@ -9,10 +9,6 @@ Tool for comparing configs: https://sqren.github.io/eslint-compare/
 */
 
 module.exports = {
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": 'module'
-    },
     // extended configs should be ordered by least to greatest importance
     "extends": [
         "eslint:recommended",
@@ -22,10 +18,26 @@ module.exports = {
         "promise",
         "import-helpers"
     ],
+    // https://stackoverflow.com/a/58323590/7571132
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".ts",
+                    ".tsx",
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        }
+    },
     "rules": {
         "linebreak-style": ["error", "windows"],
         "eol-last": ["error", "always"],
         "indent": ["error", 4, { "SwitchCase": 1 }],
+        "brace-style": ["error", "1tbs"],
+        "semi": ["error", "always"],
+        "comma-dangle": ["error", "never"],
         "max-len": ["error", {
             "code": 225,
             "ignoreUrls": true,
@@ -33,32 +45,49 @@ module.exports = {
             "ignoreRegExpLiterals": true,
             "ignoreStrings": true,
             "ignoreTemplateLiterals": true
-        }], // extended from airbnb TODO: determine if this is necessary after trying prettier
-        "function-paren-newline": "off",
-        "multiline-ternary": ["error", "always-multiline"],
+        }],
         "no-case-declarations": "off",
         "no-multiple-empty-lines": ["error", { "max": 1 }],
         "no-param-reassign": "error",
         "no-use-before-define": "off",
         "no-underscore-dangle": "error",
-        "prefer-destructuring": "off",
-        "object-curly-newline": ["error", { "consistent": true }],
-        "object-shorthand": ["error", "consistent"], // TODO: revisit, made this consistent for now
-        "comma-dangle": ["error", "never"],
-        "lines-between-class-members": ["error", "always"],
-        "implicit-arrow-linebreak": ["error", "beside"],
+        "no-undefined": "error",
         "no-extra-parens": ["error", "all", {
             "nestedBinaryExpressions": false,
             "ignoreJSX": "all",
             "enforceForArrowConditionals": false,
             "enforceForNewInMemberExpressions": false
         }],
+        "lines-between-class-members": ["error", "always"],
+        "multiline-ternary": ["error", "always-multiline"],
+        "prefer-destructuring": "off",
+        "object-shorthand": ["error", "consistent"],
+        "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": false }],
+        "object-curly-newline": ["error", {
+            "ObjectExpression": {
+                "minProperties": 2,
+                "multiline": true
+            },
+            "ObjectPattern": {
+                "consistent": true,
+                "multiline": true
+            },
+            "ImportDeclaration": {
+                "consistent": true,
+                "multiline": true
+            },
+            "ExportDeclaration": {
+                "consistent": true,
+                "multiline": true
+            }
+        }],
+        "function-paren-newline": "off",
+        "implicit-arrow-linebreak": ["error", "beside"],
         "quotes": ["error", "single", {
-            "avoidEscape": true,
+            "avoidEscape": false,
             "allowTemplateLiterals": false
         }],
-        "jsx-quotes": ["error", "prefer-single"], // TODO: revisit, decide if we want to use single or double quotes everywhere
-        "no-undefined": "error",
+        "jsx-quotes": ["error", "prefer-single"],
 
         // Import Plugin (https://github.com/benmosher/eslint-plugin-import)
         "import/prefer-default-export": "off",
@@ -67,10 +96,18 @@ module.exports = {
         "import/newline-after-import": "error",
         "import/no-useless-path-segments": "error",
         "import/no-named-as-default": "off",
-        "import/no-unresolved": [2, {"caseSensitive": true}],
         "import/no-unused-modules": ["off", { "unusedExports": true }], // keep turned off since it takes a long time to run, turn on only when checking for this rule
         "import/no-cycle": ["error", { "maxDepth": 2 }],
         "import/order": "off", // turned off in favor of import-helpers/order-imports
+        "import/first": "error",
+        "import/exports-last": "off",
+        "import/group-exports": "off",
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never"
+        }],
 
         // Import Helpers Plugin (https://github.com/Tibfib/eslint-plugin-import-helpers)
         "import-helpers/order-imports": ["error", {

@@ -1,0 +1,26 @@
+{
+  "name": "@gjv/lib-react",
+  "version": "0.0.0",
+  "description": "Library of shared code for React",
+  "author": "Greg Valentine <gregjoeval@gmail.com>",
+  "homepage": "https://github.com/gregjoeval/lib-core#readme",
+  "license": "MIT",
+  "main": "lib/lib-react.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregjoeval/lib-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gregjoeval/lib-core/issues"
+  }
+}
