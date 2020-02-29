@@ -30,7 +30,7 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "peerDependencies": {
-    "@gjv/eslint-config": "^0.0.0",
+    "@gjv/eslint-config": "^0.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
