@@ -1,23 +1,42 @@
 {
   "name": "@gjv/lib-react",
   "version": "0.0.2",
-  "private": true,
   "description": "Library of shared code for React",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
-  "main": "lib/lib-react.js",
+  "module": "lib/index.ts",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc --declaration",
+    "build:clean": "rimraf ./dist",
+    "lint": "eslint ./lib/**",
+    "lint:fix": "eslint --fix ./lib/**",
+    "typecheck": "tsc --noEmit",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
+  "dependencies": {},
   "devDependencies": {
+    "@gjv/eslint-config": "^0.0.2",
+    "@gjv/eslint-config-react": "0.0.2",
+    "@gjv/eslint-config-typescript": "0.0.2",
     "@material-ui/core": "^4.9.5",
     "@material-ui/styles": "^4.9.0",
-    "@typescript-eslint/parser": "^2.21.0",
+    "@types/lodash": "^4.14.149",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-import-helpers": "^1.0.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "lodash": "^4.17.15",
     "react": "^16.13.0",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
@@ -26,8 +45,7 @@
     "react": "^16.13.0"
   },
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "lib": "lib"
   },
   "files": [
     "lib"
