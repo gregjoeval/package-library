@@ -29,8 +29,8 @@ module.exports = {
         "react/jsx-curly-newline": ["error", "consistent"],
         "react/jsx-filename-extension": "off", // TODO: keep off until moved to TypeScript
         "react/jsx-fragments": ["error", "element"],
-        "react/jsx-indent": "off", // turned off for consitent indenting, falls back to eslint's indent rule
-        "react/jsx-indent-props": "off", // turned off for consitent indenting, falls back to eslint's indent rule
+        "react/jsx-indent": "off", // turned off for consistent indenting, falls back to eslint's indent rule
+        "react/jsx-indent-props": "off", // turned off for consistent indenting, falls back to eslint's indent rule
         "react/jsx-max-props-per-line": ["error", {
             "maximum": 1,
             "when": "always"
