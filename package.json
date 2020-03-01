@@ -2,6 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "init": "lerna run init && lerna bootstrap --hoist --strict",
+    "build": "lerna run build",
+    "test": "echo \"Error: not implemented yet\" && exit 0",
     "publish:ci": "lerna publish from-package -y --no-verify-access"
   },
   "devDependencies": {

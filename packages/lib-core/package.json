@@ -8,13 +8,14 @@
   "license": "MIT",
   "main": "lib/lib-core.js",
   "scripts": {
+    "init": "npm install",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "publishConfig": {
     "access": "restricted"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^2.21.0",
+    "@typescript-eslint/parser": "^2.20.0",
     "typescript": "^3.8.3"
   },
   "directories": {

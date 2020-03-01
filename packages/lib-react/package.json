@@ -9,6 +9,7 @@
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
+    "init": "npm install",
     "build": "tsc --declaration",
     "build:clean": "rimraf ./dist",
     "lint": "eslint ./lib/**",
