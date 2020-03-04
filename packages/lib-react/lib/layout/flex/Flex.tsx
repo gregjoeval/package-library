@@ -93,25 +93,23 @@ type FlexProps = {
  * @return {*} - the children you passed in, wrapped in grid items
  * @constructor
  */
-const Flex = (
-    {
-        alignContent = 'flex-start',
-        alignItems = 'stretch',
-        children,
-        className,
-        containerClassName,
-        direction = 'column',
-        justify = 'flex-start',
-        spacing = 0,
-        textAlign = 'center',
-        wrap = 'nowrap',
-        xs,
-        sm,
-        md,
-        lg,
-        xl
-    }: FlexProps
-): ReactNode => {
+const Flex = ({
+    alignContent = 'flex-start',
+    alignItems = 'stretch',
+    children,
+    className,
+    containerClassName,
+    direction = 'column',
+    justify = 'flex-start',
+    spacing = 0,
+    textAlign = 'center',
+    wrap = 'nowrap',
+    xs,
+    sm,
+    md,
+    lg,
+    xl
+}: FlexProps): ReactNode => {
     const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize>('auto', [xs, sm, md, lg, xl]);
     const childrenArray = Array.isArray(children) ? children : [children];
     const truthyChildren = selectTruthyResults(childrenArray);

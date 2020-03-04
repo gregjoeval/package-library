@@ -9,7 +9,7 @@
   "main": "lib/lib-core.js",
   "scripts": {
     "init": "npm install",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"No tests yet!\" && exit 0"
   },
   "publishConfig": {
     "access": "restricted"
