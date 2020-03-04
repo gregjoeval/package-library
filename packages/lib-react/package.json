@@ -12,7 +12,7 @@
     "init": "npm install",
     "build": "tsc --declaration",
     "build:clean": "rimraf ./dist",
-    "lint": "eslint ./lib/**",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib/**",
     "lint:fix": "eslint --fix ./lib/**",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet!\" && exit 0"
