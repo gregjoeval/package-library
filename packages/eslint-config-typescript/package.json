@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "init": "npm install",
+    "init": "npm ci",
     "lint": "eslint ./",
     "lint:fix": "eslint --fix ./",
     "lint:config": "eslint --print-config ./index.js"

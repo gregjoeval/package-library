@@ -8,7 +8,7 @@
   "license": "MIT",
   "main": "lib/lib-core.js",
   "scripts": {
-    "init": "npm install",
+    "init": "npm ci",
     "test": "echo \"No tests yet!\" && exit 0"
   },
   "publishConfig": {

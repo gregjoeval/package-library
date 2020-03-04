@@ -9,16 +9,19 @@
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init": "npm install",
+    "init": "npm ci",
     "build": "tsc --declaration",
     "build:clean": "rimraf ./dist",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib/**",
-    "lint:fix": "eslint --fix ./lib/**",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib",
+    "lint:fix": "eslint --fix ./lib",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet!\" && exit 0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.0.3",
@@ -34,7 +37,6 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-import-helpers": "^1.0.2",
     "eslint-plugin-promise": "^4.2.1",
-    "lodash": "^4.17.15",
     "react": "^16.13.0",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
