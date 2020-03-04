@@ -9,15 +9,6 @@ Tool for comparing configs: https://sqren.github.io/eslint-compare/
 */
 
 module.exports = {
-    // extended configs should be ordered by least to greatest importance
-    "extends": [
-        "eslint:recommended",
-        "airbnb-base"
-    ],
-    "plugins": [
-        "promise",
-        "import-helpers"
-    ],
     // https://stackoverflow.com/a/58323590/7571132
     "settings": {
         "import/resolver": {
@@ -31,10 +22,21 @@ module.exports = {
             }
         }
     },
+    // extended configs should be ordered by least to greatest importance
+    "extends": [
+        "react-app",
+        "eslint:recommended",
+        "airbnb/hooks",
+        "airbnb"
+    ],
+    "plugins": [
+        "promise",
+        "import-helpers"
+    ],
     "rules": {
         "linebreak-style": ["error", "windows"],
         "eol-last": ["error", "always"],
-        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "indent": ["error", 4, {"SwitchCase": 1}],
         "brace-style": ["error", "1tbs"],
         "semi": ["error", "always"],
         "comma-dangle": ["error", "never"],
@@ -47,9 +49,8 @@ module.exports = {
             "ignoreTemplateLiterals": true
         }],
         "no-case-declarations": "off",
-        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "no-multiple-empty-lines": ["error", {"max":  1}],
         "no-param-reassign": "error",
-        "no-use-before-define": "off",
         "no-underscore-dangle": "error",
         "no-undefined": "error",
         "no-extra-parens": ["error", "all", {
@@ -62,26 +63,14 @@ module.exports = {
         "multiline-ternary": ["error", "always-multiline"],
         "prefer-destructuring": "off",
         "object-shorthand": ["error", "consistent"],
-        "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": false }],
+        "object-property-newline": ["error", {"allowAllPropertiesOnSameLine": false}],
         "object-curly-newline": ["error", {
-            "ObjectExpression": {
-                "minProperties": 2,
-                "multiline": true
-            },
-            "ObjectPattern": {
-                "consistent": true,
-                "multiline": true
-            },
-            "ImportDeclaration": {
-                "consistent": true,
-                "multiline": true
-            },
-            "ExportDeclaration": {
-                "consistent": true,
-                "multiline": true
-            }
+            "ObjectExpression": {"consistent": true, "multiline": true, "minProperties": 2},
+            "ObjectPattern": {"consistent": true, "multiline": true},
+            "ImportDeclaration": {"consistent": true, "multiline": true},
+            "ExportDeclaration": {"consistent": true, "multiline": true}
         }],
-        "function-paren-newline": "off",
+        "function-paren-newline": ["error", "multiline"],
         "implicit-arrow-linebreak": ["error", "beside"],
         "quotes": ["error", "single", {
             "avoidEscape": false,
@@ -92,16 +81,16 @@ module.exports = {
         // Import Plugin (https://github.com/benmosher/eslint-plugin-import)
         "import/prefer-default-export": "off",
         "import/no-named-default": "off",
+        "import/no-named-as-default": "off",
+        "import/exports-last": "off",
+        "import/group-exports": "off",
+        "import/order": "off", // turned off in favor of import-helpers/order-imports
+        "import/no-unused-modules": ["off", {"unusedExports": true}], // keep turned off since it takes a long time to run, turn on only when checking for this rule
         "import/no-duplicates": "error",
         "import/newline-after-import": "error",
         "import/no-useless-path-segments": "error",
-        "import/no-named-as-default": "off",
-        "import/no-unused-modules": ["off", { "unusedExports": true }], // keep turned off since it takes a long time to run, turn on only when checking for this rule
         "import/no-cycle": ["error", { "maxDepth": 2 }],
-        "import/order": "off", // turned off in favor of import-helpers/order-imports
         "import/first": "error",
-        "import/exports-last": "off",
-        "import/group-exports": "off",
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",
             "jsx": "never",
@@ -113,7 +102,7 @@ module.exports = {
         "import-helpers/order-imports": ["error", {
             "newlinesBetween": "never",
             "groups": ["absolute", "module", "parent", "sibling", "index"],
-            "alphabetize": { "order": "asc" }
+            "alphabetize": {"order": "asc"}
         }],
 
         // Promise Plugin (https://github.com/xjamundx/eslint-plugin-promise)
@@ -130,6 +119,6 @@ module.exports = {
         "promise/no-return-in-finally": "error",
         "promise/valid-params": "error",
         "promise/prefer-await-to-then": "error",
-        "promise/prefer-await-to-callbacks": "off" // using callbacks for thunks since those cannot be awaited
+        "promise/prefer-await-to-callbacks": "off", // using callbacks for thunks since those cannot be awaited
     }
 };
