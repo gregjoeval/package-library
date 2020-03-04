@@ -4,8 +4,12 @@
   "scripts": {
     "init": "lerna run init && lerna bootstrap --hoist --strict",
     "build": "lerna run build",
-    "test": "echo \"Error: not implemented yet\" && exit 0",
-    "publish:ci": "lerna publish from-package -y --no-verify-access"
+    "lint": "lerna run lint",
+    "lint:fix": "lerna run lint:fix",
+    "typecheck": "lerna run typecheck",
+    "test": "lerna run test",
+    "check": "npm run lint && npm run typecheck && npm run test",
+    "publish:ci": "lerna publish from-package --canary --preid next --no-git-reset --yes --no-verify-access"
   },
   "devDependencies": {
     "lerna": "^3.20.2"

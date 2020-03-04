@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library of shared code for React",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
@@ -9,22 +9,24 @@
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init": "npm install",
+    "init": "npm ci",
     "build": "tsc --declaration",
     "build:clean": "rimraf ./dist",
-    "lint": "eslint ./lib/**",
-    "lint:fix": "eslint --fix ./lib/**",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib",
+    "lint:fix": "eslint --fix ./lib",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"No tests yet!\" && exit 0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.2",
-    "@gjv/eslint-config-react": "0.0.2",
-    "@gjv/eslint-config-typescript": "0.0.2",
+    "@gjv/eslint-config": "^0.0.3",
+    "@gjv/eslint-config-react": "^0.0.3",
+    "@gjv/eslint-config-typescript": "^0.0.3",
     "@material-ui/core": "^4.9.5",
     "@material-ui/styles": "^4.9.0",
     "@types/lodash": "^4.14.149",
@@ -35,7 +37,6 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-import-helpers": "^1.0.2",
     "eslint-plugin-promise": "^4.2.1",
-    "lodash": "^4.17.15",
     "react": "^16.13.0",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
