@@ -34,7 +34,7 @@ module.exports = {
         "import-helpers"
     ],
     "rules": {
-        "linebreak-style": ["error", "windows"],
+        "linebreak-style": ["error", "unix"],
         "eol-last": ["error", "always"],
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "brace-style": ["error", "1tbs"],
