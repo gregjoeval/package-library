@@ -50,6 +50,7 @@
     "lib": "lib"
   },
   "files": [
+    "dist",
     "lib"
   ],
   "repository": {
