@@ -53,7 +53,7 @@ type FlexProps = {
     children: ReactNode | ReactNodeArray;
     className?: string;
     containerClassName?: string;
-    direction?: GridDirection;
+    direction: GridDirection;
     justify?: GridJustification;
     spacing?: GridSpacing;
     textAlign?: TextAlign;
