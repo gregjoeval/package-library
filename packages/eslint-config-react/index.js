@@ -35,6 +35,9 @@ module.exports = {
             "maximum": 1,
             "when": "always"
         }],
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-sort-props": ["error", {
+            "shorthandFirst": true
+        }]
     }
 };
