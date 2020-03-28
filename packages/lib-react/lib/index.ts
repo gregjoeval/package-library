@@ -1,1 +1,5 @@
-export * from './layout';
+import { FlexLayout } from './layout';
+
+export {
+    FlexLayout
+};
