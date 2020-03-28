@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Library of shared code for React",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
@@ -24,9 +24,9 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.3",
-    "@gjv/eslint-config-react": "^0.0.3",
-    "@gjv/eslint-config-typescript": "^0.0.3",
+    "@gjv/eslint-config": "^0.0.4",
+    "@gjv/eslint-config-react": "^0.0.4",
+    "@gjv/eslint-config-typescript": "^0.0.4",
     "@material-ui/core": "^4.9.5",
     "@material-ui/styles": "^4.9.0",
     "@types/lodash": "^4.14.149",
