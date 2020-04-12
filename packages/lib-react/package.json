@@ -9,7 +9,8 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init": "npm ci",
+    "init:install": "npm install",
+    "init:bootstrap": "npm ci",
     "build": "tsc --declaration",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",

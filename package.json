@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "init": "lerna run init && lerna bootstrap --hoist --strict",
+    "init:install": "lerna run init:install",
+    "init:bootstrap": "lerna run init:bootstrap && lerna bootstrap --hoist --strict",
     "build": "lerna run build",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",

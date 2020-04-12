@@ -10,7 +10,8 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init": "npm ci",
+    "init:install": "npm install",
+    "init:bootstrap": "npm ci",
     "build": "tsc --declaration",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -52,6 +53,6 @@
     "eslint-plugin-import-helpers": "^1.0.2",
     "eslint-plugin-promise": "^4.2.1",
     "lodash": "^4.17.15",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.3"
   }
 }
