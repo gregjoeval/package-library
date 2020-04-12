@@ -16,7 +16,8 @@
     "allowJs": true,
     "jsx": "react",
     "removeComments": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "include": [
     "index.js"
