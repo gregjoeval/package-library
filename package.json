@@ -12,6 +12,7 @@
     "publish:ci": "lerna publish --canary --no-git-reset --no-verify-access --yes"
   },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^3.20.2",
+    "rimraf": "^3.0.2"
   }
 }
