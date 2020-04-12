@@ -7,7 +7,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "init": "npm ci",
+    "init:install": "npm install",
+    "init:bootstrap": "npm ci",
     "lint": "eslint ./",
     "lint:fix": "eslint --fix ./",
     "lint:config": "eslint --print-config ./index.js"
@@ -31,11 +32,12 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "peerDependencies": {
-    "@gjv/eslint-config": "^0.0.2",
+    "@gjv/eslint-config": "^0.0.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-import-helpers": "^1.0.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",

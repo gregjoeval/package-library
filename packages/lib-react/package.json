@@ -5,23 +5,43 @@
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
-  "main": "lib/index.ts",
+  "main": "src/index.ts",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init": "npm ci",
-    "build": "tsc --declaration",
+    "init:install": "npm install",
+    "init:bootstrap": "npm ci",
+    "build": "tsc",
     "build:clean": "rimraf ./dist",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./lib",
-    "lint:fix": "eslint --fix ./lib",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:fix": "eslint --fix ./src",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet!\" && exit 0"
   },
   "publishConfig": {
     "access": "public"
   },
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregjoeval/lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gregjoeval/lib/issues"
+  },
   "dependencies": {
     "lodash": "^4.17.15"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/styles": "^4.9.0",
+    "react": "^16.13.0"
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.0.4",
@@ -40,24 +60,5 @@
     "react": "^16.13.0",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
-  },
-  "peerDependencies": {
-    "@material-ui/core": "^4.9.5",
-    "@material-ui/styles": "^4.9.0",
-    "react": "^16.13.0"
-  },
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "dist",
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gregjoeval/lib/issues"
   }
 }

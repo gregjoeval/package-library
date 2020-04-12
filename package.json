@@ -2,8 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "init": "lerna run init && lerna bootstrap --hoist --strict",
+    "init:install": "lerna run init:install",
+    "init:bootstrap": "lerna run init:bootstrap && lerna bootstrap --hoist --strict",
     "build": "lerna run build",
+    "build:clean": "lerna run build:clean",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
     "typecheck": "lerna run typecheck",
@@ -12,6 +14,7 @@
     "publish:ci": "lerna publish --canary --no-git-reset --no-verify-access --yes"
   },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^3.20.2",
+    "rimraf": "^3.0.2"
   }
 }
