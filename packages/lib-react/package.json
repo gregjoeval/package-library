@@ -11,7 +11,7 @@
   "scripts": {
     "init:install": "npm install",
     "init:bootstrap": "npm ci",
-    "build": "tsc --declaration",
+    "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "eslint --fix ./src",

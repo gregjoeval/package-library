@@ -18,7 +18,7 @@ import React, { ReactNode, ReactNodeArray } from 'react';
  * @returns {Array<*>} - list of only truthy values
  */
 const selectTruthyResults = <T, > (array: Array<T>): Array<T> => {
-    const list = [].concat(array);
+    const list = _.concat([], array);
     return list.reduce((acc: Array<T>, element: T) => {
         const item = typeof element === 'function'
             ? element()
@@ -110,7 +110,7 @@ const Flex = ({
     lg,
     xl
 }: FlexProps): ReactNode => {
-    const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize>('auto', [xs, sm, md, lg, xl]);
+    const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl]);
     const childrenArray = Array.isArray(children) ? children : [children];
     const truthyChildren = selectTruthyResults(childrenArray);
     return (

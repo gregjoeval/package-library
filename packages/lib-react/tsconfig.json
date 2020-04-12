@@ -2,10 +2,10 @@
 // Typescript documentation: https://www.typescriptlang.org/tsconfig
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "module": "esnext",
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "dist",
+    "module": "commonjs",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "lib": ["dom", "esnext"],
@@ -15,11 +15,11 @@
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
-    "forceConsistentCasingInFileNames": true,
-    "removeComments": true
+    "removeComments": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "./src/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

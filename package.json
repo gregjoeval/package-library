@@ -5,6 +5,7 @@
     "init:install": "lerna run init:install",
     "init:bootstrap": "lerna run init:bootstrap && lerna bootstrap --hoist --strict",
     "build": "lerna run build",
+    "build:clean": "lerna run build:clean",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
     "typecheck": "lerna run typecheck",
