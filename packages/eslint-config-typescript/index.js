@@ -21,6 +21,8 @@ module.exports = {
     ],
     "rules": {
         // Typescript Plugin (https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/interface-name-prefix": ["error", {
             "prefixWithI": "always",
             "allowUnderscorePrefix": false

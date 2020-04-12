@@ -34,12 +34,13 @@ module.exports = {
         "import-helpers"
     ],
     "rules": {
+        "spaced-comment": "warn",
         "linebreak-style": ["error", "unix"],
         "eol-last": ["error", "always"],
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "brace-style": ["error", "1tbs"],
         "semi": ["error", "always"],
-        "comma-dangle": ["error", "never"],
+        "comma-dangle": ["warn", "never"],
         "max-len": ["error", {
             "code": 225,
             "ignoreUrls": true,
@@ -49,16 +50,20 @@ module.exports = {
             "ignoreTemplateLiterals": true
         }],
         "no-case-declarations": "off",
+        "no-console": "warn",
+        "no-debugger": "warn",
+        "no-empty-function": "warn",
         "no-multiple-empty-lines": ["error", { "max": 1 }],
         "no-param-reassign": "error",
         "no-underscore-dangle": "error",
-        "no-undefined": "error",
+        "no-undefined": "warn",
         "no-extra-parens": ["error", "all", {
             "nestedBinaryExpressions": false,
             "ignoreJSX": "all",
             "enforceForArrowConditionals": false,
             "enforceForNewInMemberExpressions": false
         }],
+        "no-unused-vars": "warn",
         "lines-between-class-members": ["error", "always"],
         "multiline-ternary": ["error", "always-multiline"],
         "prefer-destructuring": "off",
@@ -102,7 +107,7 @@ module.exports = {
         "import/no-duplicates": "error",
         "import/newline-after-import": "error",
         "import/no-useless-path-segments": "error",
-        "import/no-cycle": ["error", { "maxDepth": 2 }],
+        "import/no-cycle": ["off", { "maxDepth": 2 }], // TODO: turning this off for now but it need to be turned back on
         "import/first": "error",
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",
@@ -112,7 +117,7 @@ module.exports = {
         }],
 
         // Import Helpers Plugin (https://github.com/Tibfib/eslint-plugin-import-helpers)
-        "import-helpers/order-imports": ["error", {
+        "import-helpers/order-imports": ["warn", {
             "newlinesBetween": "never",
             "groups": ["absolute", "module", "parent", "sibling", "index"],
             "alphabetize": { "order": "asc" }
