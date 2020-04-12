@@ -10,7 +10,7 @@
     "init:install": "npm install",
     "init:bootstrap": "npm ci",
     "lint": "eslint ./",
-    "lint:fix": "eslint --fix ./",
+    "lint:fix": "npm run lint -- --fix",
     "lint:config": "eslint --print-config ./index.js"
   },
   "publishConfig": {
