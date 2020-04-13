@@ -15,9 +15,9 @@
     "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
-    "lint:fix": "eslint --fix ./src",
+    "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests yet!\" && exit 0"
+    "test": "jest src --runInBand --watchAll=false"
   },
   "publishConfig": {
     "access": "restricted"
@@ -45,7 +45,9 @@
     "@gjv/eslint-config-react": "0.0.4",
     "@gjv/eslint-config-typescript": "0.0.4",
     "@reduxjs/toolkit": "^1.3.2",
+    "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.149",
+    "@types/ramda": "^0.27.3",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",
@@ -58,7 +60,12 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "lodash": "^4.17.15",
+    "jest": "^25.3.0",
+    "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "ramda": "^0.27.0",
+    "redux": "^4.0.5"
   }
 }
