@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "init:install": "lerna run init:install",
-    "init:install:ci": "lerna run init:install:ci && lerna bootstrap --hoist --strict",
-    "init:install:clean": "lerna run init:install:clean && rimraf ./node_modules",
+    "init:clean-install": "lerna run init:install:ci",
+    "init:bootstrap": "lerna bootstrap --hoist --strict",
+    "init:ci": "npm run init:clean-install && npm run init:bootstrap",
+    "init:clean": "lerna clean --yes",
     "build": "lerna run build",
     "build:clean": "lerna run build:clean",
     "lint": "lerna run lint",

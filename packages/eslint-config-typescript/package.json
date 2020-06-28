@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config-typescript",
-  "version": "0.0.4",
+  "version": "0.0.5-alpha.10+b9509bd",
   "description": "gregjoeval's ESLint config for TS",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.4",
+    "@gjv/eslint-config": "^0.0.5-alpha.10+b9509bd",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",
@@ -46,5 +46,5 @@
   "bugs": {
     "url": "https://github.com/gregjoeval/lib/issues"
   },
-  "gitHead": "14a1ea9e404abc60a48eb6d19a3998f51bde2a18"
+  "gitHead": "b9509bdda55e562d75f7832a1169a247a6534cbd"
 }
