@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-redux",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "description": "Library of shared code for Redux",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
@@ -47,8 +47,8 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.5-alpha.10+b9509bd",
-    "@gjv/eslint-config-typescript": "^0.0.5-alpha.10+b9509bd",
+    "@gjv/eslint-config": "^0.0.5",
+    "@gjv/eslint-config-typescript": "^0.0.5",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/jest": "^26.0.3",
     "@types/lodash": "^4.14.157",
