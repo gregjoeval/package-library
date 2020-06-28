@@ -11,7 +11,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "init:install": "npm install",
-    "init:bootstrap": "npm ci",
+    "init:install:ci": "npm ci",
+    "init:install:clean": "rimraf ./node_modules",
     "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -37,22 +38,16 @@
     "url": "https://github.com/gregjoeval/lib/issues"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "0.0.2",
-    "@gjv/eslint-config-react": "0.0.4",
-    "@gjv/eslint-config-typescript": "0.0.4",
+    "@gjv/eslint-config": "^0.0.5-alpha.10+b9509bd",
+    "@gjv/eslint-config-typescript": "^0.0.5-alpha.10+b9509bd",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-react-app": "^5.2.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.5"
   },
   "dependencies": {}
 }

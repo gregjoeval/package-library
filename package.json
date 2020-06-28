@@ -3,7 +3,10 @@
   "private": true,
   "scripts": {
     "init:install": "lerna run init:install",
-    "init:bootstrap": "lerna run init:bootstrap && lerna bootstrap --hoist --strict",
+    "init:clean-install": "lerna run init:install:ci",
+    "init:bootstrap": "lerna bootstrap --hoist --strict",
+    "init:ci": "npm run init:clean-install && npm run init:bootstrap",
+    "init:clean": "lerna clean --yes",
     "build": "lerna run build",
     "build:clean": "lerna run build:clean",
     "lint": "lerna run lint",
@@ -14,7 +17,7 @@
     "publish:ci": "lerna publish --canary --no-git-reset --no-verify-access --yes"
   },
   "devDependencies": {
-    "lerna": "^3.20.2",
+    "lerna": "^3.22.1",
     "rimraf": "^3.0.2"
   }
 }

@@ -1,6 +1,6 @@
 import { IAction, ITimeStampMeta } from './action';
 import ActionVerb from './constants/ActionVerb';
-import makeDataSlice from './make-date-slice';
+import makeDataSlice from './make-data-slice';
 import makeDictionaryDataSlice from './make-dictionary-data-slice';
 import makeReducer from './make-reducer';
 
