@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm run init:install:ci
+      - run: npm run init:ci
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test
