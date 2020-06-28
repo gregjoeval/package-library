@@ -24,10 +24,8 @@ module.exports = {
     },
     // extended configs should be ordered by least to greatest importance
     "extends": [
-        "react-app",
-        "eslint:recommended",
-        "airbnb/hooks",
-        "airbnb"
+        "airbnb-base",
+        "eslint:recommended"
     ],
     "plugins": [
         "promise",
@@ -35,7 +33,7 @@ module.exports = {
     ],
     "rules": {
         "spaced-comment": "warn",
-        "linebreak-style": ["error", "unix"],
+        "linebreak-style": ["off", "windows"],
         "eol-last": ["error", "always"],
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "brace-style": ["error", "1tbs"],
@@ -115,6 +113,7 @@ module.exports = {
             "ts": "never",
             "tsx": "never"
         }],
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.*", "**/*.d.*", "**/setupTests.ts", "**/*.stories.*"] }],
 
         // Import Helpers Plugin (https://github.com/Tibfib/eslint-plugin-import-helpers)
         "import-helpers/order-imports": ["warn", {
