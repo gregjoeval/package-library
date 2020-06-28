@@ -4,7 +4,7 @@ import { IDataState } from '../data-state';
 import makeDataSlice, {
     IDataSlice,
     IDataSliceActions
-} from '../make-date-slice';
+} from '../make-data-slice';
 import { IDictionary } from '../types';
 
 export interface IDictionaryDataSliceActions<T> extends IDataSliceActions<IDictionary<T>> {
