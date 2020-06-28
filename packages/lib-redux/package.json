@@ -37,6 +37,10 @@
   "bugs": {
     "url": "https://github.com/gregjoeval/lib/issues"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "lodash": "^4.17.15",
