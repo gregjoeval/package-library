@@ -11,7 +11,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "init:install": "npm install",
-    "init:bootstrap": "npm ci",
+    "init:install:ci": "npm ci",
+    "init:install:clean": "rimraf ./node_modules",
     "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -61,11 +62,11 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^25.3.0",
-    "ts-jest": "^25.3.1",
-    "typescript": "^3.8.3"
+    "ts-jest": "^25.3.1"
   },
   "dependencies": {
     "ramda": "^0.27.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "typescript": "^3.9.5"
   }
 }

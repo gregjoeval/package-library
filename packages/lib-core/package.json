@@ -11,7 +11,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "init:install": "npm install",
-    "init:bootstrap": "npm ci",
+    "init:install:ci": "npm ci",
+    "init:install:clean": "rimraf ./node_modules",
     "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
