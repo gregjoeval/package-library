@@ -4,7 +4,6 @@
     "project": "./tsconfig.json"
   },
   "extends": [
-    "@gjv/eslint-config-typescript",
-    "@gjv/eslint-config-react"
+    "@gjv/eslint-config-typescript"
   ]
 }
