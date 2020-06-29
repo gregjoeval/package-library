@@ -17,7 +17,7 @@
     "publish": "lerna publish --no-git-reset --canary",
     "publish:major": "npm run publish -- major --yes",
     "publish:minor": "npm run publish -- minor --yes",
-    "publish:patch": "npm run publish -- patch --yes"
+    "publish:patch": "npm run publish -- patch"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
