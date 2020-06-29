@@ -2,11 +2,11 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "init:install": "lerna run init:install",
-    "init:clean-install": "lerna run init:clean-install",
-    "init:bootstrap": "lerna bootstrap --hoist --strict",
-    "init:ci": "npm run init:clean-install && npm run init:bootstrap",
-    "init:clean": "lerna clean --yes",
+    "setup": "npm run setup:clean-install && npm run setup:bootstrap",
+    "setup:install": "lerna run setup:install",
+    "setup:clean-install": "lerna run setup:clean-install",
+    "setup:bootstrap": "lerna bootstrap --hoist --strict",
+    "setup:clean": "lerna clean --yes",
     "build": "lerna run build",
     "build:clean": "lerna run build:clean",
     "lint": "lerna run lint",
@@ -14,10 +14,10 @@
     "typecheck": "lerna run typecheck",
     "test": "lerna run test",
     "check": "npm run lint && npm run typecheck && npm run test",
-    "publish": "lerna publish --force-publish --no-git-reset --canary",
-    "publish:major": "npm run publish -- major --yes",
-    "publish:minor": "npm run publish -- minor --yes",
-    "publish:patch": "npm run publish -- patch --yes"
+    "publish-ci": "lerna publish --yes --no-git-reset --canary",
+    "publish-ci:major": "npm run publish-ci -- major",
+    "publish-ci:minor": "npm run publish-ci -- minor",
+    "publish-ci:patch": "npm run publish-ci -- patch"
   },
   "devDependencies": {
     "lerna": "^3.22.1",

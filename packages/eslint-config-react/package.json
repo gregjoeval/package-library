@@ -1,15 +1,15 @@
 {
   "name": "@gjv/eslint-config-react",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "gregjoeval's ESLint config for react",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "init:install": "npm install",
-    "init:clean-install": "npm ci",
-    "init:clean": "rimraf ./node_modules",
+    "setup:install": "npm install",
+    "setup:clean-install": "npm ci",
+    "setup:clean": "rimraf ./node_modules",
     "lint": "eslint ./",
     "lint:fix": "npm run lint -- --fix",
     "lint:config": "eslint --print-config ./index.js"
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.5",
+    "@gjv/eslint-config": "^0.0.10",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -53,5 +53,5 @@
   "bugs": {
     "url": "https://github.com/gregjoeval/lib/issues"
   },
-  "gitHead": "b9509bdda55e562d75f7832a1169a247a6534cbd"
+  "gitHead": "11f6564aac2f9b5cce45e4cbe01c3ce531297450"
 }

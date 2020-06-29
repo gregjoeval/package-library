@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-redux",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "private": true,
   "description": "Library of shared code for Redux",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
@@ -10,15 +10,16 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init:install": "npm install",
-    "init:clean-install": "npm ci",
-    "init:clean": "rimraf ./node_modules",
+    "setup:install": "npm install",
+    "setup:clean-install": "npm ci",
+    "setup:clean": "rimraf ./node_modules",
     "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "jest src --runInBand --watchAll=false"
+    "test": "jest src --runInBand --watchAll=false",
+    "prepublishOnly": "npm run build"
   },
   "publishConfig": {
     "access": "restricted"
@@ -47,8 +48,8 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.5",
-    "@gjv/eslint-config-typescript": "^0.0.5",
+    "@gjv/eslint-config": "^0.0.10",
+    "@gjv/eslint-config-typescript": "^0.0.10",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/jest": "^26.0.3",
     "@types/lodash": "^4.14.157",

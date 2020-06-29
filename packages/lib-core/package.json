@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-core",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "private": true,
   "description": "Library of shared code",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
@@ -10,15 +10,16 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "init:install": "npm install",
-    "init:clean-install": "npm ci",
-    "init:clean": "rimraf ./node_modules",
+    "setup:install": "npm install",
+    "setup:clean-install": "npm ci",
+    "setup:clean": "rimraf ./node_modules",
     "build": "tsc",
     "build:clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests yet!\" && exit 0"
+    "test": "echo \"No tests yet!\" && exit 0",
+    "prepublishOnly": "npm run build"
   },
   "publishConfig": {
     "access": "restricted"
@@ -38,8 +39,8 @@
     "url": "https://github.com/gregjoeval/lib/issues"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.5",
-    "@gjv/eslint-config-typescript": "^0.0.5",
+    "@gjv/eslint-config": "^0.0.10",
+    "@gjv/eslint-config-typescript": "^0.0.10",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",
