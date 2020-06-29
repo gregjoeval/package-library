@@ -18,7 +18,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "jest src --runInBand --watchAll=false"
+    "test": "jest src --runInBand --watchAll=false",
+    "prepublishOnly": "npm run build"
   },
   "publishConfig": {
     "access": "restricted"

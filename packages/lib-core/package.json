@@ -18,7 +18,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests yet!\" && exit 0"
+    "test": "echo \"No tests yet!\" && exit 0",
+    "prepublishOnly": "npm run build"
   },
   "publishConfig": {
     "access": "restricted"
