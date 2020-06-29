@@ -20,7 +20,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*"
+    "index.js"
   ],
   "exclude": [
     "node_modules",
