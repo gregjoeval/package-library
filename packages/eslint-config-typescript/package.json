@@ -8,8 +8,8 @@
   "main": "index.js",
   "scripts": {
     "init:install": "npm install",
-    "init:install:ci": "npm ci",
-    "init:install:clean": "rimraf ./node_modules",
+    "init:clean-install": "npm ci",
+    "init:clean": "rimraf ./node_modules",
     "lint": "eslint ./",
     "lint:fix": "npm run lint -- --fix",
     "lint:config": "eslint --print-config ./index.js"
