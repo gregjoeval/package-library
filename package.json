@@ -14,7 +14,7 @@
     "typecheck": "lerna run typecheck",
     "test": "lerna run test",
     "check": "npm run lint && npm run typecheck && npm run test",
-    "publish": "lerna publish --no-push --no-git-reset --canary",
+    "publish": "lerna publish --force-publish --no-git-reset --canary",
     "publish:major": "npm run publish -- major --yes",
     "publish:minor": "npm run publish -- minor --yes",
     "publish:patch": "npm run publish -- patch --yes"
