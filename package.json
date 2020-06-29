@@ -14,7 +14,7 @@
     "typecheck": "lerna run typecheck",
     "test": "lerna run test",
     "check": "npm run lint && npm run typecheck && npm run test",
-    "publish:bump": "lerna publish --canary --no-push --no-git-reset --yes",
+    "publish:bump": "lerna publish --canary --amend --no-git-reset --yes",
     "publish:ci": "lerna publish --canary --no-git-reset --yes"
   },
   "devDependencies": {

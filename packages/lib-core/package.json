@@ -38,8 +38,8 @@
     "url": "https://github.com/gregjoeval/lib/issues"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.5",
-    "@gjv/eslint-config-typescript": "^0.0.5",
+    "@gjv/eslint-config": "^0.0.5-alpha.8+8580a5d",
+    "@gjv/eslint-config-typescript": "^0.0.5-alpha.8+8580a5d",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",

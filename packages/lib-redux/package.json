@@ -47,8 +47,8 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.0.5",
-    "@gjv/eslint-config-typescript": "^0.0.5",
+    "@gjv/eslint-config": "^0.0.5-alpha.8+8580a5d",
+    "@gjv/eslint-config-typescript": "^0.0.5-alpha.8+8580a5d",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/jest": "^26.0.3",
     "@types/lodash": "^4.14.157",
