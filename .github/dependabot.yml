@@ -8,10 +8,11 @@ updates:
   ignored_updates:
     - match:
         # react-scripts has a 6.x dependency, want to avoid updating this until then
-        dependency_name: 'eslint'
+        dependency_name: "eslint"
+        version_requirement: "6.x"
     - match:
         # need to update this manually to resolve any issues
-        dependency_name: '@typescript-eslint/eslint-plugin'
+        dependency_name: "@typescript-eslint/eslint-plugin"
     - match:
         # need to update this manually to resolve any issues
-        dependency_name: '@typescript-eslint/parser'
+        dependency_name: "@typescript-eslint/parser"
