@@ -7,6 +7,10 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  labels:
+    - "npm"
+    - "dependencies"
+    - "bot"
   ignore:
       # react-scripts has a 6.x dependency, want to avoid updating this until then
     - dependency-name: "eslint"
