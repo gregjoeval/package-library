@@ -9,9 +9,8 @@ updates:
   open-pull-requests-limit: 10
   ignore:
       # react-scripts has a 6.x dependency, want to avoid updating this until then
-    - dependency_name: "eslint"
-      version_requirement: "6.x"
+    - dependency-name: "eslint"
       # want to update this manually to resolve any issues
-    - dependency_name: "@typescript-eslint/eslint-plugin"
+    - dependency-name: "@typescript-eslint/eslint-plugin"
       # need to update this manually to resolve any issues
-    - dependency_name: "@typescript-eslint/parser"
+    - dependency-name: "@typescript-eslint/parser"
