@@ -1,0 +1,16 @@
+# https://help.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+      # react-scripts has a 6.x dependency, want to avoid updating this until then
+    - dependency-name: "eslint"
+      # want to update this manually to resolve any issues
+    - dependency-name: "@typescript-eslint/eslint-plugin"
+      # need to update this manually to resolve any issues
+    - dependency-name: "@typescript-eslint/parser"
