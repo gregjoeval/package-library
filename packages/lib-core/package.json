@@ -15,10 +15,11 @@
     "setup:clean": "rimraf ./node_modules",
     "build": "tsc",
     "build:clean": "rimraf ./dist",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet!\" && exit 0",
+    "check": "npm run lint && npm run build && npm run test && npm run build:clean",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
