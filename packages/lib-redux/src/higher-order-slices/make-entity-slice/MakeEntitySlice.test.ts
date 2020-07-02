@@ -1,57 +1,60 @@
-import EntityDataState, { DataStateStatusEnum, IEntityDataState } from '../data-state/EntityDataState';
-import makeEntityDataSlice, { IEntityDataSlice } from './MakeEntityDataSlice';
+import StateStatusEnum from '../../constants/StateStatusEnum';
+import EntityState, { IEntityState } from '../../models/entity-state';
+import { getISOStringWithOffset } from '../../utilities';
+import makeEntitySlice, { IEntitySlice } from './MakeEntitySlice';
 
-interface ITestModel {
+interface ITestUserModel {
     id: string;
     name: string;
     age: string;
 }
 
-const alice: ITestModel = {
+const alice: ITestUserModel = {
     id: '123abc',
     name: 'alice',
     age: '25'
 };
 
-const bob: ITestModel = {
+const bob: ITestUserModel = {
     id: '456def',
     name: 'bob',
     age: '30'
 };
 
-const carl: ITestModel = {
+const carl: ITestUserModel = {
     id: '789ghi',
     name: 'carl',
     age: '35'
 };
 
-describe('makeEntityDataSlice', () => {
-    const testDomain = 'FooBarThing';
-    let feature: IEntityDataSlice<ITestModel>;
-    let state: IEntityDataState<ITestModel>;
+describe('makeEntitySlice', () => {
+    const testName = 'FooBarThing';
+    let sliceState: IEntityState<ITestUserModel>;
+    let slice: IEntitySlice<any, ITestUserModel>;
 
     beforeEach(() => {
-        state = EntityDataState.create<ITestModel>();
-        feature = makeEntityDataSlice<ITestModel>(
-            testDomain,
+        sliceState = EntityState.create<ITestUserModel>();
+        slice = makeEntitySlice<any, ITestUserModel>(
+            testName,
+            () => sliceState,
             (model) => model.id,
             (a, b) => a.name.localeCompare(b.name)
         );
     });
 
     it('initializes', () => {
-        expect(feature.Domain).toEqual(testDomain);
-        expect(typeof feature.Reducer).toEqual('function');
-        expect(Object.values(feature.Actions)).toHaveLength(15);
-        expect(Object.values(feature.Selectors)).toHaveLength(5);
+        expect(slice.Name).toEqual(testName);
+        expect(typeof slice.Reducer).toEqual('function');
+        expect(Object.values(slice.Actions)).toHaveLength(16);
+        expect(Object.values(slice.Selectors)).toHaveLength(10);
     });
 
     it('does not affect state with unregistered action types', () => {
         // GIVEN
-        const previousState = state;
+        const previousState = sliceState;
 
         // WHEN
-        const nextState = feature.Reducer(state, { type: 'not_an_action' });
+        const nextState = slice.Reducer(sliceState, { type: 'not_an_action' });
 
         // THEN
         expect(nextState).toEqual(previousState);
@@ -59,11 +62,11 @@ describe('makeEntityDataSlice', () => {
 
     it('sets error property in state', () => {
         // GIVEN
-        const previousState = state;
+        const previousState = sliceState;
         const error = new Error('this was a test');
 
         // WHEN
-        const nextState = feature.Reducer(state, feature.Actions.setError(error));
+        const nextState = slice.Reducer(sliceState, slice.Actions.setError(error));
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
@@ -71,16 +74,16 @@ describe('makeEntityDataSlice', () => {
         expect(nextState.error).toEqual(error);
         expect(nextState.status).toEqual(previousState.status); // should be unaffected
         expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
-        expect(nextState.lastHydrated).toBe(previousState.lastHydrated); // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated); // should be unaffected
     });
 
     it('sets status property in state', () => {
         // GIVEN
-        const previousState = state;
-        const status = DataStateStatusEnum.Requesting;
+        const previousState = sliceState;
+        const status = StateStatusEnum.Requesting;
 
         // WHEN
-        const nextState = feature.Reducer(state, feature.Actions.setStatus(status));
+        const nextState = slice.Reducer(sliceState, slice.Actions.setStatus(status));
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
@@ -88,7 +91,7 @@ describe('makeEntityDataSlice', () => {
         expect(nextState.error).toEqual(previousState.error); // should be unaffected
         expect(nextState.status).toEqual(status);
         expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
-        expect(nextState.lastHydrated).toBe(previousState.lastHydrated); // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated); // should be unaffected
     });
 
     it('hydrates state with data', () => {
@@ -101,8 +104,8 @@ describe('makeEntityDataSlice', () => {
                 age: bob.age
             }
         };
-        const previousStateWithData = EntityDataState.create({
-            ...state,
+        const previousStateWithData = EntityState.create({
+            ...sliceState,
             ids: Object.keys(previousData),
             entities: previousData
         });
@@ -113,13 +116,13 @@ describe('makeEntityDataSlice', () => {
         };
 
         // WHEN
-        const nextState = feature.Reducer(previousStateWithData, feature.Actions.hydrateAll(data));
+        const nextState = slice.Reducer(previousStateWithData, slice.Actions.hydrateAll(data));
 
         // THEN
         expect(nextState.ids).toEqual(Object.keys(data));
         expect(nextState.entities).toEqual(data);
         expect(nextState.error).toEqual(previousStateWithData.error); // should be unaffected
-        expect(nextState.status).toBe(previousStateWithData.status); // should be unaffected
+        expect(nextState.status).toEqual(previousStateWithData.status); // should be unaffected
         expect(nextState.lastModified).toEqual(null);
         expect(nextState.lastHydrated).toBeTruthy();
     });
@@ -134,8 +137,8 @@ describe('makeEntityDataSlice', () => {
                 age: bob.age
             }
         };
-        const previousStateWithData = EntityDataState.create({
-            ...state,
+        const previousStateWithData = EntityState.create({
+            ...sliceState,
             ids: Object.keys(previousData),
             entities: previousData
         });
@@ -146,14 +149,47 @@ describe('makeEntityDataSlice', () => {
         };
 
         // WHEN
-        const nextState = feature.Reducer(previousStateWithData, feature.Actions.setAll(data));
+        const nextState = slice.Reducer(previousStateWithData, slice.Actions.setAll(data));
 
         // THEN
         expect(nextState.ids).toEqual(Object.keys(data));
         expect(nextState.entities).toEqual(data);
         expect(nextState.error).toEqual(previousStateWithData.error); // should be unaffected
-        expect(nextState.status).toBe(previousStateWithData.status); // should be unaffected
+        expect(nextState.status).toEqual(previousStateWithData.status); // should be unaffected
         expect(nextState.lastModified).toBeTruthy();
         expect(nextState.lastHydrated).toEqual(previousStateWithData.lastHydrated); // should be unaffected
+    });
+
+    it('resets state', () => {
+        // GIVEN
+        const initialState = sliceState;
+        const previousData = {
+            [alice.id]: alice,
+            [bob.id]: {
+                id: bob.id,
+                name: 'bobby',
+                age: bob.age
+            }
+        };
+        const previousStateWithData = EntityState.create({
+            ids: Object.keys(previousData),
+            entities: previousData,
+            status: StateStatusEnum.Failed,
+            error: new Error('Oopsie Doopsie'),
+            lastHydrated: getISOStringWithOffset(),
+            lastModified: getISOStringWithOffset()
+        });
+
+        // WHEN
+        const nextState = slice.Reducer(previousStateWithData, slice.Actions.reset());
+
+        // THEN
+        expect(nextState).toEqual(initialState);
+        expect(nextState.ids).toEqual(initialState.ids);
+        expect(nextState.entities).toEqual(initialState.entities);
+        expect(nextState.error).toEqual(initialState.error);
+        expect(nextState.status).toEqual(initialState.status);
+        expect(nextState.lastModified).toEqual(initialState.lastModified);
+        expect(nextState.lastHydrated).toEqual(initialState.lastHydrated);
     });
 });
