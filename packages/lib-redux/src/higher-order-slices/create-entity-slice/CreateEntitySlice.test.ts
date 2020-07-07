@@ -1,7 +1,7 @@
 import StateStatusEnum from '../../constants/StateStatusEnum';
-import ModelState, { IModelState } from '../../models/model-state';
+import EntityState, { IEntityState } from '../../models/entity-state';
 import { getISOStringWithOffset } from '../../utilities';
-import makeModelSlice, { IModelSlice } from './MakeModelSlice';
+import createEntitySlice, { IEntitySlice } from './CreateEntitySlice';
 
 interface ITestUserModel {
     id: string;
@@ -27,24 +27,26 @@ const carl: ITestUserModel = {
     age: '35'
 };
 
-describe('makeModelSlice', () => {
+describe('createEntitySlice', () => {
     const testName = 'FooBarThing';
-    let sliceState: IModelState<ITestUserModel>;
-    let slice: IModelSlice<any, ITestUserModel>;
+    let sliceState: IEntityState<ITestUserModel>;
+    let slice: IEntitySlice<any, ITestUserModel>;
 
     beforeEach(() => {
-        sliceState = ModelState.create<ITestUserModel>();
-        slice = makeModelSlice<any, ITestUserModel>(
+        sliceState = EntityState.create<ITestUserModel>();
+        slice = createEntitySlice<any, ITestUserModel>(
             testName,
-            () => sliceState
+            () => sliceState,
+            (model) => model.id,
+            (a, b) => a.name.localeCompare(b.name)
         );
     });
 
     it('initializes', () => {
         expect(slice.Name).toEqual(testName);
         expect(typeof slice.Reducer).toEqual('function');
-        expect(Object.values(slice.Actions)).toHaveLength(6);
-        expect(Object.values(slice.Selectors)).toHaveLength(5);
+        expect(Object.values(slice.Actions)).toHaveLength(16);
+        expect(Object.values(slice.Selectors)).toHaveLength(10);
     });
 
     it('does not affect state with unregistered action types', () => {
@@ -67,7 +69,8 @@ describe('makeModelSlice', () => {
         const nextState = slice.Reducer(sliceState, slice.Actions.setError(error));
 
         // THEN
-        expect(nextState.model).toEqual(previousState.model); // should be unaffected
+        expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
+        expect(nextState.entities).toEqual(previousState.entities); // should be unaffected
         expect(nextState.error).toEqual(error);
         expect(nextState.status).toEqual(previousState.status); // should be unaffected
         expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
@@ -83,7 +86,8 @@ describe('makeModelSlice', () => {
         const nextState = slice.Reducer(sliceState, slice.Actions.setStatus(status));
 
         // THEN
-        expect(nextState.model).toEqual(previousState.model); // should be unaffected
+        expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
+        expect(nextState.entities).toEqual(previousState.entities); // should be unaffected
         expect(nextState.error).toEqual(previousState.error); // should be unaffected
         expect(nextState.status).toEqual(status);
         expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
@@ -93,21 +97,30 @@ describe('makeModelSlice', () => {
     it('hydrates state with data', () => {
         // GIVEN
         const previousData = {
-            id: alice.id,
-            name: 'alicia',
-            age: alice.age
+            [alice.id]: alice,
+            [bob.id]: {
+                id: bob.id,
+                name: 'bobby',
+                age: bob.age
+            }
         };
-        const previousStateWithData = ModelState.create({
+        const previousStateWithData = EntityState.create({
             ...sliceState,
-            model: previousData
+            ids: Object.keys(previousData),
+            entities: previousData
         });
-        const data = alice;
+        const data = {
+            [alice.id]: alice,
+            [bob.id]: bob,
+            [carl.id]: carl
+        };
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.hydrate(data));
+        const nextState = slice.Reducer(previousStateWithData, slice.Actions.hydrateAll(data));
 
         // THEN
-        expect(nextState.model).toEqual(data);
+        expect(nextState.ids).toEqual(Object.keys(data));
+        expect(nextState.entities).toEqual(data);
         expect(nextState.error).toEqual(previousStateWithData.error); // should be unaffected
         expect(nextState.status).toEqual(previousStateWithData.status); // should be unaffected
         expect(nextState.lastModified).toEqual(null);
@@ -117,21 +130,30 @@ describe('makeModelSlice', () => {
     it('modifies state with data', () => {
         // GIVEN
         const previousData = {
-            id: bob.id,
-            name: 'bobby',
-            age: bob.age
+            [alice.id]: alice,
+            [bob.id]: {
+                id: bob.id,
+                name: 'bobby',
+                age: bob.age
+            }
         };
-        const previousStateWithData = ModelState.create({
+        const previousStateWithData = EntityState.create({
             ...sliceState,
-            model: previousData
+            ids: Object.keys(previousData),
+            entities: previousData
         });
-        const data = bob;
+        const data = {
+            [alice.id]: alice,
+            [bob.id]: bob,
+            [carl.id]: carl
+        };
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.set(data));
+        const nextState = slice.Reducer(previousStateWithData, slice.Actions.setAll(data));
 
         // THEN
-        expect(nextState.model).toEqual(data);
+        expect(nextState.ids).toEqual(Object.keys(data));
+        expect(nextState.entities).toEqual(data);
         expect(nextState.error).toEqual(previousStateWithData.error); // should be unaffected
         expect(nextState.status).toEqual(previousStateWithData.status); // should be unaffected
         expect(nextState.lastModified).toBeTruthy();
@@ -142,12 +164,16 @@ describe('makeModelSlice', () => {
         // GIVEN
         const initialState = sliceState;
         const previousData = {
-            id: carl.id,
-            name: 'carlton',
-            age: carl.age
+            [alice.id]: alice,
+            [bob.id]: {
+                id: bob.id,
+                name: 'bobby',
+                age: bob.age
+            }
         };
-        const previousStateWithData = ModelState.create({
-            model: previousData,
+        const previousStateWithData = EntityState.create({
+            ids: Object.keys(previousData),
+            entities: previousData,
             status: StateStatusEnum.Failed,
             error: new Error('Oopsie Doopsie'),
             lastHydrated: getISOStringWithOffset(),
@@ -159,7 +185,8 @@ describe('makeModelSlice', () => {
 
         // THEN
         expect(nextState).toEqual(initialState);
-        expect(nextState.model).toEqual(initialState.model);
+        expect(nextState.ids).toEqual(initialState.ids);
+        expect(nextState.entities).toEqual(initialState.entities);
         expect(nextState.error).toEqual(initialState.error);
         expect(nextState.status).toEqual(initialState.status);
         expect(nextState.lastModified).toEqual(initialState.lastModified);
