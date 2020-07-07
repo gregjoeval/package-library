@@ -63,7 +63,7 @@ interface IMakeEntitySliceOptions<TSliceState> {
     initialState: Partial<TSliceState>;
 }
 
-const makeEntitySlice = <
+const createEntitySlice = <
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
@@ -114,6 +114,7 @@ const makeEntitySlice = <
     const hydrateState = (state: ISliceState, entityState: ReduxEntityState<TEntity>) => {
         setEntityState(state, entityState);
         setLastModified(state, null);
+        // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
         setLastHydrated(state, getISOStringWithOffset());
     };
 
@@ -233,4 +234,4 @@ const makeEntitySlice = <
     return entitySlice;
 };
 
-export default makeEntitySlice;
+export default createEntitySlice;

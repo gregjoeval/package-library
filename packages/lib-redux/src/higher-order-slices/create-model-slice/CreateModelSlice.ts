@@ -47,7 +47,7 @@ interface IMakeModelSliceOptions<TSliceState> {
     initialState: Partial<TSliceState>;
 }
 
-const makeModelSlice = <
+const createModelSlice = <
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
@@ -141,4 +141,4 @@ const makeModelSlice = <
     return modelSlice;
 };
 
-export default makeModelSlice;
+export default createModelSlice;
