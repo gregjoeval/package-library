@@ -7,10 +7,10 @@ export interface ISlice <
     TCaseReducers extends SliceCaseReducers<TSliceState>,
     TSliceSelectors extends ISliceSelectors<TGlobalState, TSliceState>
     > {
-    Name: string;
-    Reducer: Reducer<TSliceState>;
-    Actions: CaseReducerActions<TCaseReducers>;
-    Selectors: TSliceSelectors;
+    name: string;
+    reducer: Reducer<TSliceState>;
+    actions: CaseReducerActions<TCaseReducers>;
+    selectors: TSliceSelectors;
 }
 
 export interface ISliceSelectors<

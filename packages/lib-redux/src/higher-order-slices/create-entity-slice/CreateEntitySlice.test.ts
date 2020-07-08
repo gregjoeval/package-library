@@ -43,10 +43,10 @@ describe('createEntitySlice', () => {
     });
 
     it('initializes', () => {
-        expect(slice.Name).toEqual(testName);
-        expect(typeof slice.Reducer).toEqual('function');
-        expect(Object.values(slice.Actions)).toHaveLength(16);
-        expect(Object.values(slice.Selectors)).toHaveLength(10);
+        expect(slice.name).toEqual(testName);
+        expect(typeof slice.reducer).toEqual('function');
+        expect(Object.values(slice.actions)).toHaveLength(16);
+        expect(Object.values(slice.selectors)).toHaveLength(10);
     });
 
     it('does not affect state with unregistered action types', () => {
@@ -54,7 +54,7 @@ describe('createEntitySlice', () => {
         const previousState = sliceState;
 
         // WHEN
-        const nextState = slice.Reducer(sliceState, { type: 'not_an_action' });
+        const nextState = slice.reducer(sliceState, { type: 'not_an_action' });
 
         // THEN
         expect(nextState).toEqual(previousState);
@@ -66,7 +66,7 @@ describe('createEntitySlice', () => {
         const error = new Error('this was a test');
 
         // WHEN
-        const nextState = slice.Reducer(sliceState, slice.Actions.setError(error));
+        const nextState = slice.reducer(sliceState, slice.actions.setError(error));
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
@@ -83,7 +83,7 @@ describe('createEntitySlice', () => {
         const status = StateStatusEnum.Requesting;
 
         // WHEN
-        const nextState = slice.Reducer(sliceState, slice.Actions.setStatus(status));
+        const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
@@ -116,7 +116,7 @@ describe('createEntitySlice', () => {
         };
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.hydrateAll(data));
+        const nextState = slice.reducer(previousStateWithData, slice.actions.hydrateAll(data));
 
         // THEN
         expect(nextState.ids).toEqual(Object.keys(data));
@@ -149,7 +149,7 @@ describe('createEntitySlice', () => {
         };
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.setAll(data));
+        const nextState = slice.reducer(previousStateWithData, slice.actions.setAll(data));
 
         // THEN
         expect(nextState.ids).toEqual(Object.keys(data));
@@ -181,7 +181,7 @@ describe('createEntitySlice', () => {
         });
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.reset());
+        const nextState = slice.reducer(previousStateWithData, slice.actions.reset());
 
         // THEN
         expect(nextState).toEqual(initialState);
