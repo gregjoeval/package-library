@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags-ignore:
-      - bot
+      - 'bot'
 
 jobs:
   publish-to-npm:
@@ -18,7 +18,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run setup
-      - run: npm run build
       - run: npm run publish-ci:patch
         env:
           CI: true

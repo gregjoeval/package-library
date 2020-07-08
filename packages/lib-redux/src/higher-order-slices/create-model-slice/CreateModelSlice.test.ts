@@ -41,10 +41,10 @@ describe('createModelSlice', () => {
     });
 
     it('initializes', () => {
-        expect(slice.Name).toEqual(testName);
-        expect(typeof slice.Reducer).toEqual('function');
-        expect(Object.values(slice.Actions)).toHaveLength(6);
-        expect(Object.values(slice.Selectors)).toHaveLength(5);
+        expect(slice.name).toEqual(testName);
+        expect(typeof slice.reducer).toEqual('function');
+        expect(Object.values(slice.actions)).toHaveLength(6);
+        expect(Object.values(slice.selectors)).toHaveLength(5);
     });
 
     it('does not affect state with unregistered action types', () => {
@@ -52,7 +52,7 @@ describe('createModelSlice', () => {
         const previousState = sliceState;
 
         // WHEN
-        const nextState = slice.Reducer(sliceState, { type: 'not_an_action' });
+        const nextState = slice.reducer(sliceState, { type: 'not_an_action' });
 
         // THEN
         expect(nextState).toEqual(previousState);
@@ -64,7 +64,7 @@ describe('createModelSlice', () => {
         const error = new Error('this was a test');
 
         // WHEN
-        const nextState = slice.Reducer(sliceState, slice.Actions.setError(error));
+        const nextState = slice.reducer(sliceState, slice.actions.setError(error));
 
         // THEN
         expect(nextState.model).toEqual(previousState.model); // should be unaffected
@@ -80,7 +80,7 @@ describe('createModelSlice', () => {
         const status = StateStatusEnum.Requesting;
 
         // WHEN
-        const nextState = slice.Reducer(sliceState, slice.Actions.setStatus(status));
+        const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));
 
         // THEN
         expect(nextState.model).toEqual(previousState.model); // should be unaffected
@@ -104,7 +104,7 @@ describe('createModelSlice', () => {
         const data = alice;
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.hydrate(data));
+        const nextState = slice.reducer(previousStateWithData, slice.actions.hydrate(data));
 
         // THEN
         expect(nextState.model).toEqual(data);
@@ -128,7 +128,7 @@ describe('createModelSlice', () => {
         const data = bob;
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.set(data));
+        const nextState = slice.reducer(previousStateWithData, slice.actions.set(data));
 
         // THEN
         expect(nextState.model).toEqual(data);
@@ -155,7 +155,7 @@ describe('createModelSlice', () => {
         });
 
         // WHEN
-        const nextState = slice.Reducer(previousStateWithData, slice.Actions.reset());
+        const nextState = slice.reducer(previousStateWithData, slice.actions.reset());
 
         // THEN
         expect(nextState).toEqual(initialState);

@@ -108,6 +108,7 @@ const createEntitySlice = <
 
     const modifyState = (state: ISliceState, entityState: ReduxEntityState<TEntity>) => {
         setEntityState(state, entityState);
+        // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
         setLastModified(state, getISOStringWithOffset());
     };
 
@@ -221,10 +222,10 @@ const createEntitySlice = <
     };
 
     const entitySlice: IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> = {
-        Name: slice.name,
-        Reducer: slice.reducer,
-        Actions: slice.actions,
-        Selectors: selectors
+        name: slice.name,
+        reducer: slice.reducer,
+        actions: slice.actions,
+        selectors: selectors
     };
 
     if (options?.debug) {

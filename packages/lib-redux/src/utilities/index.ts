@@ -1,10 +1,10 @@
+import { SliceCaseReducers } from '@reduxjs/toolkit';
+import { ISlice, ISliceSelectors } from '../types';
+
 /**
  * @internal
  * Reference: https://stackoverflow.com/a/17415677/7571132
  */
-import { SliceCaseReducers } from '@reduxjs/toolkit';
-import { ISlice, ISliceSelectors } from '../types';
-
 export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
     const tzo = -dateTime.getTimezoneOffset();
     const dif = tzo >= 0 ? '+' : '-';
@@ -26,18 +26,18 @@ export const logSlice = <
     TSliceSelectors extends ISliceSelectors<TGlobalState, TSliceState>
     > (slice: ISlice<TGlobalState, TSliceState, TCaseReducers, TSliceSelectors>, initialState: TSliceState) => {
     /* eslint-disable no-console */
-    console.groupCollapsed(slice.Name);
+    console.groupCollapsed(slice.name);
 
     console.group('initialState');
     console.log(initialState);
     console.groupEnd();
 
     console.group('actions');
-    console.table(slice.Actions);
+    console.table(slice.actions);
     console.groupEnd();
 
     console.group('selectors');
-    console.log(slice.Selectors);
+    console.log(slice.selectors);
     console.groupEnd();
 
     console.groupEnd();

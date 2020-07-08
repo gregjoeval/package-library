@@ -84,12 +84,14 @@ const createModelSlice = <
 
     const modifyState = (state: ISliceState, model: TModel) => {
         setModelState(state, model);
+        // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
         setLastModified(state, getISOStringWithOffset());
     };
 
     const hydrateState = (state: ISliceState, model: TModel) => {
         setModelState(state, model);
         setLastModified(state, null);
+        // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
         setLastHydrated(state, getISOStringWithOffset());
     };
 
@@ -128,10 +130,10 @@ const createModelSlice = <
     };
 
     const modelSlice: IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = {
-        Name: slice.name,
-        Reducer: slice.reducer,
-        Actions: slice.actions,
-        Selectors: selectors
+        name: slice.name,
+        reducer: slice.reducer,
+        actions: slice.actions,
+        selectors: selectors
     };
 
     if (options?.debug) {
