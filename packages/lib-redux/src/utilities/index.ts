@@ -1,10 +1,10 @@
+import { SliceCaseReducers } from '@reduxjs/toolkit';
+import { ISlice, ISliceSelectors } from '../types';
+
 /**
  * @internal
  * Reference: https://stackoverflow.com/a/17415677/7571132
  */
-import { CaseReducerActions, SliceCaseReducers } from '@reduxjs/toolkit';
-import { ISlice, ISliceSelectors } from '../types';
-
 export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
     const tzo = -dateTime.getTimezoneOffset();
     const dif = tzo >= 0 ? '+' : '-';
