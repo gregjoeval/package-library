@@ -5,18 +5,18 @@ creates a slice for a collection of entities.
 
 ### `name`
 A string name for this slice of state. Generated action type constants will use this as a prefix. <br>
-See [createSlice](https://redux-toolkit.js.org/api/createSlice#name) docs.
+See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#name).
 
 ### `selectSliceState`
 A selector function that accepts the entire Redux state tree and returns the slice's state object.
 
 ### `selectId`
 A function that accepts a single `Entity` instance, and returns the entity's unique ID field. <br>
-See [createEntityAdapter](https://redux-toolkit.js.org/api/createEntityAdapter#selectid) docs.
+See the [`createEntityAdapter()` docs](https://redux-toolkit.js.org/api/createEntityAdapter#selectid).
 
 ### `sortComparer`
 A callback function that accepts two `Entity` instances, and should return a standard Array.sort() numeric result (1, 0, -1) to indicate their relative order for sorting. <br>
-See [createEntityAdapter](https://redux-toolkit.js.org/api/createEntityAdapter#sortcomparer) docs.
+See [`createEntityAdapter()` docs](https://redux-toolkit.js.org/api/createEntityAdapter#sortcomparer).
 
 ### `options`
 An optional object that contains the following properties:
@@ -35,11 +35,10 @@ An optional object that contains the following properties:
 }
 ```
 
-
-### Example:
+### Example
 
 ```typescript
-import { createEntitySlice } from '@gjv/lib-redux';
+import { createEntitySlice } from '@gjv/slice-factory';
 
 interface IUserModel {
     id: string;
@@ -89,12 +88,12 @@ const _actions = {
     save: save
 };
 
-const UserSlice = {
+const UsersSlice = {
     name: name,
     reducer: reducer,
     actions: _actions
     selectors: selectors
 };
 
-export default UserSlice;
+export default UsersSlice;
 ```

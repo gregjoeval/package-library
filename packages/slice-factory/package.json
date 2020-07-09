@@ -1,7 +1,7 @@
 {
-  "name": "@gjv/lib-redux",
+  "name": "@gjv/slice-factory",
   "version": "0.2.0",
-  "description": "Library of shared code for Redux",
+  "description": "Generic factory functions for common slice data structures",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
-    "test": "jest src --runInBand --watchAll=false",
+    "test": "jest ./src --runInBand --watchAll=false",
     "check": "npm run lint && npm run build && npm run test && npm run build:clean",
     "prepublishOnly": "npm run build"
   },
