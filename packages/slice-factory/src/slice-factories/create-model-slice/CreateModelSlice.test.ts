@@ -1,6 +1,6 @@
 import StateStatusEnum from '../../constants/StateStatusEnum';
 import ModelState, { IModelState } from '../../models/model-state';
-import { getISOStringWithOffset } from '../../utilities';
+import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
 import createModelSlice, { IModelSlice } from './CreateModelSlice';
 
 interface ITestUserModel {
@@ -68,7 +68,7 @@ describe('createModelSlice', () => {
 
         // THEN
         expect(nextState.model).toEqual(previousState.model); // should be unaffected
-        expect(nextState.error).toEqual(error);
+        expect(nextState.error).toEqual(mapErrorToSerializableObject(error));
         expect(nextState.status).toEqual(previousState.status); // should be unaffected
         expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
         expect(nextState.lastHydrated).toEqual(previousState.lastHydrated); // should be unaffected

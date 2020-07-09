@@ -1,6 +1,6 @@
 import StateStatusEnum from '../../constants/StateStatusEnum';
 import EntityState, { IEntityState } from '../../models/entity-state';
-import { getISOStringWithOffset } from '../../utilities';
+import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
 import createEntitySlice, { IEntitySlice } from './CreateEntitySlice';
 
 interface ITestUserModel {
@@ -71,7 +71,7 @@ describe('createEntitySlice', () => {
         // THEN
         expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
         expect(nextState.entities).toEqual(previousState.entities); // should be unaffected
-        expect(nextState.error).toEqual(error);
+        expect(nextState.error).toEqual(mapErrorToSerializableObject(error));
         expect(nextState.status).toEqual(previousState.status); // should be unaffected
         expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
         expect(nextState.lastHydrated).toEqual(previousState.lastHydrated); // should be unaffected
