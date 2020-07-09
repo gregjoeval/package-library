@@ -13,7 +13,7 @@ import {
 import StateStatusEnum from '../../constants/StateStatusEnum';
 import EntityState, { IEntityState } from '../../models/entity-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
-import { getISOStringWithOffset, logSlice } from '../../utilities';
+import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
 
 export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
     addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
@@ -90,7 +90,7 @@ const createEntitySlice = <
     };
 
     const setError = (state: ISliceState, error: TError | null) => {
-        state.error = error;
+        state.error = error === null ? null : mapErrorToSerializableObject(error) as TError;
     };
 
     const setStatus = (state: ISliceState, status: TStatusEnum) => {

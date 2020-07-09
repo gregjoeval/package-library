@@ -5,7 +5,7 @@ creates a slice for a single model.
 
 ### `name`
 A string name for this slice of state. Generated action type constants will use this as a prefix. <br>
-See [createSlice](https://redux-toolkit.js.org/api/createSlice#name) docs.
+See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#name).
 
 ### `selectSliceState`
 A selector function that accepts the entire Redux state tree and returns the slice's state object.
@@ -27,10 +27,10 @@ An optional object that contains the following properties:
 }
 ```
 
-## Example:
+## Example
 
 ```typescript
-import { createModelSlice } from '@gjv/lib-redux';
+import { createModelSlice } from '@gjv/slice-factory';
 
 interface IUserModel {
     id: string;
@@ -78,12 +78,12 @@ const _actions = {
     save: save
 };
 
-const MySlice = {
+const UserSlice = {
     name: name,
     reducer: reducer,
     actions: _actions
     selectors: selectors
 };
 
-export default MySlice;
+export default UserSlice;
 ```

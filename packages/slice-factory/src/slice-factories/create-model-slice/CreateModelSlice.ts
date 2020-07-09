@@ -8,7 +8,7 @@ import _ from 'lodash';
 import StateStatusEnum from '../../constants/StateStatusEnum';
 import ModelState, { IModelState } from '../../models/model-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
-import { getISOStringWithOffset, logSlice } from '../../utilities';
+import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
 
 export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
     hydrate: CaseReducer<TSliceState, PayloadAction<TModel>>;
@@ -66,7 +66,7 @@ const createModelSlice = <
     };
 
     const setError = (state: ISliceState, error: TError | null) => {
-        state.error = error;
+        state.error = error === null ? null : mapErrorToSerializableObject(error) as TError;
     };
 
     const setStatus = (state: ISliceState, status: TStatusEnum) => {

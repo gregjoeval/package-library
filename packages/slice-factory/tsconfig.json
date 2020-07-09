@@ -2,7 +2,7 @@
 // Typescript documentation: https://www.typescriptlang.org/tsconfig
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "rootDir": "src",
     "outDir": "dist",
     "module": "commonjs",
