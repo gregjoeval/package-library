@@ -62,8 +62,6 @@ describe('createModelSlice', () => {
         // GIVEN
         const previousState = sliceState;
         const error = new Error('this was a test');
-        console.log(error);
-        console.log(JSON.stringify(error));
 
         // WHEN
         const nextState = slice.reducer(sliceState, slice.actions.setError(error));
