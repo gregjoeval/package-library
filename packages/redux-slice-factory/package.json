@@ -1,5 +1,5 @@
 {
-  "name": "@gjv/slice-factory",
+  "name": "@gjv/redux-slice-factory",
   "version": "0.2.0",
   "description": "Generic factory functions for common slice data structures",
   "author": "Greg Valentine <gregjoeval@gmail.com>",

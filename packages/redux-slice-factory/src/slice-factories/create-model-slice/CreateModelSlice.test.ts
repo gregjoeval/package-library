@@ -34,10 +34,10 @@ describe('createModelSlice', () => {
 
     beforeEach(() => {
         sliceState = ModelState.create<ITestUserModel>();
-        slice = createModelSlice<any, ITestUserModel>(
-            testName,
-            () => sliceState
-        );
+        slice = createModelSlice<any, ITestUserModel>({
+            name: testName,
+            selectSliceState: () => sliceState
+        });
     });
 
     it('initializes', () => {

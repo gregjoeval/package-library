@@ -38,7 +38,7 @@ An optional object that contains the following properties:
 ### Example
 
 ```typescript
-import { createEntitySlice } from '@gjv/slice-factory';
+import { createEntitySlice } from '@gjv/redux-slice-factory';
 
 interface IUserModel {
     id: string;

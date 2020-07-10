@@ -34,12 +34,12 @@ describe('createEntitySlice', () => {
 
     beforeEach(() => {
         sliceState = EntityState.create<ITestUserModel>();
-        slice = createEntitySlice<any, ITestUserModel>(
-            testName,
-            () => sliceState,
-            (model) => model.id,
-            (a, b) => a.name.localeCompare(b.name)
-        );
+        slice = createEntitySlice<any, ITestUserModel>({
+            name: testName,
+            selectSliceState: () => sliceState,
+            selectId: (model) => model.id,
+            sortComparer: (a, b) => a.name.localeCompare(b.name)
+        });
     });
 
     it('initializes', () => {
