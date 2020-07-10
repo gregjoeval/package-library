@@ -58,9 +58,18 @@ export type IEntitySlice<
         IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
         >
 
-interface IMakeEntitySliceOptions<TSliceState> {
-    debug: boolean;
-    initialState: Partial<TSliceState>;
+interface IMakeEntitySliceOptions<
+    TGlobalState,
+    TEntity,
+    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TError extends Error = Error
+    > {
+    name: string;
+    selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
+    selectId: (o: TEntity) => EntityId;
+    sortComparer: false | Comparer<TEntity>;
+    initialState?: Partial<IEntityState<TEntity, TStatusEnum, TError>>;
+    debug?: boolean;
 }
 
 const createEntitySlice = <
@@ -68,14 +77,10 @@ const createEntitySlice = <
     TEntity,
     TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
     TError extends Error = Error
-    > (
-        name: string,
-        selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>,
-        selectId: (o: TEntity) => EntityId,
-        sortComparer: false | Comparer<TEntity>,
-        options?: Partial<IMakeEntitySliceOptions<IEntityState<TEntity, TStatusEnum, TError>>>
-    ): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> => {
+    > (options: IMakeEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> => {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
+
+    const { name, selectSliceState, selectId, sortComparer, initialState, debug } = options;
 
     const selectEntityState = (state: ISliceState): ReduxEntityState<TEntity> => ({
         ids: state.ids,
@@ -124,12 +129,12 @@ const createEntitySlice = <
         sortComparer: sortComparer
     });
 
-    const initialEntityState = entityAdapter.getInitialState(options?.initialState ?? {});
-    const initialState = EntityState.create(initialEntityState);
+    const initialEntityState = entityAdapter.getInitialState(initialState ?? {});
+    const initialSliceState = EntityState.create<TEntity, TStatusEnum, TError>(initialEntityState);
 
     const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>>({
         name: name,
-        initialState: initialState,
+        initialState: initialSliceState,
         reducers: {
             addOne: (state, action) => {
                 const entityState = selectEntityState(state as ISliceState);
@@ -191,7 +196,7 @@ const createEntitySlice = <
                 const newEntityState = entityAdapter.removeAll(entityState);
                 modifyState(state as ISliceState, newEntityState);
             },
-            reset: () => initialState,
+            reset: () => initialSliceState,
             setAll: (state, action) => {
                 const entityState = selectEntityState(state as ISliceState);
                 const newEntityState = entityAdapter.setAll(entityState, action.payload);
@@ -228,8 +233,8 @@ const createEntitySlice = <
         selectors: selectors
     };
 
-    if (options?.debug) {
-        logSlice(entitySlice, initialState);
+    if (debug) {
+        logSlice(entitySlice, initialSliceState);
     }
 
     return entitySlice;

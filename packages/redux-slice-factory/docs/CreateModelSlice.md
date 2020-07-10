@@ -30,7 +30,7 @@ An optional object that contains the following properties:
 ## Example
 
 ```typescript
-import { createModelSlice } from '@gjv/slice-factory';
+import { createModelSlice } from '@gjv/redux-slice-factory';
 
 interface IUserModel {
     id: string;

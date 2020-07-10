@@ -1,20 +1,20 @@
-# `slice-factory`
+# `redux-slice-factory`
 
-[![npm version](https://badgen.net/npm/v/@gjv/slice-factory)](https://www.npmjs.com/package/@gjv/slice-factory)
-[![types](https://badgen.net/npm/types/@gjv/slice-factory)](https://badgen.net/npm/types/@gjv/slice-factory)
-[![install size](https://badgen.net/packagephobia/install/@gjv/slice-factory)](https://packagephobia.com/result?p=%40gjv%2Fslice-factory)
-[![publish size](https://badgen.net/packagephobia/publish/@gjv/slice-factory)](https://packagephobia.com/result?p=%40gjv%2Fslice-factory)
+[![npm version](https://badgen.net/npm/v/@gjv/redux-slice-factory)](https://www.npmjs.com/package/@gjv/redux-slice-factory)
+[![types](https://badgen.net/npm/types/@gjv/redux-slice-factory)](https://badgen.net/npm/types/@gjv/redux-slice-factory)
+[![install size](https://badgen.net/packagephobia/install/@gjv/redux-slice-factory)](https://packagephobia.com/result?p=%40gjv%2Fredux-slice-factory)
+[![publish size](https://badgen.net/packagephobia/publish/@gjv/redux-slice-factory)](https://packagephobia.com/result?p=%40gjv%2Fredux-slice-factory)
 
 > A light-weight package with generic factory functions for common slice data structures
 
 ## Install
 Install from the NPM registry using `npm`, `yarn`, or `pnpm`:
 ```shell
-npm install @gjv/slice-factory
+npm install @gjv/redux-slice-factory
 
-yarn add @gjv/slice-factory
+yarn add @gjv/redux-slice-factory
 
-pnpm add @gjv/slice-factory
+pnpm add @gjv/redux-slice-factory
 ```
 
 ## What's the goal?
@@ -56,7 +56,7 @@ For a more extensive, real-world use case check out the [examples](#What's-inclu
 
 ```typescript
 import { combineReducers, createStore } from 'redux';
-import { createModelSlice, StateStatusEnum } from '@gjv/slice-factory';
+import { createModelSlice, StateStatusEnum } from '@gjv/redux-slice-factory';
 
 interface IUserModel {
     id: string;

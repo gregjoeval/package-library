@@ -42,9 +42,16 @@ export type IModelSlice<
             IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
             >
 
-interface IMakeModelSliceOptions<TSliceState> {
-    debug: boolean;
-    initialState: Partial<TSliceState>;
+interface ICreateModelSliceOptions<
+    TGlobalState,
+    TModel,
+    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TError extends Error = Error
+    > {
+    name: string;
+    selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
+    initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
+    debug?: boolean;
 }
 
 const createModelSlice = <
@@ -52,12 +59,10 @@ const createModelSlice = <
     TModel,
     TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
     TError extends Error = Error
-    > (
-        name: string,
-        selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>,
-        options?: Partial<IMakeModelSliceOptions<IModelState<TModel, TStatusEnum, TError>>>
-    ): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> => {
+    > (options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> => {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
+
+    const { name, selectSliceState, initialState, debug } = options;
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -95,11 +100,11 @@ const createModelSlice = <
         setLastHydrated(state, getISOStringWithOffset());
     };
 
-    const initialState = ModelState.create(options?.initialState);
+    const initialSliceState = ModelState.create<TModel, TStatusEnum, TError>(initialState ?? {});
 
     const slice = createSlice<ISliceState, IModelSliceReducers<ISliceState, TModel, TStatusEnum, TError>>({
         name: name,
-        initialState: initialState,
+        initialState: initialSliceState,
         reducers: {
             hydrate: (state, action) => {
                 hydrateState(state as ISliceState, action.payload);
@@ -108,7 +113,7 @@ const createModelSlice = <
                 const newModel = _.merge(state.model, action.payload) as TModel;
                 modifyState(state as ISliceState, newModel);
             },
-            reset: () => initialState,
+            reset: () => initialSliceState,
             set: (state, action) => {
                 modifyState(state as ISliceState, action.payload);
             },
@@ -136,8 +141,8 @@ const createModelSlice = <
         selectors: selectors
     };
 
-    if (options?.debug) {
-        logSlice(modelSlice, initialState);
+    if (debug) {
+        logSlice(modelSlice, initialSliceState);
     }
 
     return modelSlice;
