@@ -52,7 +52,7 @@ console.log(`${actions.update}`)
 
 ## Show me the code
 Fair enough. Here's a quick example. <br>
-For a more extensive, real-world use case check out the [examples](#whats-included) listed above.
+For a more extensive, real-world use case check out the [examples](#What's-included?) listed above.
 
 ```typescript
 import { combineReducers, createStore } from 'redux';
