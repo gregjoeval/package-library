@@ -1,9 +1,9 @@
-import StateStatusEnum from '../../constants/StateStatusEnum';
+import StatusEnum from '../../constants/StatusEnum';
 import MetaState, { IMetaState } from '../meta-state';
 
 export interface IModelState<
     T,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > extends IMetaState<TStatusEnum, TError> {
     model: T;
@@ -11,7 +11,7 @@ export interface IModelState<
 
 const create = <
     T,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > (args: Partial<IModelState<T, TStatusEnum, TError>> = {}): IModelState<T, TStatusEnum, TError> => {
     const metaState = MetaState.create(args);

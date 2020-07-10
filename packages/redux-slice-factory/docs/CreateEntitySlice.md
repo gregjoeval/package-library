@@ -4,24 +4,27 @@ creates a slice for a collection of entities.
 ## Parameters
 
 ### `name`
-A string name for this slice of state. Generated action type constants will use this as a prefix. <br>
+A `string` name for this slice. Generated action type constants will use this as a prefix. <br>
 See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#name).
 
 ### `selectSliceState`
-A selector function that accepts the entire Redux state tree and returns the slice's state object.
+A selector `function` that accepts the entire Redux state tree and returns the slice's state object.
 
 ### `selectId`
-A function that accepts a single `Entity` instance, and returns the entity's unique ID field. <br>
+A `function` that accepts a single `Entity` instance, and returns the entity's unique ID field. <br>
 See the [`createEntityAdapter()` docs](https://redux-toolkit.js.org/api/createEntityAdapter#selectid).
 
 ### `sortComparer`
-A callback function that accepts two `Entity` instances, and should return a standard Array.sort() numeric result (1, 0, -1) to indicate their relative order for sorting. <br>
+A callback `function` that accepts two `Entity` instances, and should return a standard Array.sort() numeric result (1, 0, -1) to indicate their relative order for sorting. <br>
 See [`createEntityAdapter()` docs](https://redux-toolkit.js.org/api/createEntityAdapter#sortcomparer).
 
-### `options`
-An optional object that contains the following properties:
-- `debug`: `boolean`, Whether to print the values of a slice to the console
-- `initialState`: `Partial<TSliceState>`, The initial state value for this slice of state
+### `initialState`
+`optional` <br>
+An initial value for the reducer of the slice. Should satisfy the type `Partial<TSliceState>`. <br>
+See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#initialstate).
+
+### `debug`
+A `boolean` value that, when `true`, logs information about the slice to the console.
 
 ## Return Value
 // TODO add a better description
@@ -58,12 +61,12 @@ const { name, reducer, actions, selectors } = createEntitySlice<
     GlobalStateType,
     IUserModel,
     keyof typeof UserSliceStatusEnum
-    >(
-    'Users',
-    (globalState) => globalState.Users,
-    (entity) => entity.id,
-    (entityA, entityB) => entityA.name.localeCompare(entityB.name),
-);
+    >({
+        name: 'Users',
+        selectSliceState: (globalState) => globalState.Users,
+        selectId: (entity) => entity.id,
+        sortComparer: (entityA, entityB) => entityA.name.localeCompare(entityB.name)
+    });
 
 // Custom Async Thunk
 const save = (model: IUserModel) => async (dispatch) => {

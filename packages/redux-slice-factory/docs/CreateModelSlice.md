@@ -4,16 +4,18 @@ creates a slice for a single model.
 ## Parameters
 
 ### `name`
-A string name for this slice of state. Generated action type constants will use this as a prefix. <br>
+A `string` name for this slice. Generated action type constants will use this as a prefix. <br>
 See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#name).
 
 ### `selectSliceState`
-A selector function that accepts the entire Redux state tree and returns the slice's state object.
+A selector `function` that accepts the entire Redux state tree and returns the slice's state object.
 
-### `options`
-An optional object that contains the following properties:
-- `debug`: `boolean`, Whether to print the values of a slice to the console
-- `initialState`: `Partial<TSliceState>`, The initial state value for this slice of state
+### `initialState`
+An initial value for the reducer of the slice. Should satisfy the type `Partial<TSliceState>`. <br>
+See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#initialstate).
+
+### `debug`
+A `boolean` value that, when `true`, logs information about the slice to the console.
 
 ## Return Value
 // TODO add a better description
@@ -50,10 +52,10 @@ const { name, reducer, actions, selectors } = createModelSlice<
     GlobalStateType,
     IUserModel,
     keyof typeof UserSliceStatusEnum
-    >(
-    'User',
-    (globalState) => globalState.User
-);
+    >({
+        name: 'User',
+        selectSliceState: (globalState) => globalState.User,
+    });
 
 // Custom Async Thunk
 const save = (model: IUserModel) => async (dispatch) => {
