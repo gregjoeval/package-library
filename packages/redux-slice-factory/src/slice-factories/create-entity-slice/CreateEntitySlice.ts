@@ -10,7 +10,7 @@ import {
     PayloadAction,
     Update
 } from '@reduxjs/toolkit';
-import StateStatusEnum from '../../constants/StateStatusEnum';
+import StatusEnum from '../../constants/StatusEnum';
 import EntityState, { IEntityState } from '../../models/entity-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
 import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
@@ -37,7 +37,7 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
 export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum, // TODO: will need this
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum, // TODO: will need this
     TError extends Error = Error // TODO: will need this
     >
     extends
@@ -49,7 +49,7 @@ export interface IEntitySliceSelectors<
 export type IEntitySlice<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > = ISlice<
         TGlobalState,
@@ -58,10 +58,10 @@ export type IEntitySlice<
         IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
         >
 
-interface IMakeEntitySliceOptions<
+export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > {
     name: string;
@@ -75,9 +75,9 @@ interface IMakeEntitySliceOptions<
 const createEntitySlice = <
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
-    > (options: IMakeEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> => {
+    > (options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> => {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
     const { name, selectSliceState, selectId, sortComparer, initialState, debug } = options;

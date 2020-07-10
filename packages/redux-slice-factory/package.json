@@ -43,8 +43,7 @@
     "testEnvironment": "node"
   },
   "peerDependencies": {
-    "@reduxjs/toolkit": "^1.4.0",
-    "redux": "^4.0.5"
+    "@reduxjs/toolkit": "^1.4.0"
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.2.0",

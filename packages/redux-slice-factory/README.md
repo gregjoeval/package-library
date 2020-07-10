@@ -56,7 +56,7 @@ For a more extensive, real-world use case check out the [examples](#What's-inclu
 
 ```typescript
 import { combineReducers, createStore } from 'redux';
-import { createModelSlice, StateStatusEnum } from '@gjv/redux-slice-factory';
+import { createModelSlice, StatusEnum } from '@gjv/redux-slice-factory';
 
 interface IUserModel {
     id: string;
@@ -73,11 +73,11 @@ const bob: IUserModel = {
 //
 // STEP 1: create it
 //
-const { name, reducer, actions, selectors } = createModelSlice<GlobalStateType, IUserModel>(
-    'User',
-    (globalState) => globalState.user,
-    { initialState: bob }
-);
+const { name, reducer, actions, selectors } = createModelSlice<GlobalStateType, IUserModel>({
+    name: 'User',
+    selectSliceState: (globalState) => globalState.user,
+    initialState: bob
+});
 
 const userSlice = {
     name: name,
@@ -151,7 +151,7 @@ store.dispatch(userSlice.actions.set({
 **/
 
 // set the slice state status enum
-store.dispatch(userSlice.actions.setStatus(StateStatusEnum.Requesting))
+store.dispatch(userSlice.actions.setStatus(StatusEnum.Requesting))
 // or
 store.dispatch(userSlice.actions.setStatus('Requesting'))
 // state.user is now...

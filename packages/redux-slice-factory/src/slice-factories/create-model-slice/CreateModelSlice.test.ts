@@ -1,4 +1,4 @@
-import StateStatusEnum from '../../constants/StateStatusEnum';
+import StatusEnum from '../../constants/StatusEnum';
 import ModelState, { IModelState } from '../../models/model-state';
 import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
 import createModelSlice, { IModelSlice } from './CreateModelSlice';
@@ -77,7 +77,7 @@ describe('createModelSlice', () => {
     it('sets status property in state', () => {
         // GIVEN
         const previousState = sliceState;
-        const status = StateStatusEnum.Requesting;
+        const status = StatusEnum.Requesting;
 
         // WHEN
         const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));
@@ -148,7 +148,7 @@ describe('createModelSlice', () => {
         };
         const previousStateWithData = ModelState.create({
             model: previousData,
-            status: StateStatusEnum.Failed,
+            status: StatusEnum.Failed,
             error: new Error('Oopsie Doopsie'),
             lastHydrated: getISOStringWithOffset(),
             lastModified: getISOStringWithOffset()

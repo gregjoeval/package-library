@@ -1,2 +1,1 @@
-export { default } from './CreateModelSlice';
-export type { IModelSlice, IModelSliceReducers, IModelSliceSelectors } from './CreateModelSlice';
+export { default, IModelSlice, IModelSliceReducers, IModelSliceSelectors, ICreateModelSliceOptions } from './CreateModelSlice';

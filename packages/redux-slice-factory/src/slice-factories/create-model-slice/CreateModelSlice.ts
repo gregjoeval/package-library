@@ -5,7 +5,7 @@ import {
     PayloadAction
 } from '@reduxjs/toolkit';
 import _ from 'lodash';
-import StateStatusEnum from '../../constants/StateStatusEnum';
+import StatusEnum from '../../constants/StatusEnum';
 import ModelState, { IModelState } from '../../models/model-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
 import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
@@ -22,7 +22,7 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     >
     extends
@@ -33,7 +33,7 @@ export interface IModelSliceSelectors <
 export type IModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > = ISlice<
             TGlobalState,
@@ -42,10 +42,10 @@ export type IModelSlice<
             IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
             >
 
-interface ICreateModelSliceOptions<
+export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > {
     name: string;
@@ -57,7 +57,7 @@ interface ICreateModelSliceOptions<
 const createModelSlice = <
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StateStatusEnum = keyof typeof StateStatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
     > (options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> => {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>

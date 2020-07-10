@@ -1,30 +1,34 @@
-import StateStatusEnum from './constants/StateStatusEnum';
+import StatusEnum from './constants/StatusEnum';
 import { IEntityState } from './models/entity-state';
 import { IMetaState } from './models/meta-state';
 import { IModelState } from './models/model-state';
-import createEntitySlice from './slice-factories/create-entity-slice';
-import type { IEntitySlice, IEntitySliceReducers, IEntitySliceSelectors } from './slice-factories/create-entity-slice';
-import createModelSlice from './slice-factories/create-model-slice';
-import type { IModelSlice, IModelSliceReducers, IModelSliceSelectors } from './slice-factories/create-model-slice';
+import createEntitySlice, { IEntitySlice, IEntitySliceReducers, IEntitySliceSelectors, ICreateEntitySliceOptions } from './slice-factories/create-entity-slice';
+import createModelSlice, { IModelSlice, IModelSliceReducers, IModelSliceSelectors, ICreateModelSliceOptions } from './slice-factories/create-model-slice';
 import { ISlice, ISliceSelectors, IMetaSliceSelectors } from './types';
 
 export {
-    createEntitySlice,
-    createModelSlice,
-    StateStatusEnum
-};
-
-export type {
-    IEntityState,
-    IModelState,
-    IMetaState,
+    // Generics
     ISlice,
     ISliceSelectors,
+
+    // Meta Slice
+    StatusEnum,
+    IMetaState,
     IMetaSliceSelectors,
+
+    // Model Slice
+    createModelSlice,
+    IModelState,
+    IModelSlice,
+    IModelSliceReducers,
+    IModelSliceSelectors,
+    ICreateModelSliceOptions,
+
+    // Entity Slice
+    createEntitySlice,
+    IEntityState,
     IEntitySlice,
     IEntitySliceReducers,
     IEntitySliceSelectors,
-    IModelSlice,
-    IModelSliceReducers,
-    IModelSliceSelectors
+    ICreateEntitySliceOptions
 };

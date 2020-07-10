@@ -1,7 +1,7 @@
-enum StateStatusEnum {
+enum StatusEnum {
     Settled = 'Settled',
     Requesting = 'Requesting',
     Failed = 'Failed',
 }
 
-export default StateStatusEnum;
+export default StatusEnum;
