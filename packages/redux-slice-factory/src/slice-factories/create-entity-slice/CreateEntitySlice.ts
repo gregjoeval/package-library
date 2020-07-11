@@ -72,12 +72,12 @@ export interface ICreateEntitySliceOptions<
     debug?: boolean;
 }
 
-const createEntitySlice = <
+function createEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
-    > (options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> => {
+    >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
     const { name, selectSliceState, selectId, sortComparer, initialState, debug } = options;
@@ -238,6 +238,6 @@ const createEntitySlice = <
     }
 
     return entitySlice;
-};
+}
 
 export default createEntitySlice;

@@ -54,12 +54,12 @@ export interface ICreateModelSliceOptions<
     debug?: boolean;
 }
 
-const createModelSlice = <
+function createModelSlice<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
     TError extends Error = Error
-    > (options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> => {
+    >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
     const { name, selectSliceState, initialState, debug } = options;
@@ -146,6 +146,6 @@ const createModelSlice = <
     }
 
     return modelSlice;
-};
+}
 
 export default createModelSlice;
