@@ -5,8 +5,9 @@
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
+  "module": "dist/index.js",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.js",
   "scripts": {
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",

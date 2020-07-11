@@ -3,9 +3,9 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "rootDir": "src",
-    "outDir": "dist",
-    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "CommonJS",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "lib": ["dom", "esnext"],
