@@ -112,7 +112,7 @@ const Flex = ({
     md,
     lg,
     xl
-}: IFlexProps): ReactNode => {
+}: IFlexProps) => {
     const elements = React.useMemo(() => {
         const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl]);
         const childrenArray = Array.isArray(children)
