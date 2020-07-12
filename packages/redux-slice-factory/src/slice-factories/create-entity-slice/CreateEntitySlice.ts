@@ -37,8 +37,8 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
 export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum, // TODO: will need this
-    TError extends Error = Error // TODO: will need this
+    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TError extends Error = Error
     >
     extends
         EntitySelectors<TEntity, TGlobalState>,

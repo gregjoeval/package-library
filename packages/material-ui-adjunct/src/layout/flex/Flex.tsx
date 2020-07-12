@@ -3,9 +3,9 @@ import Grid, {
     GridDirection,
     GridItemsAlignment,
     GridJustification,
-    GridWrap,
+    GridSize,
     GridSpacing,
-    GridSize
+    GridWrap
 } from '@material-ui/core/Grid';
 import * as _ from 'lodash';
 import React, { ReactNode, ReactNodeArray } from 'react';
@@ -14,6 +14,7 @@ import React, { ReactNode, ReactNodeArray } from 'react';
  * Takes a list of elements and returns a new list of only truthy results.
  * Any element that is a function will be executed and if the result is a truthy value, it will be included.
  * Any falsy elements will be excluded.
+ * @internal
  * @param {Array<*>} array - list of elements
  * @returns {Array<*>} - list of only truthy values
  */
@@ -30,6 +31,9 @@ const selectTruthyResults = <T, > (array: Array<T>): Array<T> => {
     }, []);
 };
 
+/**
+ * @internal
+ */
 const waterfallValues = <T, > (defaultValue: T, valueArray: T[]): T[] => {
     const len = valueArray.length;
     if (valueArray.length > 0) {
@@ -47,7 +51,7 @@ const waterfallValues = <T, > (defaultValue: T, valueArray: T[]): T[] => {
  */
 export type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
 
-type FlexProps = {
+export interface IFlexProps {
     alignContent?: GridContentAlignment;
     alignItems?: GridItemsAlignment;
     children: ReactNode | ReactNodeArray;
@@ -63,7 +67,7 @@ type FlexProps = {
     md?: GridSize;
     lg?: GridSize;
     xl?: GridSize;
-};
+}
 
 /**
  * @description wraps elements in the flex layout as implemented by MaterialUI
@@ -91,7 +95,6 @@ type FlexProps = {
  * @param {GridSize} lg - (auto, 0-12) number of gutters per item at the given breakpoint
  * @param {GridSize} xl - (auto, 0-12) number of gutters per item at the given breakpoint
  * @return {*} - the children you passed in, wrapped in grid items
- * @constructor
  */
 const Flex = ({
     alignContent = 'flex-start',
@@ -109,10 +112,30 @@ const Flex = ({
     md,
     lg,
     xl
-}: FlexProps): ReactNode => {
-    const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl]);
-    const childrenArray = Array.isArray(children) ? children : [children];
-    const truthyChildren = selectTruthyResults(childrenArray);
+}: IFlexProps): ReactNode => {
+    const elements = React.useMemo(() => {
+        const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl]);
+        const childrenArray = Array.isArray(children)
+            ? children
+            : [children];
+        const truthyChildren = selectTruthyResults(childrenArray);
+        return truthyChildren.map((child, index) => (
+            <Grid
+                className={className}
+                item={true}
+                key={index}
+                lg={lgVal}
+                md={mdVal}
+                sm={smVal}
+                style={{ textAlign: textAlign }}
+                xl={xlVal}
+                xs={xsVal}
+            >
+                {child}
+            </Grid>
+        ));
+    }, [className, children, xs, sm, md, lg, xl, textAlign]);
+
     return (
         <Grid
             alignContent={alignContent}
@@ -124,21 +147,7 @@ const Flex = ({
             spacing={spacing}
             wrap={wrap}
         >
-            {truthyChildren.map((child, index) => (
-                <Grid
-                    className={className}
-                    item={true}
-                    key={index}
-                    lg={lgVal}
-                    md={mdVal}
-                    sm={smVal}
-                    style={{ textAlign: textAlign }}
-                    xl={xlVal}
-                    xs={xsVal}
-                >
-                    {child}
-                </Grid>
-            ))}
+            {elements}
         </Grid>
     );
 };
