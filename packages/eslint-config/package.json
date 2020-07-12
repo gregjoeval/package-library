@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "gregjoeval's ESLint config for JS",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
