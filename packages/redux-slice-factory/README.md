@@ -51,7 +51,6 @@ console.log(`${actions.update}`)
 ```
 
 ## Show me the code
-Fair enough. Here's a quick example. <br>
 For a more extensive, real-world use case check out the [examples](#What's-included?) listed above.
 
 ```typescript
@@ -84,18 +83,16 @@ const userSlice = {
     reducer: reducer,
     actions: actions,
     selectors: selectors
-}
-
+};
 
 //
 // STEP 2: attach it
 //
 const reducers = combineReducers({
     user: userSlice.reducer
-})
+});
 
-const store = createStore(reducers)
-
+const store = createStore(reducers);
 
 //
 // STEP 3: use it
@@ -117,7 +114,7 @@ const store = createStore(reducers)
 **/
 
 // update the slice state with a partial model
-store.dispatch(userSlice.actions.update({ age: '26' }))
+store.dispatch(userSlice.actions.update({ age: '26' }));
 // state.user is now...
 /**
 {
@@ -151,9 +148,9 @@ store.dispatch(userSlice.actions.set({
 **/
 
 // set the slice state status enum
-store.dispatch(userSlice.actions.setStatus(StatusEnum.Requesting))
+store.dispatch(userSlice.actions.setStatus(StatusEnum.Requesting));
 // or
-store.dispatch(userSlice.actions.setStatus('Requesting'))
+store.dispatch(userSlice.actions.setStatus('Requesting'));
 // state.user is now...
 /**
 {
@@ -167,7 +164,7 @@ store.dispatch(userSlice.actions.hydrate({
     id: '789ghi',
     name: 'carl',
     age: '35'
-}))
+}));
 // state.user is now...
 /**
 {
@@ -184,7 +181,7 @@ store.dispatch(userSlice.actions.hydrate({
 
 // set the slice state error
 // NOTE: the Error is mapped to a serialize-able object by the action creator
-store.dispatch(userSlice.actions.setError(new Error('Uh-oh')))
+store.dispatch(userSlice.actions.setError(new Error('Uh-oh')));
 // state.user is now...
 /**
 {
@@ -197,7 +194,7 @@ store.dispatch(userSlice.actions.setError(new Error('Uh-oh')))
 **/
 
 // reset the slice state back to its initial state
-store.dispatch(userSlice.actions.reset())
+store.dispatch(userSlice.actions.reset());
 // state.user is now...
 /**
 {

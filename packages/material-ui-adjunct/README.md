@@ -5,7 +5,7 @@
 [![install size](https://badgen.net/packagephobia/install/@gjv/material-ui-adjunct)](https://packagephobia.com/result?p=%40gjv%2Fmaterial-ui-adjunct)
 [![publish size](https://badgen.net/packagephobia/publish/@gjv/material-ui-adjunct)](https://packagephobia.com/result?p=%40gjv%2Fmaterial-ui-adjunct)
 
-> Library of shared code for use with React
+> React components to use with Material-UI
 
 ## Usage
 
