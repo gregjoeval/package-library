@@ -4,7 +4,7 @@
 [![install size](https://badgen.net/packagephobia/install/@gjv/eslint-config-react)](https://packagephobia.com/result?p=%40gjv%2Feslint-config-react)
 [![publish size](https://badgen.net/packagephobia/publish/@gjv/eslint-config-react)](https://packagephobia.com/result?p=%40gjv%2Feslint-config-react)
 
-This package provides gjv-dev's React .eslintrc as an extensible shared config.
+This package provides gjv's React .eslintrc as an extensible shared config.
 
 Inspired by [Airbnb's Javascript Styleguide](https://github.com/airbnb/javascript)
 

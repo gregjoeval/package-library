@@ -105,7 +105,7 @@ module.exports = {
         "import/no-duplicates": "error",
         "import/newline-after-import": "error",
         "import/no-useless-path-segments": "error",
-        "import/no-cycle": ["off", { "maxDepth": 2 }], // TODO: turning this off for now but it need to be turned back on
+        "import/no-cycle": ["off", { "maxDepth": 2 }], // turning this off for now but should consider turning it on
         "import/first": "error",
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",

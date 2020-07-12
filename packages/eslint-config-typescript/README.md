@@ -4,7 +4,7 @@
 [![install size](https://badgen.net/packagephobia/install/@gjv/eslint-config-typescript)](https://packagephobia.com/result?p=%40gjv%2Feslint-config-typescript)
 [![publish size](https://badgen.net/packagephobia/publish/@gjv/eslint-config-typescript)](https://packagephobia.com/result?p=%40gjv%2Feslint-config-typescript)
 
-This package provides gjv-dev's base TS .eslintrc (without React plugins) as an extensible shared config.
+This package provides gjv's base Typescript .eslintrc (without React plugins) as an extensible shared config.
 
 Inspired by [Airbnb's Javascript Styleguide](https://github.com/airbnb/javascript)
 

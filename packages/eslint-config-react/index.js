@@ -27,7 +27,7 @@ module.exports = {
             "children": "ignore" // cannot enforce "never" for components and "always" for expressions
         }],
         "react/jsx-curly-newline": ["error", "consistent"],
-        "react/jsx-filename-extension": "off", // TODO: keep off until moved to TypeScript
+        "react/jsx-filename-extension": ["error", { "extensions": [".tsx", ".jsx"] }],
         "react/jsx-fragments": ["error", "element"],
         "react/jsx-indent": "off", // turned off for consistent indenting, falls back to eslint's indent rule
         "react/jsx-indent-props": "off", // turned off for consistent indenting, falls back to eslint's indent rule
