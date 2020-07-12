@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config-react",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "gregjoeval's ESLint config for react",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
@@ -30,7 +30,7 @@
     "eslint-plugin-react-hooks": "^4.0.4"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.3.3",
+    "@gjv/eslint-config": "^0.4.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0"
   },
