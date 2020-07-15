@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    tags-ignore:
-      - 'bot'
 
 jobs:
   publish-to-npm:

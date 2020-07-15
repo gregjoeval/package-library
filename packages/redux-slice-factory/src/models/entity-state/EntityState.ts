@@ -4,13 +4,13 @@ import MetaState, { IMetaState } from '../meta-state';
 
 export interface IEntityState<
     T,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > extends ReduxEntityState<T>, IMetaState<TStatusEnum, TError> {}
 
 const create = <
     T,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > (args: Partial<IEntityState<T, TStatusEnum, TError>> = {}): IEntityState<T, TStatusEnum, TError> => {
     const metaState = MetaState.create(args);

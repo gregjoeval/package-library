@@ -22,7 +22,7 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     >
     extends
@@ -33,7 +33,7 @@ export interface IModelSliceSelectors <
 export type IModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > = ISlice<
             TGlobalState,
@@ -45,7 +45,7 @@ export type IModelSlice<
 export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > {
     name: string;
@@ -57,7 +57,7 @@ export interface ICreateModelSliceOptions<
 function createModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
