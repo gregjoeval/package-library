@@ -3,6 +3,14 @@ import ModelState, { IModelState } from '../../models/model-state';
 import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
 import createModelSlice, { IModelSlice } from './CreateModelSlice';
 
+enum UserSliceStatusEnum {
+    Settled = 'Settled',
+    Requesting = 'Requesting',
+    Failed = 'Failed',
+    Saving = 'Saving',
+    Saved = 'Saved',
+}
+
 interface ITestUserModel {
     id: string;
     name: string;
@@ -30,11 +38,11 @@ const carl: ITestUserModel = {
 describe('createModelSlice', () => {
     const testName = 'FooBarThing';
     let sliceState: IModelState<ITestUserModel>;
-    let slice: IModelSlice<any, ITestUserModel>;
+    let slice: IModelSlice<any, ITestUserModel, keyof typeof UserSliceStatusEnum>;
 
     beforeEach(() => {
         sliceState = ModelState.create<ITestUserModel>();
-        slice = createModelSlice<any, ITestUserModel>({
+        slice = createModelSlice<any, ITestUserModel, keyof typeof UserSliceStatusEnum>({
             name: testName,
             selectSliceState: () => sliceState
         });
@@ -78,6 +86,22 @@ describe('createModelSlice', () => {
         // GIVEN
         const previousState = sliceState;
         const status = StatusEnum.Requesting;
+
+        // WHEN
+        const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));
+
+        // THEN
+        expect(nextState.model).toEqual(previousState.model); // should be unaffected
+        expect(nextState.error).toEqual(previousState.error); // should be unaffected
+        expect(nextState.status).toEqual(status);
+        expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated); // should be unaffected
+    });
+
+    it('sets status property in state to custom value', () => {
+        // GIVEN
+        const previousState = sliceState;
+        const status = UserSliceStatusEnum.Saving;
 
         // WHEN
         const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));

@@ -37,7 +37,7 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
 export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     >
     extends
@@ -49,7 +49,7 @@ export interface IEntitySliceSelectors<
 export type IEntitySlice<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > = ISlice<
         TGlobalState,
@@ -61,7 +61,7 @@ export type IEntitySlice<
 export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > {
     name: string;
@@ -75,7 +75,7 @@ export interface ICreateEntitySliceOptions<
 function createEntitySlice<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>

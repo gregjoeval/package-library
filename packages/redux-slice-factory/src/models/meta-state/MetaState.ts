@@ -1,6 +1,6 @@
 import StatusEnum from '../../constants/StatusEnum';
 
-export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum, TError extends Error = Error> {
+export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum, TError extends Error = Error> {
     status: TStatusEnum;
     error: TError | null;
     lastModified: string | null;
@@ -8,7 +8,7 @@ export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum = keyof
 }
 
 const create = <
-    TStatusEnum extends keyof typeof StatusEnum = keyof typeof StatusEnum,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
     > (args: Partial<IMetaState<TStatusEnum, TError>> = {}): IMetaState<TStatusEnum, TError> => ({
         status: args.status ?? StatusEnum.Settled as TStatusEnum,

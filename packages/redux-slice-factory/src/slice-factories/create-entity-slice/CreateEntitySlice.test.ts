@@ -3,6 +3,14 @@ import EntityState, { IEntityState } from '../../models/entity-state';
 import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
 import createEntitySlice, { IEntitySlice } from './CreateEntitySlice';
 
+enum UsersSliceStatusEnum {
+    Settled = 'Settled',
+    Requesting = 'Requesting',
+    Failed = 'Failed',
+    Saving = 'Saving',
+    Saved = 'Saved',
+}
+
 interface ITestUserModel {
     id: string;
     name: string;
@@ -30,11 +38,11 @@ const carl: ITestUserModel = {
 describe('createEntitySlice', () => {
     const testName = 'FooBarThing';
     let sliceState: IEntityState<ITestUserModel>;
-    let slice: IEntitySlice<any, ITestUserModel>;
+    let slice: IEntitySlice<any, ITestUserModel, keyof typeof UsersSliceStatusEnum>;
 
     beforeEach(() => {
         sliceState = EntityState.create<ITestUserModel>();
-        slice = createEntitySlice<any, ITestUserModel>({
+        slice = createEntitySlice<any, ITestUserModel, keyof typeof UsersSliceStatusEnum>({
             name: testName,
             selectSliceState: () => sliceState,
             selectId: (model) => model.id,
@@ -81,6 +89,23 @@ describe('createEntitySlice', () => {
         // GIVEN
         const previousState = sliceState;
         const status = StatusEnum.Requesting;
+
+        // WHEN
+        const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));
+
+        // THEN
+        expect(nextState.ids).toEqual(previousState.ids); // should be unaffected
+        expect(nextState.entities).toEqual(previousState.entities); // should be unaffected
+        expect(nextState.error).toEqual(previousState.error); // should be unaffected
+        expect(nextState.status).toEqual(status);
+        expect(nextState.lastModified).toEqual(previousState.lastModified); // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated); // should be unaffected
+    });
+
+    it('sets status property in state to custom value', () => {
+        // GIVEN
+        const previousState = sliceState;
+        const status = UsersSliceStatusEnum.Saving;
 
         // WHEN
         const nextState = slice.reducer(sliceState, slice.actions.setStatus(status));
