@@ -128,6 +128,7 @@ function createModelSlice<
 
     const selectors = {
         selectSliceState: createSelector(selectSliceState, (sliceState) => sliceState),
+        selectModel: createSelector(selectSliceState, (sliceState) => sliceState.model),
         selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
