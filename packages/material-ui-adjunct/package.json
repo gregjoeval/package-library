@@ -5,7 +5,6 @@
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/lib#readme",
   "license": "MIT",
-  "module": "dist/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
