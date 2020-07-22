@@ -35,7 +35,7 @@
     "eslint": "^6.8.0"
   },
   "peerDependencies": {
-    "@gjv/eslint-config": "^0.3.3",
+    "@gjv/eslint-config": "^0.4.1",
     "eslint": "^6.8.0"
   },
   "repository": {
