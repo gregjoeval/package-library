@@ -21,6 +21,7 @@
     "publish-ci:patch": "npm run publish-ci -- patch"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.9.2",
     "lerna": "^3.22.1",
     "rimraf": "^3.0.2"
   }

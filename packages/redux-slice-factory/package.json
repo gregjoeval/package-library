@@ -3,17 +3,18 @@
   "version": "0.4.2",
   "description": "Generic factory functions for common slice data structures",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib#readme",
+  "homepage": "https://github.com/gregjoeval/package-library#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "types": "dist/redux-slice-factory.d.ts",
+  "typings": "dist/redux-slice-factory.d.ts",
   "module": "dist/redux-slice-factory.esm.js",
   "sideEffects": false,
   "scripts": {
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",
     "setup:clean": "rimraf ./node_modules",
-    "build": "tsdx build --format cjs,esm --name redux-slice-factory",
+    "build": "tsdx build --format cjs,esm --name redux-slice-factory && api-extractor run",
     "build:clean": "rimraf ./dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
@@ -29,15 +30,18 @@
     "lib": "src"
   },
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/*.js.map",
+    "dist/redux-slice-factory.d.ts",
+    "dist/tsdoc-metadata.json",
     "src"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib.git"
+    "url": "git+https://github.com/gregjoeval/package-library.git"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib/issues"
+    "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.4.0"
