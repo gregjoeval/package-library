@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config-typescript",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "gregjoeval's ESLint config for TS",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/package-library#readme",
@@ -24,7 +24,7 @@
     "eslint-plugin-promise": "^4.2.1"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.4.1",
+    "@gjv/eslint-config": "^0.5.0",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "eslint": "^6.8.0",

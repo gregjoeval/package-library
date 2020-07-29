@@ -1,6 +1,6 @@
 {
   "name": "@gjv/lib-core",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "private": true,
   "description": "Library of shared code",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
@@ -39,8 +39,8 @@
     "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.4.1",
-    "@gjv/eslint-config-typescript": "^0.4.2",
+    "@gjv/eslint-config": "^0.5.0",
+    "@gjv/eslint-config-typescript": "^0.5.0",
     "tsdx": "^0.13.2"
   }
 }
