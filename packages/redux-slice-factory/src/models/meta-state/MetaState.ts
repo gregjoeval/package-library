@@ -1,5 +1,8 @@
 import StatusEnum from '../../constants/StatusEnum';
 
+/**
+ * @public
+ */
 export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum, TError extends Error = Error> {
     status: TStatusEnum;
     error: TError | null;
@@ -17,6 +20,9 @@ const create = <
         lastHydrated: args.lastHydrated ?? null
     });
 
+/**
+ * @public
+ */
 const MetaState = {
     create: create
 };
