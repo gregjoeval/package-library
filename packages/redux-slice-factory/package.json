@@ -18,9 +18,9 @@
     "build:clean": "rimraf ./dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "npm run build && npm run build:clean",
     "test": "tsdx test ./src --runInBand --watchAll=false",
-    "check": "npm run lint && npm run build && npm run test && npm run build:clean",
+    "check": "npm run lint && npm run typecheck && npm run test",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
@@ -49,14 +49,10 @@
   "devDependencies": {
     "@gjv/eslint-config": "^0.4.1",
     "@gjv/eslint-config-typescript": "^0.4.2",
+    "@microsoft/api-extractor": "^7.9.2",
     "@reduxjs/toolkit": "^1.4.0",
-    "@types/jest": "^26.0.3",
     "@types/lodash": "^4.14.157",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "tsdx": "^0.13.2",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.5"
+    "tsdx": "^0.13.2"
   },
   "dependencies": {
     "lodash": "^4.17.15"

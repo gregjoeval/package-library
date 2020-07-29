@@ -3,10 +3,10 @@
   "private": true,
   "scripts": {
     "setup": "npm run setup:clean-install && npm run setup:bootstrap",
-    "setup:install": "lerna run setup:install",
-    "setup:clean-install": "lerna run setup:clean-install",
+    "setup:install": "npm install && lerna run setup:install",
+    "setup:clean-install": "npm ci && lerna run setup:clean-install",
     "setup:bootstrap": "lerna bootstrap --hoist --strict",
-    "setup:clean": "lerna clean --yes",
+    "setup:clean": "lerna clean --yes && rimraf ./node_modules",
     "build": "lerna run build",
     "build:clean": "lerna run build:clean",
     "lint": "lerna run lint",
@@ -21,7 +21,6 @@
     "publish-ci:patch": "npm run publish-ci -- patch"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.9.2",
     "lerna": "^3.22.1",
     "rimraf": "^3.0.2"
   }

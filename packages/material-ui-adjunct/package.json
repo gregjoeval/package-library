@@ -11,13 +11,13 @@
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",
     "setup:clean": "rimraf ./node_modules",
-    "build": "tsc",
+    "build": "tsdx build --format cjs,esm --name material-ui-adjunct",
     "build:clean": "rimraf ./dist",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "npm run build && npm run build:clean",
     "test": "echo \"No tests yet!\" && exit 0",
-    "check": "npm run lint && npm run build && npm run test && npm run build:clean",
+    "check": "npm run lint && npm run typecheck && npm run test",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
@@ -43,7 +43,7 @@
   "peerDependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/styles": "^4.10.0",
-    "react": "^16.13.1"
+    "react": "~16"
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.4.1",
@@ -52,12 +52,9 @@
     "@material-ui/core": "^4.10.2",
     "@material-ui/styles": "^4.10.0",
     "@types/lodash": "^4.14.157",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "eslint": "^6.8.0",
     "react": "^16.13.1",
     "rimraf": "^3.0.2",
-    "typescript": "^3.9.5"
+    "tsdx": "^0.13.2"
   },
   "gitHead": "11f6564aac2f9b5cce45e4cbe01c3ce531297450"
 }
