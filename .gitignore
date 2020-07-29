@@ -105,3 +105,6 @@ dist
 
 # IDE files
 .idea
+
+# Api Extractor temp files
+temp

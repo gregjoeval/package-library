@@ -1,23 +1,8 @@
-// Typescript cheat-sheet: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/README.md#troubleshooting-handbook-tsconfigjson
-// Typescript documentation: https://www.typescriptlang.org/tsconfig
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "src",
-    "rootDir": "src",
-    "outDir": "dist",
-    "module": "commonjs",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "lib": ["dom", "esnext"],
-    "target": "es5",
-    "strict": true,
-    "declaration": true,
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "removeComments": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "rootDir":  "src",
+    "outDir":  "dist"
   },
   "include": [
     "index.js"
