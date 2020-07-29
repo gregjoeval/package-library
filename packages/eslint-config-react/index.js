@@ -14,6 +14,7 @@ module.exports = {
         "react-app",
         "airbnb/hooks",
         "airbnb",
+        "plugin:react/recommended",
         "@gjv/eslint-config"
     ],
     "rules": {

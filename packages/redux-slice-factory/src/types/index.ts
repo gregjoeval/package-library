@@ -1,6 +1,9 @@
 import { CaseReducerActions, Reducer, SliceCaseReducers } from '@reduxjs/toolkit';
 import StatusEnum from '../constants/StatusEnum';
 
+/**
+ * @public
+ */
 export interface ISlice <
     TGlobalState,
     TSliceState,
@@ -13,6 +16,9 @@ export interface ISlice <
     selectors: TSliceSelectors;
 }
 
+/**
+ * @public
+ */
 export interface ISliceSelectors<
     TGlobalState,
     TSliceState
@@ -20,6 +26,9 @@ export interface ISliceSelectors<
     selectSliceState: (state: TGlobalState) => TSliceState;
 }
 
+/**
+ * @public
+ */
 export interface IMetaSliceSelectors<
     TGlobalState,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
