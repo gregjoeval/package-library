@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 enum StatusEnum {
     Settled = 'Settled',
     Requesting = 'Requesting',

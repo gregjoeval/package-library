@@ -1,0 +1,3259 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.9.2",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "@gjv/redux-slice-factory!",
+  "docComment": "",
+  "name": "@gjv/redux-slice-factory",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@gjv/redux-slice-factory!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "@gjv/redux-slice-factory!createEntitySlice:function(1)",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function createEntitySlice<TGlobalState, TEntity, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">(options: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ICreateEntitySliceOptions",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TEntity, TStatusEnum, TError>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntitySlice",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntitySlice:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TEntity, TStatusEnum, TError>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 16,
+            "endIndex": 18
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 13,
+                "endIndex": 15
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TEntity",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "createEntitySlice"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@gjv/redux-slice-factory!createModelSlice:function(1)",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare function createModelSlice<TGlobalState, TModel, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">(options: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ICreateModelSliceOptions",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TModel, TStatusEnum, TError>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelSlice",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelSlice:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TModel, TStatusEnum, TError>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 16,
+            "endIndex": 18
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 13,
+                "endIndex": 15
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TModel",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "createModelSlice"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TEntity",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "ICreateEntitySliceOptions",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#debug:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "debug?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "debug",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#initialState:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "initialState?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IEntityState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TEntity, TStatusEnum, TError>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "initialState",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#name:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectId:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectId: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(o: TEntity) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EntityId",
+                  "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectId",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectSliceState:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectSliceState: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IEntityState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TEntity, TStatusEnum, TError>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectSliceState",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#sortComparer:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "sortComparer: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "false | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Comparer",
+                  "canonicalReference": "@reduxjs/toolkit!Comparer:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TEntity>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "sortComparer",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TModel",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "ICreateModelSliceOptions",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#debug:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "debug?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "debug",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#initialState:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "initialState?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IModelState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TModel, TStatusEnum, TError>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "initialState",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#name:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectSliceState:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectSliceState: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IModelState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TModel, TStatusEnum, TError>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectSliceState",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@gjv/redux-slice-factory!IEntitySlice:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type IEntitySlice<TGlobalState, TEntity, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISlice",
+              "canonicalReference": "@gjv/redux-slice-factory!ISlice:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntityState",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity, TStatusEnum, TError>, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntitySliceReducers",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntitySliceReducers:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntityState",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity, TStatusEnum, TError>, TEntity, TStatusEnum, TError>, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntitySliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntitySliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TEntity, TStatusEnum, TError>>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IEntitySlice",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TEntity",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 13,
+            "endIndex": 23
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@gjv/redux-slice-factory!IEntitySliceReducers:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type IEntitySliceReducers<TSliceState, TEntity, TStatusEnum, TError> = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    addOne: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity>>;\n    addMany: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", TEntity>>>;\n    hydrateOne: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity>>;\n    hydrateMany: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", TEntity>>>;\n    hydrateAll: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", TEntity>>>;\n    updateOne: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Update",
+              "canonicalReference": "@reduxjs/toolkit!Update:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity>>>;\n    updateMany: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Update",
+              "canonicalReference": "@reduxjs/toolkit!Update:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity>>>>;\n    upsertOne: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity>>;\n    upsertMany: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", TEntity>>>;\n    removeOne: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>;\n    removeMany: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>>;\n    removeAll: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    reset: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    setAll: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "EntityId",
+              "canonicalReference": "@reduxjs/toolkit!EntityId:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", TEntity>>>;\n    setStatus: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TStatusEnum>>;\n    setError: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TError | null>>;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IEntitySliceReducers",
+          "typeParameters": [
+            {
+              "typeParameterName": "TSliceState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TEntity",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 108
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!IEntitySliceSelectors:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "EntitySelectors",
+              "canonicalReference": "@reduxjs/toolkit!EntitySelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity, TGlobalState>"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntityState",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity, TStatusEnum, TError>>"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "IMetaSliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TStatusEnum, TError> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TEntity",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "IEntitySliceSelectors",
+          "members": [],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 13,
+              "endIndex": 15
+            },
+            {
+              "startIndex": 16,
+              "endIndex": 20
+            },
+            {
+              "startIndex": 21,
+              "endIndex": 23
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IEntityState<T, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ReduxEntityState",
+              "canonicalReference": "@reduxjs/toolkit!EntityState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "IMetaState",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TStatusEnum, TError> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "IEntityState",
+          "members": [],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 13,
+              "endIndex": 15
+            },
+            {
+              "startIndex": 16,
+              "endIndex": 18
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IMetaSliceSelectors<TGlobalState, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "IMetaSliceSelectors",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectError:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectError: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => TError | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectError",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectLastHydrated:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectLastHydrated: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectLastHydrated",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectLastModified:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectLastModified: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectLastModified",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectStatus:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectStatus: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => TStatusEnum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectStatus",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!IMetaState:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IMetaState<TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "IMetaState",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState#error:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "error: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "TError | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "error",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState#lastHydrated:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "lastHydrated: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "lastHydrated",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState#lastModified:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "lastModified: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "lastModified",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState#status:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "status: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "TStatusEnum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "status",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@gjv/redux-slice-factory!IModelSlice:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type IModelSlice<TGlobalState, TModel, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISlice",
+              "canonicalReference": "@gjv/redux-slice-factory!ISlice:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelState",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel, TStatusEnum, TError>, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelSliceReducers",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelSliceReducers:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelState",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel, TStatusEnum, TError>, TModel, TStatusEnum, TError>, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelSliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelSliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TModel, TStatusEnum, TError>>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IModelSlice",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TModel",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 13,
+            "endIndex": 23
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@gjv/redux-slice-factory!IModelSliceReducers:type",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type IModelSliceReducers<TSliceState, TModel, TStatusEnum, TError> = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    hydrate: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel>>;\n    update: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel>>>;\n    set: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel>>;\n    reset: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    setStatus: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TStatusEnum>>;\n    setError: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TError | null>>;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IModelSliceReducers",
+          "typeParameters": [
+            {
+              "typeParameterName": "TSliceState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TModel",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 28
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!IModelSliceSelectors:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IModelSliceSelectors<TGlobalState, TModel, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelState",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel, TStatusEnum, TError>>"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "IMetaSliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TStatusEnum, TError> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TModel",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "IModelSliceSelectors",
+          "members": [],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 13,
+              "endIndex": 17
+            },
+            {
+              "startIndex": 18,
+              "endIndex": 20
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IModelState<T, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "Error",
+              "canonicalReference": "!Error:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "IMetaState",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TStatusEnum, TError> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TStatusEnum",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              }
+            }
+          ],
+          "name": "IModelState",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelState#model:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "model: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "model",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 13,
+              "endIndex": 15
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!ISlice:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ISlice<TGlobalState, TSliceState, TCaseReducers extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SliceCaseReducers",
+              "canonicalReference": "@reduxjs/toolkit!SliceCaseReducers:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState>"
+            },
+            {
+              "kind": "Content",
+              "text": ", TSliceSelectors extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISliceSelectors",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, TSliceState>"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TSliceState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TCaseReducers",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TSliceSelectors",
+              "constraintTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "ISlice",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISlice#actions:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "actions: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CaseReducerActions",
+                  "canonicalReference": "@reduxjs/toolkit!CaseReducerActions:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TCaseReducers>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "actions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISlice#name:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISlice#reducer:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reducer: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Reducer",
+                  "canonicalReference": "redux!Reducer:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TSliceState>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "reducer",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISlice#selectors:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectors: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "TSliceSelectors"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors:interface",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ISliceSelectors<TGlobalState, TSliceState> "
+            }
+          ],
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "TGlobalState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TSliceState",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "ISliceSelectors",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectSliceState:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectSliceState: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => TSliceState"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "selectSliceState",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@gjv/redux-slice-factory!StatusEnum:enum",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "declare enum StatusEnum "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "StatusEnum",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@gjv/redux-slice-factory!StatusEnum.Failed:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Failed = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"Failed\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Failed",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@gjv/redux-slice-factory!StatusEnum.Requesting:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Requesting = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"Requesting\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Requesting",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@gjv/redux-slice-factory!StatusEnum.Settled:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Settled = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"Settled\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Settled",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,9 +4,8 @@
   "private": true,
   "description": "Library of shared code",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib#readme",
+  "homepage": "https://github.com/gregjoeval/package-library#readme",
   "license": "MIT",
-  "module": "dist/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -19,7 +18,7 @@
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet!\" && exit 0",
-    "check": "npm run lint && npm run build && npm run test && npm run build:clean",
+    "check": "npm run lint && npm run typecheck && npm run test",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
@@ -34,21 +33,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib.git"
+    "url": "git+https://github.com/gregjoeval/package-library.git"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib/issues"
+    "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.4.1",
     "@gjv/eslint-config-typescript": "^0.4.2",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "typescript": "^3.9.5"
+    "tsdx": "^0.13.2"
   }
 }

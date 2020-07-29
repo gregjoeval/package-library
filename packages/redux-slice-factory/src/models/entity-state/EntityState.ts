@@ -2,6 +2,9 @@ import { EntityState as ReduxEntityState } from '@reduxjs/toolkit';
 import StatusEnum from '../../constants/StatusEnum';
 import MetaState, { IMetaState } from '../meta-state';
 
+/**
+ * @public
+ */
 export interface IEntityState<
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
@@ -21,6 +24,9 @@ const create = <
     };
 };
 
+/**
+ * @public
+ */
 const EntityState = {
     create: create
 };
