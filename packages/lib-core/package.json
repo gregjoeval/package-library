@@ -4,7 +4,7 @@
   "private": true,
   "description": "Library of shared code",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib#readme",
+  "homepage": "https://github.com/gregjoeval/package-library#readme",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,10 +33,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib.git"
+    "url": "git+https://github.com/gregjoeval/package-library.git"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib/issues"
+    "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.4.1",

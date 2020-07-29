@@ -2,7 +2,7 @@
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
-[![build](https://github.com/gregjoeval/lib/workflows/build/badge.svg)](https://github.com/gregjoeval/lib/actions)
+[![build](https://github.com/gregjoeval/package-library/workflows/build/badge.svg)](https://github.com/gregjoeval/package-library/actions)
 [![TODOs](https://badgen.net/https/api.tickgit.com/badgen/github.com/gregjoeval/package-library)](https://www.tickgit.com/browse?repo=github.com/gregjoeval/package-library)
 
 > A place to put shared code.
