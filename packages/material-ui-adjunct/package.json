@@ -3,10 +3,13 @@
   "version": "0.4.2",
   "description": "Library of shared code for React",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib#readme",
+  "homepage": "https://github.com/gregjoeval/package-library#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/material-ui-adjunct.d.ts",
+  "typings": "dist/material-ui-adjunct.d.ts",
+  "module": "dist/material-ui-adjunct.esm.js",
+  "sideEffects": false,
   "scripts": {
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",
@@ -27,15 +30,18 @@
     "lib": "src"
   },
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/*.js.map",
+    "dist/material-ui-adjunct.d.ts",
+    "dist/tsdoc-metadata.json",
     "src"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib.git"
+    "url": "git+https://github.com/gregjoeval/package-library.git"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib/issues"
+    "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "dependencies": {
     "lodash": "^4.17.15"
