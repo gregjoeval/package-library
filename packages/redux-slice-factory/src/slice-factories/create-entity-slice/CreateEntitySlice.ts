@@ -15,6 +15,9 @@ import EntityState, { IEntityState } from '../../models/entity-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
 import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
 
+/**
+ * @public
+ */
 export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
     addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
     addMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
@@ -34,6 +37,9 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
+/**
+ * @public
+ */
 export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
@@ -46,6 +52,9 @@ export interface IEntitySliceSelectors<
         IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
 }
 
+/**
+ * @public
+ */
 export type IEntitySlice<
     TGlobalState,
     TEntity,
@@ -58,6 +67,9 @@ export type IEntitySlice<
         IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
         >
 
+/**
+ * @public
+ */
 export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
@@ -72,6 +84,9 @@ export interface ICreateEntitySliceOptions<
     debug?: boolean;
 }
 
+/**
+ * @public
+ */
 function createEntitySlice<
     TGlobalState,
     TEntity,

@@ -1,7 +1,8 @@
+// Typescript cheat-sheet: https://github.com/typescript-cheatsheets/react-typescript-cheatsheet/blob/master/README.md#troubleshooting-handbook-tsconfigjson
+// Typescript documentation: https://www.typescriptlang.org/tsconfig
+// TSDX tsconfig template: https://github.com/formium/tsdx/blob/master/templates/react/tsconfig.json
 {
   "compilerOptions": {
-    "rootDir":  "src",
-    "outDir":  "dist",
     "module":  "esnext",
     "moduleResolution":  "Node",
     "target": "es5",
@@ -18,14 +19,5 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "scripts"
-  ]
+  }
 }
