@@ -10,6 +10,9 @@ import ModelState, { IModelState } from '../../models/model-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
 import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
 
+/**
+ * @public
+ */
 export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
     hydrate: CaseReducer<TSliceState, PayloadAction<TModel>>;
     update: CaseReducer<TSliceState, PayloadAction<Partial<TModel>>>;
@@ -19,6 +22,9 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
+/**
+ * @public
+ */
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
@@ -30,6 +36,9 @@ export interface IModelSliceSelectors <
         IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
 }
 
+/**
+ * @public
+ */
 export type IModelSlice<
     TGlobalState,
     TModel,
@@ -42,6 +51,9 @@ export type IModelSlice<
             IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
             >
 
+/**
+ * @public
+ */
 export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
@@ -54,6 +66,9 @@ export interface ICreateModelSliceOptions<
     debug?: boolean;
 }
 
+/**
+ * @public
+ */
 function createModelSlice<
     TGlobalState,
     TModel,
