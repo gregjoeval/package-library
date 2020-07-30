@@ -8,7 +8,7 @@ import Grid, {
     GridWrap
 } from '@material-ui/core/Grid';
 import * as _ from 'lodash';
-import React, { ReactNode, ReactNodeArray } from 'react';
+import React, { FunctionComponent, ReactNode, ReactNodeArray } from 'react';
 
 /**
  * Takes a list of elements and returns a new list of only truthy results.
@@ -96,7 +96,7 @@ export interface IFlexProps {
  * @param {GridSize} xl - (auto, 0-12) number of gutters per item at the given breakpoint
  * @return {*} - the children you passed in, wrapped in grid items
  */
-const Flex = ({
+const Flex: FunctionComponent<IFlexProps> = ({
     alignContent = 'flex-start',
     alignItems = 'stretch',
     children,
