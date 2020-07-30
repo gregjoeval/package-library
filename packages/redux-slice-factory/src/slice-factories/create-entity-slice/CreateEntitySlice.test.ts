@@ -74,7 +74,7 @@ describe('createEntitySlice', () => {
         const error = new Error('this was a test');
 
         // WHEN
-        const nextState = slice.reducer(sliceState, slice.actions.setError(error));
+        const nextState = slice.reducer(sliceState, slice.actions.setError(mapErrorToSerializableObject(error)));
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids); // should be unaffected

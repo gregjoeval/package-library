@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
       - run: npm run setup
       - run: npm run publish-ci:patch
         env:

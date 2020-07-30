@@ -8,7 +8,7 @@ import { ISlice, ISliceSelectors } from '../types';
 export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
     const tzo = -dateTime.getTimezoneOffset();
     const dif = tzo >= 0 ? '+' : '-';
-    const pad = (num: number) => {
+    const pad = (num: number): string => {
         const norm = Math.floor(Math.abs(num));
         return (norm < 10 ? '0' : '') + norm;
     };
@@ -19,7 +19,7 @@ export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
 /**
  * @internal
  */
-export const mapErrorToSerializableObject = <TError extends Error = Error> (error: TError): Record<string, any> => {
+export const mapErrorToSerializableObject = <TError extends Error = Error> (error: TError): Record<keyof Error, string> => {
     const propertyNames = Object.getOwnPropertyNames(error);
     return propertyNames.reduce((accumulator, propertyName) => {
         const propertyDescriptorValue = Object.getOwnPropertyDescriptor(error, propertyName)?.value;
@@ -27,7 +27,7 @@ export const mapErrorToSerializableObject = <TError extends Error = Error> (erro
             ...accumulator,
             [propertyName]: propertyDescriptorValue
         };
-    }, {});
+    }, {} as Record<keyof Error, string>);
 };
 
 /**
@@ -38,7 +38,7 @@ export const logSlice = <
     TSliceState,
     TCaseReducers extends SliceCaseReducers<TSliceState>,
     TSliceSelectors extends ISliceSelectors<TGlobalState, TSliceState>
-    > (slice: ISlice<TGlobalState, TSliceState, TCaseReducers, TSliceSelectors>, initialState: TSliceState) => {
+    > (slice: ISlice<TGlobalState, TSliceState, TCaseReducers, TSliceSelectors>, initialState: TSliceState): void => {
     /* eslint-disable no-console */
     console.groupCollapsed(slice.name);
 
