@@ -13,7 +13,7 @@ import {
 import StatusEnum from '../../constants/StatusEnum';
 import EntityState, { IEntityState } from '../../models/entity-state';
 import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
-import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities';
+import { getISOStringWithOffset, logSlice } from '../../utilities';
 
 /**
  * @public
@@ -104,35 +104,35 @@ function createEntitySlice<
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
-    const setEntityState = (state: ISliceState, entityState: ReduxEntityState<TEntity>) => {
+    const setEntityState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         state.ids = entityState.ids;
         state.entities = entityState.entities;
     };
 
-    const setError = (state: ISliceState, error: TError | null) => {
-        state.error = error === null ? null : mapErrorToSerializableObject(error) as TError;
+    const setError = (state: ISliceState, error: TError | null): void => {
+        state.error = error === null ? null : error;
     };
 
-    const setStatus = (state: ISliceState, status: TStatusEnum) => {
+    const setStatus = (state: ISliceState, status: TStatusEnum): void => {
         state.status = status;
     };
 
-    const setLastModified = (state: ISliceState, lastModified: string | null) => {
+    const setLastModified = (state: ISliceState, lastModified: string | null): void => {
         state.lastModified = lastModified;
     };
 
-    const setLastHydrated = (state: ISliceState, lastHydrated: string | null) => {
+    const setLastHydrated = (state: ISliceState, lastHydrated: string | null): void => {
         state.lastHydrated = lastHydrated;
     };
     /* eslint-enable no-param-reassign */
 
-    const modifyState = (state: ISliceState, entityState: ReduxEntityState<TEntity>) => {
+    const modifyState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         setEntityState(state, entityState);
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
         setLastModified(state, getISOStringWithOffset());
     };
 
-    const hydrateState = (state: ISliceState, entityState: ReduxEntityState<TEntity>) => {
+    const hydrateState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         setEntityState(state, entityState);
         setLastModified(state, null);
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects

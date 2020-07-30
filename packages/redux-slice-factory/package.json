@@ -15,7 +15,7 @@
     "setup:clean-install": "npm ci",
     "setup:clean": "rimraf ./node_modules",
     "build": "tsdx build --format cjs,esm --name redux-slice-factory && api-extractor run",
-    "build:clean": "rimraf ./dist",
+    "build:clean": "rimraf ./dist && rimraf ./temp",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "npm run build && npm run build:clean",
@@ -51,8 +51,10 @@
     "@gjv/eslint-config-typescript": "^0.5.0",
     "@microsoft/api-extractor": "^7.9.2",
     "@reduxjs/toolkit": "^1.4.0",
+    "@types/jest": "^26.0.7",
     "@types/lodash": "^4.14.157",
-    "tsdx": "^0.13.2"
+    "tsdx": "^0.13.2",
+    "tslib": "^2.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.15"
