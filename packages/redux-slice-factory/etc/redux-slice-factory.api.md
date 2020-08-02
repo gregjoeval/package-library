@@ -119,6 +119,8 @@ export type IModelSliceReducers<TSliceState, TModel, TStatusEnum, TError> = {
 
 // @public (undocumented)
 export interface IModelSliceSelectors<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends Error = Error> extends ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>, IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    // (undocumented)
+    selectModel: (state: TGlobalState) => TModel;
 }
 
 // @public (undocumented)
