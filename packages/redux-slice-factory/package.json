@@ -1,6 +1,6 @@
 {
   "name": "@gjv/redux-slice-factory",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Generic factory functions for common slice data structures",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/package-library#readme",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@gjv/eslint-config": "^0.5.1",
-    "@gjv/eslint-config-typescript": "^0.5.1",
+    "@gjv/eslint-config-typescript": "^0.5.2",
     "@microsoft/api-extractor": "^7.9.2",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/jest": "^26.0.7",
