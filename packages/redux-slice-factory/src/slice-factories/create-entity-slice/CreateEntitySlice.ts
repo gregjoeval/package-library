@@ -228,7 +228,7 @@ function createEntitySlice<
 
     const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectEntityState(selectSliceState(state)));
 
-    const selectors = {
+    const selectors: IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError> = {
         selectIds: entitySelectors.selectIds,
         selectEntities: entitySelectors.selectEntities,
         selectAll: entitySelectors.selectAll,

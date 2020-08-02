@@ -34,6 +34,7 @@ export interface IModelSliceSelectors <
     extends
         ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
         IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    selectModel: (state: TGlobalState) => TModel;
 }
 
 /**
@@ -141,7 +142,7 @@ function createModelSlice<
         }
     });
 
-    const selectors = {
+    const selectors: IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError> = {
         selectSliceState: createSelector(selectSliceState, (sliceState) => sliceState),
         selectModel: createSelector(selectSliceState, (sliceState) => sliceState.model),
         selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
