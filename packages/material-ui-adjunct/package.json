@@ -30,9 +30,7 @@
     "lib": "src"
   },
   "files": [
-    "dist/*.js",
-    "dist/*.js.map",
-    "dist/**.d.ts",
+    "dist",
     "src"
   ],
   "repository": {
