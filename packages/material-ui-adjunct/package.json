@@ -6,8 +6,8 @@
   "homepage": "https://github.com/gregjoeval/package-library#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/material-ui-adjunct.d.ts",
-  "typings": "dist/material-ui-adjunct.d.ts",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "module": "dist/material-ui-adjunct.esm.js",
   "sideEffects": false,
   "scripts": {
