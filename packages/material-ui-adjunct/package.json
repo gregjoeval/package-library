@@ -32,8 +32,7 @@
   "files": [
     "dist/*.js",
     "dist/*.js.map",
-    "dist/material-ui-adjunct.d.ts",
-    "dist/tsdoc-metadata.json",
+    "dist/**.d.ts",
     "src"
   ],
   "repository": {
