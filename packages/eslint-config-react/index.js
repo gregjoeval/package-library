@@ -21,6 +21,7 @@ module.exports = {
         // React Plugin (https://github.com/yannickcr/eslint-plugin-react)
         "react/no-array-index-key": "off", // TODO: if we turn this on we need an new pattern for populating the key prop when rendering lists of constant values
         "react/no-unused-prop-types": "error",
+        "react/prop-types": "off", // typescript does this for us
         "react/require-default-props": "off", // this rule expects us to use .defaultProps, but we dont
         "react/jsx-boolean-value": ["error", "always"],
         "react/jsx-curly-brace-presence": ["error", {
