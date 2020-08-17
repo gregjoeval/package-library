@@ -58,5 +58,18 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
-  }
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "starter",
+    "toolkit",
+    "reducer",
+    "slice",
+    "immer",
+    "immutable",
+    "action",
+    "selector",
+    "factory"
+  ]
 }

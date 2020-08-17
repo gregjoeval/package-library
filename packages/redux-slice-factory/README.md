@@ -1,4 +1,4 @@
-# `redux-slice-factory`
+# `redux-slice-factory` 🍕🏭
 
 [![npm version](https://badgen.net/npm/v/@gjv/redux-slice-factory)](https://www.npmjs.com/package/@gjv/redux-slice-factory)
 [![types](https://badgen.net/npm/types/@gjv/redux-slice-factory)](https://badgen.net/npm/types/@gjv/redux-slice-factory)
@@ -7,7 +7,7 @@
 
 > A light-weight package with generic factory functions for common slice data structures
 
-## Install
+## [💾 Install](#install)
 Install from the NPM registry using `npm`, `yarn`, or `pnpm`:
 ```shell
 npm install @gjv/redux-slice-factory
@@ -17,20 +17,25 @@ yarn add @gjv/redux-slice-factory
 pnpm add @gjv/redux-slice-factory
 ```
 
-## What's the goal?
-The goal of this package is to provide:
-- familiar API inspired by [Redux Toolkit](https://redux-toolkit.js.org/)
+## [🏆 What's the goal?](#goal)
+This package will
+- reduce boilerplate
+- prevent duplicate code
+- save you time & effort
+
+by providing
+- a familiar API inspired by [Redux Toolkit](https://redux-toolkit.js.org/)
 - out-of-the-box best-practice interfaces for slice state models (e.g. [status enums vs boolean flags](https://kentcdodds.com/blog/stop-using-isloading-booleans))
 - [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), strongly-typed, generic factory functions for common slice data structures
-- common set of actions and selectors shared by slices of the same data structure
+- a common set of actions and selectors shared by slices of the same data structure
 
-## What's included?
+## [📦 What's included?](#contents)
 - `createModelSlice()` creates a slice for a <b>single model</b>. <br>
 Here's an [example](docs/CreateModelSlice.md) with a slice for a user profile.
 - `createEntitySlice()` creates a slice for a <b>collection of entities</b>. <br>
 Here's an [example](docs/CreateEntitySlice.md) with a slice for multiple user profiles.
 
-## What's a slice?
+## [🍕 What's a slice?](#define-slice)
 Very similar to the [Ducks](https://github.com/erikras/ducks-modular-redux) and [Ducks++](https://github.com/dhassaine/ducks-modular-redux) proposals, a slice is a bundle of everything associated to a piece of state (i.e. `{ name, reducer, actions, selectors }`)
 
 the `name` describes the domain the slice is responsible for, 
@@ -50,7 +55,7 @@ console.log(`${actions.update}`)
 // -> "MyModelSliceName/update
 ```
 
-## Show me the code
+## [💻 Show me the code](#examples)
 For a more extensive, real-world use case check out the [examples](#What's-included?) listed above.
 
 ```typescript
