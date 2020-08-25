@@ -8,7 +8,7 @@ import Grid, {
     GridWrap
 } from '@material-ui/core/Grid';
 import * as _ from 'lodash';
-import React, { FunctionComponent, ReactNode, ReactNodeArray } from 'react';
+import React, { FunctionComponent } from 'react';
 
 /**
  * Takes a list of elements and returns a new list of only truthy results.
@@ -54,7 +54,6 @@ export type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'i
 export interface IFlexProps {
     alignContent?: GridContentAlignment;
     alignItems?: GridItemsAlignment;
-    children: ReactNode | ReactNodeArray;
     className?: string;
     containerClassName?: string;
     direction: GridDirection;
@@ -112,7 +111,7 @@ const Flex: FunctionComponent<IFlexProps> = ({
     md,
     lg,
     xl
-}: IFlexProps) => {
+}) => {
     const elements = React.useMemo(() => {
         const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl]);
         const childrenArray = Array.isArray(children)

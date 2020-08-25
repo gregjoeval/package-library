@@ -55,7 +55,7 @@ module.exports = {
         "no-param-reassign": "error",
         "no-underscore-dangle": "error",
         "no-undefined": "warn",
-        "no-extra-parens": ["error", "all", {
+        "no-extra-parens": ["warn", "all", {
             "nestedBinaryExpressions": false,
             "ignoreJSX": "all",
             "enforceForArrowConditionals": false,
