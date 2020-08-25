@@ -8,7 +8,7 @@ import Grid, {
     GridWrap
 } from '@material-ui/core/Grid';
 import * as _ from 'lodash';
-import React, { FunctionComponent, ReactNode, ReactNodeArray } from 'react';
+import React, { FunctionComponent } from 'react';
 
 /**
  * Takes a list of elements and returns a new list of only truthy results.

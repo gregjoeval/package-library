@@ -22,6 +22,7 @@ module.exports = {
         "react/no-array-index-key": "off", // TODO: if we turn this on we need an new pattern for populating the key prop when rendering lists of constant values
         "react/no-unused-prop-types": "error",
         "react/prop-types": "off", // typescript does this for us
+        "react/display-name": "off",
         "react/require-default-props": "off", // this rule expects us to use .defaultProps, but we dont
         "react/jsx-boolean-value": ["error", "always"],
         "react/jsx-curly-brace-presence": ["error", {
@@ -38,8 +39,9 @@ module.exports = {
             "when": "always"
         }],
         "react/jsx-props-no-spreading": "off",
-        "react/jsx-sort-props": ["error", {
-            "shorthandFirst": true
+        "react/jsx-sort-props": ["warn", {
+            "shorthandFirst": true,
+            "callbacksLast": true
         }]
     }
 };
