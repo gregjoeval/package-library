@@ -2,7 +2,6 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "setup": "npm run setup:clean-install && npm run setup:bootstrap",
     "setup:install": "npm install && lerna run setup:install",
     "setup:clean-install": "npm ci && lerna run setup:clean-install",
     "setup:bootstrap": "lerna bootstrap --hoist --strict",
