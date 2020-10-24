@@ -27,7 +27,7 @@
     "eslint": "^7.12.0"
   },
   "peerDependencies": {
-    "eslint": "~6"
+    "eslint": "~7"
   },
   "repository": {
     "type": "git",

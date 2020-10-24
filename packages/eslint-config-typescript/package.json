@@ -32,10 +32,10 @@
   },
   "peerDependencies": {
     "@gjv/eslint-config": "~0",
-    "@typescript-eslint/eslint-plugin": "~2",
-    "@typescript-eslint/parser": "~2",
-    "eslint": "~6",
-    "typescript": "~3"
+    "@typescript-eslint/eslint-plugin": "~4",
+    "@typescript-eslint/parser": "~4",
+    "eslint": "~7",
+    "typescript": "~4"
   },
   "repository": {
     "type": "git",
