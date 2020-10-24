@@ -27,10 +27,17 @@ module.exports = {
             "allowHigherOrderFunctions": true
         }],
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/interface-name-prefix": ["error", {
-            "prefixWithI": "always",
-            "allowUnderscorePrefix": false
-        }],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "interface",
+                "format": ["PascalCase"],
+                "custom": {
+                    "regex": "^I[A-Z]",
+                    "match": true
+                }
+            }
+        ],
         "@typescript-eslint/promise-function-async": "error"
     }
 };
