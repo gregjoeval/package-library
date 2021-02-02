@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config-typescript",
-  "version": "0.5.10",
+  "version": "0.6.0",
   "description": "gregjoeval's ESLint config for TS",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/package-library#readme",
