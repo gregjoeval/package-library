@@ -1,5 +1,5 @@
-import { SliceCaseReducers } from '@reduxjs/toolkit';
-import { ISlice, ISliceSelectors } from '../types';
+import { SliceCaseReducers, } from '@reduxjs/toolkit';
+import { ISlice, ISliceSelectors, } from '../types';
 
 /**
  * @internal
@@ -10,7 +10,7 @@ export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
     const dif = tzo >= 0 ? '+' : '-';
     const pad = (num: number): string => {
         const norm = Math.floor(Math.abs(num));
-        return (norm < 10 ? '0' : '') + norm;
+        return `${norm < 10 ? '0' : ''}${norm}`;
     };
 
     return `${dateTime.getFullYear()}-${pad(dateTime.getMonth() + 1)}-${pad(dateTime.getDate())}T${pad(dateTime.getHours())}:${pad(dateTime.getMinutes())}:${pad(dateTime.getSeconds())}${dif}${pad(tzo / 60)}:${pad(tzo % 60)}`;
@@ -22,10 +22,10 @@ export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
 export const mapErrorToSerializableObject = <TError extends Error = Error> (error: TError): Record<keyof Error, string> => {
     const propertyNames = Object.getOwnPropertyNames(error);
     return propertyNames.reduce((accumulator, propertyName) => {
-        const propertyDescriptorValue = Object.getOwnPropertyDescriptor(error, propertyName)?.value;
+        const propertyDescriptorValue: unknown = Object.getOwnPropertyDescriptor(error, propertyName)?.value;
         return {
             ...accumulator,
-            [propertyName]: propertyDescriptorValue
+            [propertyName]: propertyDescriptorValue,
         };
     }, {} as Record<keyof Error, string>);
 };
@@ -38,7 +38,7 @@ export const logSlice = <
     TSliceState,
     TCaseReducers extends SliceCaseReducers<TSliceState>,
     TSliceSelectors extends ISliceSelectors<TGlobalState, TSliceState>
-    > (slice: ISlice<TGlobalState, TSliceState, TCaseReducers, TSliceSelectors>, initialState: TSliceState): void => {
+> (slice: ISlice<TGlobalState, TSliceState, TCaseReducers, TSliceSelectors>, initialState: TSliceState): void => {
     /* eslint-disable no-console */
     console.groupCollapsed(slice.name);
 

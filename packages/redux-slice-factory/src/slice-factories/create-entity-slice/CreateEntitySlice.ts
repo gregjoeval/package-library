@@ -8,12 +8,12 @@ import {
     EntitySelectors,
     EntityState as ReduxEntityState,
     PayloadAction,
-    Update
+    Update,
 } from '@reduxjs/toolkit';
 import StatusEnum from '../../constants/StatusEnum';
-import EntityState, { IEntityState } from '../../models/entity-state';
-import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
-import { getISOStringWithOffset, logSlice } from '../../utilities';
+import EntityState, { IEntityState, } from '../../models/entity-state';
+import { IMetaSliceSelectors, ISlice, ISliceSelectors, } from '../../types';
+import { getISOStringWithOffset, logSlice, } from '../../utilities';
 
 /**
  * @public
@@ -35,7 +35,7 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
-}
+};
 
 /**
  * @public
@@ -45,11 +45,11 @@ export interface IEntitySliceSelectors<
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    >
+>
     extends
-        EntitySelectors<TEntity, TGlobalState>,
-        ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
-        IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    EntitySelectors<TEntity, TGlobalState>,
+    ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
+    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
 }
 
 /**
@@ -60,12 +60,12 @@ export type IEntitySlice<
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    > = ISlice<
-        TGlobalState,
-        IEntityState<TEntity, TStatusEnum, TError>,
-        IEntitySliceReducers<IEntityState<TEntity, TStatusEnum, TError>, TEntity, TStatusEnum, TError>,
-        IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
-        >
+> = ISlice<
+TGlobalState,
+IEntityState<TEntity, TStatusEnum, TError>,
+IEntitySliceReducers<IEntityState<TEntity, TStatusEnum, TError>, TEntity, TStatusEnum, TError>,
+IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
+>;
 
 /**
  * @public
@@ -75,7 +75,7 @@ export interface ICreateEntitySliceOptions<
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    > {
+> {
     name: string;
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
     selectId: (o: TEntity) => EntityId;
@@ -92,14 +92,14 @@ function createEntitySlice<
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
-    type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
+>(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
+    type ISliceState = IEntityState<TEntity, TStatusEnum, TError>;
 
-    const { name, selectSliceState, selectId, sortComparer, initialState, debug } = options;
+    const { name, selectSliceState, selectId, sortComparer, initialState, debug, } = options;
 
     const selectEntityState = (state: ISliceState): ReduxEntityState<TEntity> => ({
         ids: state.ids,
-        entities: state.entities
+        entities: state.entities,
     });
 
     // intentional, necessary with immer
@@ -141,7 +141,7 @@ function createEntitySlice<
 
     const entityAdapter = createEntityAdapter({
         selectId: selectId,
-        sortComparer: sortComparer
+        sortComparer: sortComparer,
     });
 
     const initialEntityState = entityAdapter.getInitialState(initialState ?? {});
@@ -222,8 +222,8 @@ function createEntitySlice<
             },
             setStatus: (state, action) => {
                 setStatus(state as ISliceState, action.payload);
-            }
-        }
+            },
+        },
     });
 
     const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectEntityState(selectSliceState(state)));
@@ -238,14 +238,14 @@ function createEntitySlice<
         selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
-        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated)
+        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
     };
 
     const entitySlice: IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> = {
         name: slice.name,
         reducer: slice.reducer,
         actions: slice.actions,
-        selectors: selectors
+        selectors: selectors,
     };
 
     if (debug) {

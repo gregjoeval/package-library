@@ -1,6 +1,6 @@
-import { EntityState as ReduxEntityState } from '@reduxjs/toolkit';
+import { EntityState as ReduxEntityState, } from '@reduxjs/toolkit';
 import StatusEnum from '../../constants/StatusEnum';
-import MetaState, { IMetaState } from '../meta-state';
+import MetaState, { IMetaState, } from '../meta-state';
 
 /**
  * @public
@@ -9,18 +9,18 @@ export interface IEntityState<
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    > extends ReduxEntityState<T>, IMetaState<TStatusEnum, TError> {}
+> extends ReduxEntityState<T>, IMetaState<TStatusEnum, TError> {}
 
 const create = <
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    > (args: Partial<IEntityState<T, TStatusEnum, TError>> = {}): IEntityState<T, TStatusEnum, TError> => {
+> (args: Partial<IEntityState<T, TStatusEnum, TError>> = {}): IEntityState<T, TStatusEnum, TError> => {
     const metaState = MetaState.create(args);
     return {
         ...metaState,
         ids: args.ids ?? [],
-        entities: args.entities ?? {}
+        entities: args.entities ?? {},
     };
 };
 
@@ -28,7 +28,7 @@ const create = <
  * @public
  */
 const EntityState = {
-    create: create
+    create: create,
 };
 
 export default EntityState;

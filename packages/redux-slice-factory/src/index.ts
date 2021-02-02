@@ -1,10 +1,10 @@
 import StatusEnum from './constants/StatusEnum';
-import { IEntityState } from './models/entity-state';
-import { IMetaState } from './models/meta-state';
-import { IModelState } from './models/model-state';
-import createEntitySlice, { IEntitySlice, IEntitySliceReducers, IEntitySliceSelectors, ICreateEntitySliceOptions } from './slice-factories/create-entity-slice';
-import createModelSlice, { IModelSlice, IModelSliceReducers, IModelSliceSelectors, ICreateModelSliceOptions } from './slice-factories/create-model-slice';
-import { ISlice, ISliceSelectors, IMetaSliceSelectors } from './types';
+import { IEntityState, } from './models/entity-state';
+import { IMetaState, } from './models/meta-state';
+import { IModelState, } from './models/model-state';
+import createEntitySlice, { IEntitySlice, IEntitySliceReducers, IEntitySliceSelectors, ICreateEntitySliceOptions, } from './slice-factories/create-entity-slice';
+import createModelSlice, { IModelSlice, IModelSliceReducers, IModelSliceSelectors, ICreateModelSliceOptions, } from './slice-factories/create-model-slice';
+import { ISlice, ISliceSelectors, IMetaSliceSelectors, } from './types';
 
 export {
     // Generics
@@ -30,5 +30,5 @@ export {
     IEntitySlice,
     IEntitySliceReducers,
     IEntitySliceSelectors,
-    ICreateEntitySliceOptions
+    ICreateEntitySliceOptions,
 };

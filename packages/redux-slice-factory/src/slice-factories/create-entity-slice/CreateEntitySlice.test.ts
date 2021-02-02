@@ -1,7 +1,7 @@
 import StatusEnum from '../../constants/StatusEnum';
-import EntityState, { IEntityState } from '../../models/entity-state';
-import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
-import createEntitySlice, { IEntitySlice } from './CreateEntitySlice';
+import EntityState, { IEntityState, } from '../../models/entity-state';
+import { getISOStringWithOffset, mapErrorToSerializableObject, } from '../../utilities';
+import createEntitySlice, { IEntitySlice, } from './CreateEntitySlice';
 
 enum UsersSliceStatusEnum {
     Settled = 'Settled',
@@ -20,19 +20,19 @@ interface ITestUserModel {
 const alice: ITestUserModel = {
     id: '123abc',
     name: 'alice',
-    age: '25'
+    age: '25',
 };
 
 const bob: ITestUserModel = {
     id: '456def',
     name: 'bob',
-    age: '30'
+    age: '30',
 };
 
 const carl: ITestUserModel = {
     id: '789ghi',
     name: 'carl',
-    age: '35'
+    age: '35',
 };
 
 describe('createEntitySlice', () => {
@@ -46,7 +46,7 @@ describe('createEntitySlice', () => {
             name: testName,
             selectSliceState: () => sliceState,
             selectId: (model) => model.id,
-            sortComparer: (a, b) => a.name.localeCompare(b.name)
+            sortComparer: (a, b) => a.name.localeCompare(b.name),
         });
     });
 
@@ -62,7 +62,7 @@ describe('createEntitySlice', () => {
         const previousState = sliceState;
 
         // WHEN
-        const nextState = slice.reducer(sliceState, { type: 'not_an_action' });
+        const nextState = slice.reducer(sliceState, { type: 'not_an_action', });
 
         // THEN
         expect(nextState).toEqual(previousState);
@@ -126,18 +126,18 @@ describe('createEntitySlice', () => {
             [bob.id]: {
                 id: bob.id,
                 name: 'bobby',
-                age: bob.age
-            }
+                age: bob.age,
+            },
         };
         const previousStateWithData = EntityState.create({
             ...sliceState,
             ids: Object.keys(previousData),
-            entities: previousData
+            entities: previousData,
         });
         const data = {
             [alice.id]: alice,
             [bob.id]: bob,
-            [carl.id]: carl
+            [carl.id]: carl,
         };
 
         // WHEN
@@ -159,18 +159,18 @@ describe('createEntitySlice', () => {
             [bob.id]: {
                 id: bob.id,
                 name: 'bobby',
-                age: bob.age
-            }
+                age: bob.age,
+            },
         };
         const previousStateWithData = EntityState.create({
             ...sliceState,
             ids: Object.keys(previousData),
-            entities: previousData
+            entities: previousData,
         });
         const data = {
             [alice.id]: alice,
             [bob.id]: bob,
-            [carl.id]: carl
+            [carl.id]: carl,
         };
 
         // WHEN
@@ -193,8 +193,8 @@ describe('createEntitySlice', () => {
             [bob.id]: {
                 id: bob.id,
                 name: 'bobby',
-                age: bob.age
-            }
+                age: bob.age,
+            },
         };
         const previousStateWithData = EntityState.create({
             ids: Object.keys(previousData),
@@ -202,7 +202,7 @@ describe('createEntitySlice', () => {
             status: StatusEnum.Failed,
             error: new Error('Oopsie Doopsie'),
             lastHydrated: getISOStringWithOffset(),
-            lastModified: getISOStringWithOffset()
+            lastModified: getISOStringWithOffset(),
         });
 
         // WHEN

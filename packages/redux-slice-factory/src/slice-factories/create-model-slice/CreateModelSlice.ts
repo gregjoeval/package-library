@@ -2,13 +2,13 @@ import {
     CaseReducer,
     createSelector,
     createSlice,
-    PayloadAction
+    PayloadAction,
 } from '@reduxjs/toolkit';
-import _ from 'lodash';
+import merge from 'lodash.merge';
 import StatusEnum from '../../constants/StatusEnum';
-import ModelState, { IModelState } from '../../models/model-state';
-import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types';
-import { getISOStringWithOffset, logSlice } from '../../utilities';
+import ModelState, { IModelState, } from '../../models/model-state';
+import { IMetaSliceSelectors, ISlice, ISliceSelectors, } from '../../types';
+import { getISOStringWithOffset, logSlice, } from '../../utilities';
 
 /**
  * @public
@@ -20,7 +20,7 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
     reset: CaseReducer<TSliceState, PayloadAction>;
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
-}
+};
 
 /**
  * @public
@@ -30,10 +30,10 @@ export interface IModelSliceSelectors <
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    >
+>
     extends
-        ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
-        IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
+    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
     selectModel: (state: TGlobalState) => TModel;
 }
 
@@ -45,12 +45,12 @@ export type IModelSlice<
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    > = ISlice<
-            TGlobalState,
-            IModelState<TModel, TStatusEnum, TError>,
-            IModelSliceReducers<IModelState<TModel, TStatusEnum, TError>, TModel, TStatusEnum, TError>,
-            IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
-            >
+> = ISlice<
+TGlobalState,
+IModelState<TModel, TStatusEnum, TError>,
+IModelSliceReducers<IModelState<TModel, TStatusEnum, TError>, TModel, TStatusEnum, TError>,
+IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
+>;
 
 /**
  * @public
@@ -60,7 +60,7 @@ export interface ICreateModelSliceOptions<
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    > {
+> {
     name: string;
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
     initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
@@ -75,10 +75,10 @@ function createModelSlice<
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
-    >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
-    type ISliceState = IModelState<TModel, TStatusEnum, TError>
+>(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
+    type ISliceState = IModelState<TModel, TStatusEnum, TError>;
 
-    const { name, selectSliceState, initialState, debug } = options;
+    const { name, selectSliceState, initialState, debug, } = options;
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -126,7 +126,7 @@ function createModelSlice<
                 hydrateState(state as ISliceState, action.payload);
             },
             update: (state, action) => {
-                const newModel = _.merge(state.model, action.payload) as TModel;
+                const newModel = merge(state.model, action.payload) as TModel;
                 modifyState(state as ISliceState, newModel);
             },
             reset: () => initialSliceState,
@@ -138,8 +138,8 @@ function createModelSlice<
             },
             setStatus: (state, action) => {
                 setStatus(state as ISliceState, action.payload);
-            }
-        }
+            },
+        },
     });
 
     const selectors: IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError> = {
@@ -148,14 +148,14 @@ function createModelSlice<
         selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
-        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated)
+        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
     };
 
     const modelSlice: IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = {
         name: slice.name,
         reducer: slice.reducer,
         actions: slice.actions,
-        selectors: selectors
+        selectors: selectors,
     };
 
     if (debug) {

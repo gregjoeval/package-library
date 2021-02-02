@@ -18,6 +18,7 @@
     "build:clean": "rimraf ./dist && rimraf ./temp",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
+    "lint:config": "eslint --print-config ./src/index.ts",
     "typecheck": "npm run build && npm run build:clean",
     "test": "tsdx test ./src --runInBand --watchAll=false",
     "check": "npm run lint && npm run typecheck && npm run test",
@@ -49,16 +50,17 @@
   "devDependencies": {
     "@gjv/eslint-config": "^0.5.10",
     "@gjv/eslint-config-typescript": "^0.5.10",
-    "@microsoft/api-extractor": "^7.10.4",
-    "@reduxjs/toolkit": "^1.4.0",
-    "@types/jest": "^26.0.14",
-    "@types/lodash": "^4.14.162",
+    "@microsoft/api-extractor": "^7.13.0",
+    "@reduxjs/toolkit": "^1.5.0",
+    "@types/jest": "^26.0.20",
+    "@types/lodash.merge": "^4.6.6",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
     "tsdx": "^0.14.1",
-    "tslib": "^2.0.3"
+    "tslib": "^2.1.0"
   },
   "dependencies": {
-    "lodash": "^4.17.20",
-    "lodash-es": "^4.17.15"
+    "lodash.merge": "^4.6.2"
   },
   "keywords": [
     "redux",

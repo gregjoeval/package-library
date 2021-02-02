@@ -1,7 +1,7 @@
-import { FlexLayout, IFlexLayoutProps, TextAlign } from './layout';
+import { FlexLayout, IFlexLayoutProps, TextAlign, } from './layout';
 
 export {
     FlexLayout,
     IFlexLayoutProps,
-    TextAlign
+    TextAlign,
 };

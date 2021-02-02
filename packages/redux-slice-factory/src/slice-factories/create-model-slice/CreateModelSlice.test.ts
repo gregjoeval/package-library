@@ -1,7 +1,7 @@
 import StatusEnum from '../../constants/StatusEnum';
-import ModelState, { IModelState } from '../../models/model-state';
-import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities';
-import createModelSlice, { IModelSlice } from './CreateModelSlice';
+import ModelState, { IModelState, } from '../../models/model-state';
+import { getISOStringWithOffset, mapErrorToSerializableObject, } from '../../utilities';
+import createModelSlice, { IModelSlice, } from './CreateModelSlice';
 
 enum UserSliceStatusEnum {
     Settled = 'Settled',
@@ -20,19 +20,19 @@ interface ITestUserModel {
 const alice: ITestUserModel = {
     id: '123abc',
     name: 'alice',
-    age: '25'
+    age: '25',
 };
 
 const bob: ITestUserModel = {
     id: '456def',
     name: 'bob',
-    age: '30'
+    age: '30',
 };
 
 const carl: ITestUserModel = {
     id: '789ghi',
     name: 'carl',
-    age: '35'
+    age: '35',
 };
 
 describe('createModelSlice', () => {
@@ -44,7 +44,7 @@ describe('createModelSlice', () => {
         sliceState = ModelState.create<ITestUserModel>();
         slice = createModelSlice<any, ITestUserModel, keyof typeof UserSliceStatusEnum>({
             name: testName,
-            selectSliceState: () => sliceState
+            selectSliceState: () => sliceState,
         });
     });
 
@@ -60,7 +60,7 @@ describe('createModelSlice', () => {
         const previousState = sliceState;
 
         // WHEN
-        const nextState = slice.reducer(sliceState, { type: 'not_an_action' });
+        const nextState = slice.reducer(sliceState, { type: 'not_an_action', });
 
         // THEN
         expect(nextState).toEqual(previousState);
@@ -119,11 +119,11 @@ describe('createModelSlice', () => {
         const previousData = {
             id: alice.id,
             name: 'alicia',
-            age: alice.age
+            age: alice.age,
         };
         const previousStateWithData = ModelState.create({
             ...sliceState,
-            model: previousData
+            model: previousData,
         });
         const data = alice;
 
@@ -143,11 +143,11 @@ describe('createModelSlice', () => {
         const previousData = {
             id: bob.id,
             name: 'bobby',
-            age: bob.age
+            age: bob.age,
         };
         const previousStateWithData = ModelState.create({
             ...sliceState,
-            model: previousData
+            model: previousData,
         });
         const data = bob;
 
@@ -168,14 +168,14 @@ describe('createModelSlice', () => {
         const previousData = {
             id: carl.id,
             name: 'carlton',
-            age: carl.age
+            age: carl.age,
         };
         const previousStateWithData = ModelState.create({
             model: previousData,
             status: StatusEnum.Failed,
             error: new Error('Oopsie Doopsie'),
             lastHydrated: getISOStringWithOffset(),
-            lastModified: getISOStringWithOffset()
+            lastModified: getISOStringWithOffset(),
         });
 
         // WHEN
