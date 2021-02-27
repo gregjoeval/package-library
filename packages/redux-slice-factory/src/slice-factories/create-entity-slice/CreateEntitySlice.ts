@@ -97,11 +97,6 @@ function createEntitySlice<
 
     const { name, selectSliceState, selectId, sortComparer, initialState, debug } = options
 
-    const selectEntityState = (state: ISliceState): ReduxEntityState<TEntity> => ({
-        ids: state.ids,
-        entities: state.entities,
-    })
-
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
     const setEntityState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
@@ -152,69 +147,56 @@ function createEntitySlice<
         initialState: initialSliceState,
         reducers: {
             addOne: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.addOne(entityState, action.payload)
+                const newEntityState = entityAdapter.addOne(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             addMany: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.addMany(entityState, action.payload)
+                const newEntityState = entityAdapter.addMany(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             hydrateOne: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.upsertOne(entityState, action.payload)
+                const newEntityState = entityAdapter.upsertOne(state as ISliceState, action.payload)
                 hydrateState(state as ISliceState, newEntityState)
             },
             hydrateMany: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.upsertMany(entityState, action.payload)
+                const newEntityState = entityAdapter.upsertMany(state as ISliceState, action.payload)
                 hydrateState(state as ISliceState, newEntityState)
             },
             hydrateAll: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.setAll(entityState, action.payload)
+                const newEntityState = entityAdapter.setAll(state as ISliceState, action.payload)
                 hydrateState(state as ISliceState, newEntityState)
             },
             updateOne: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.updateOne(entityState, action.payload)
+                const newEntityState = entityAdapter.updateOne(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             updateMany: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.updateMany(entityState, action.payload)
+                const newEntityState = entityAdapter.updateMany(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             upsertOne: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.upsertOne(entityState, action.payload)
+                const newEntityState = entityAdapter.upsertOne(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             upsertMany: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.upsertMany(entityState, action.payload)
+                const newEntityState = entityAdapter.upsertMany(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             removeOne: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.removeOne(entityState, action.payload)
+                const newEntityState = entityAdapter.removeOne(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             removeMany: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.removeMany(entityState, action.payload)
+                const newEntityState = entityAdapter.removeMany(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             removeAll: (state) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.removeAll(entityState)
+                const newEntityState = entityAdapter.removeAll(state as ISliceState)
                 modifyState(state as ISliceState, newEntityState)
             },
             reset: () => initialSliceState,
             setAll: (state, action) => {
-                const entityState = selectEntityState(state as ISliceState)
-                const newEntityState = entityAdapter.setAll(entityState, action.payload)
+                const newEntityState = entityAdapter.setAll(state as ISliceState, action.payload)
                 modifyState(state as ISliceState, newEntityState)
             },
             setError: (state, action) => {
@@ -226,7 +208,7 @@ function createEntitySlice<
         },
     })
 
-    const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectEntityState(selectSliceState(state)))
+    const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectSliceState(state))
 
     const selectors: IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError> = {
         selectIds: entitySelectors.selectIds,
