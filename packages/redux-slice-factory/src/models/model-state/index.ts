@@ -1,2 +1,2 @@
-export { default, } from './ModelState';
-export type { IModelState, } from './ModelState';
+export { default } from './ModelState'
+export type { IModelState } from './ModelState'

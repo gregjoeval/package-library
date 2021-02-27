@@ -18,7 +18,7 @@ module.exports = {
     "plugins": [
         "@typescript-eslint",
         "promise",
-        "import-helpers",
+        "import-helpers"
     ],
     // extended configs should be ordered by least to greatest importance
     "extends": [
@@ -26,7 +26,7 @@ module.exports = {
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "airbnb-base",
+        "airbnb-base"
     ],
     // https://stackoverflow.com/a/58323590/7571132
     "settings": {
@@ -36,10 +36,10 @@ module.exports = {
                     ".ts",
                     ".tsx",
                     ".js",
-                    ".jsx",
-                ],
-            },
-        },
+                    ".jsx"
+                ]
+            }
+        }
     },
     "rules": {
         // Rules that cause issues between eslint and @typescript-eslint (https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules)
@@ -80,49 +80,49 @@ module.exports = {
 
         // ESLint (https://eslint.org/docs/rules/)
         "spaced-comment": "warn",
-        "linebreak-style": ["off", "windows",],
-        "eol-last": ["error", "always",],
+        "linebreak-style": ["off", "unix"],
+        "eol-last": ["error", "always"],
         "max-len": ["error", {
             "code": 225,
-            "ignoreUrls": true,
             "ignoreComments": false,
             "ignoreRegExpLiterals": true,
             "ignoreStrings": true,
             "ignoreTemplateLiterals": true,
-        },],
+            "ignoreUrls": true
+        }],
         "no-case-declarations": "off",
         "no-console": "warn",
         "no-debugger": "warn",
-        "no-multiple-empty-lines": ["warn", { "max": 1, },],
+        "no-multiple-empty-lines": ["warn", { "max": 1 }],
         "no-param-reassign": "error",
         "no-underscore-dangle": "error",
         "no-undefined": "warn",
-        "multiline-ternary": ["error", "always-multiline",],
+        "multiline-ternary": ["error", "always-multiline"],
         "prefer-destructuring": "off",
-        "object-shorthand": ["error", "consistent",],
-        "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": false, },],
+        "object-shorthand": ["error", "consistent"],
+        "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": false }],
         "object-curly-newline": ["error", {
             "ObjectExpression": {
                 "consistent": true,
                 "multiline": true,
-                "minProperties": 2,
+                "minProperties": 2
             },
             "ObjectPattern": {
                 "consistent": true,
-                "multiline": true,
+                "multiline": true
             },
             "ImportDeclaration": {
                 "consistent": true,
-                "multiline": true,
+                "multiline": true
             },
             "ExportDeclaration": {
                 "consistent": true,
-                "multiline": true,
-            },
-        },],
-        "function-paren-newline": ["error", "multiline",],
-        "implicit-arrow-linebreak": ["error", "beside",],
-        "jsx-quotes": ["error", "prefer-single",],
+                "multiline": true
+            }
+        }],
+        "function-paren-newline": ["error", "multiline"],
+        "implicit-arrow-linebreak": ["error", "beside"],
+        "jsx-quotes": ["error", "prefer-single"],
 
         // Import Plugin (https://github.com/benmosher/eslint-plugin-import)
         "import/prefer-default-export": "off",
@@ -131,26 +131,26 @@ module.exports = {
         "import/exports-last": "off",
         "import/group-exports": "off",
         "import/order": "off", // turned off in favor of import-helpers/order-imports
-        "import/no-unused-modules": ["off", { "unusedExports": true, },], // keep turned off since it takes a long time to run, turn on only when checking for this rule
+        "import/no-unused-modules": ["off", { "unusedExports": true }], // keep turned off since it takes a long time to run, turn on only when checking for this rule
         "import/no-duplicates": "error",
         "import/newline-after-import": "error",
         "import/no-useless-path-segments": "error",
-        "import/no-cycle": ["off", { "maxDepth": 2, },], // turning this off for now but should consider turning it on
+        "import/no-cycle": ["off", { "maxDepth": 2 }], // turning this off for now but should consider turning it on
         "import/first": "error",
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",
             "jsx": "never",
             "ts": "never",
-            "tsx": "never",
-        },],
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.*", "**/*.d.*", "**/setupTests.ts", "**/*.stories.*",], },],
+            "tsx": "never"
+        }],
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.*", "**/*.d.*", "**/setupTests.ts", "**/*.stories.*"] }],
 
         // Import Helpers Plugin (https://github.com/Tibfib/eslint-plugin-import-helpers)
         "import-helpers/order-imports": ["warn", {
             "newlinesBetween": "never",
-            "groups": ["absolute", "module", "parent", "sibling", "index",],
-            "alphabetize": { "order": "asc", },
-        },],
+            "groups": ["absolute", "module", "parent", "sibling", "index"],
+            "alphabetize": { "order": "asc" }
+        }],
 
         // Promise Plugin (https://github.com/xjamundx/eslint-plugin-promise)
         "promise/catch-or-return": "error",
@@ -171,52 +171,54 @@ module.exports = {
         // Typescript Plugin (https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
         "@typescript-eslint/brace-style": "error",
         "@typescript-eslint/comma-dangle": ["warn", {
-            "arrays": "always",
-            "objects": "always",
-            "imports": "always",
-            "exports": "always",
-            "functions": "never",
-            "enums": "always",
-            "generics": "ignore",
-            "tuples": "always",
-        },],
-        "@typescript-eslint/indent": ["error", 4, { "SwitchCase": 1, },],
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "always-multiline",
+            "exports": "always-multiline",
+            "functions": "never", // parameters are positional and should not be easily re-arranged
+            "enums": "always-multiline",
+            "generics": "ignore", // in a .tsx file you need to do <T,> for generics so that it is not confused with jsx
+            "tuples": "always-multiline"
+        }],
+        "@typescript-eslint/indent": ["error", 4, { "SwitchCase": 1 }],
         "@typescript-eslint/no-empty-function": "warn",
         "@typescript-eslint/no-extra-parens": ["warn", "all", {
             "nestedBinaryExpressions": false,
             "ignoreJSX": "all",
             "enforceForArrowConditionals": false,
-            "enforceForNewInMemberExpressions": false,
-        },],
+            "enforceForNewInMemberExpressions": false
+        }],
         "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/lines-between-class-members": ["warn", "always",],
+        "@typescript-eslint/lines-between-class-members": ["warn", "always"],
         "@typescript-eslint/quotes": ["error", "single", {
             "avoidEscape": false,
-            "allowTemplateLiterals": false,
-        },],
-        "@typescript-eslint/semi": "warn",
+            "allowTemplateLiterals": false
+        }],
+        "@typescript-eslint/semi": ["warn", "never"],
         "@typescript-eslint/explicit-function-return-type": ["error", {
             "allowExpressions": true,
             "allowTypedFunctionExpressions": true,
-            "allowHigherOrderFunctions": true,
-        },],
-        "@typescript-eslint/no-explicit-any": "off", // TODO: remove
+            "allowHigherOrderFunctions": true
+        }],
         "@typescript-eslint/naming-convention": ["error",
             {
                 "selector": "interface",
-                "format": ["PascalCase",],
+                "format": ["PascalCase"],
                 "custom": {
                     "regex": "^I[A-Z]",
-                    "match": true,
-                },
-            },
+                    "match": true
+                }
+            }
         ],
         "@typescript-eslint/interface-name-prefix": "off", // off in favor of @typescript-eslint/naming-convention
         "@typescript-eslint/promise-function-async": "error",
-
-        // TODO: Want to add these but dont want to include new rules during big change
-        // '@typescript-eslint/no-dynamic-delete': 'error',
-        // '@typescript-eslint/prefer-ts-expect-error': 'error',
-        // '@typescript-eslint/require-array-sort-compare': 'error'
-    },
-};
+        "@typescript-eslint/type-annotation-spacing": "warn",
+        "@typescript-eslint/object-curly-spacing": ["warn", "always"],
+        "@typescript-eslint/no-implicit-any-catch": "warn",
+        "@typescript-eslint/consistent-type-assertions": "warn", // https://basarat.gitbook.io/typescript/type-system/type-assertion#as-foo-vs-less-than-foo-greater-than
+        "@typescript-eslint/no-dynamic-delete": "error",
+        "@typescript-eslint/prefer-ts-expect-error": "error",
+        "@typescript-eslint/require-array-sort-compare": "error",
+        "@typescript-eslint/default-param-last": "error"
+    }
+}

@@ -6,9 +6,9 @@ import Grid, {
     GridSize,
     GridSpacing,
     GridWrap,
-} from '@material-ui/core/Grid';
-import * as _ from 'lodash';
-import React, { FunctionComponent, } from 'react';
+} from '@material-ui/core/Grid'
+import * as _ from 'lodash'
+import React, { FunctionComponent } from 'react'
 
 /**
  * Takes a list of elements and returns a new list of only truthy results.
@@ -19,37 +19,37 @@ import React, { FunctionComponent, } from 'react';
  * @returns {Array<*>} - list of only truthy values
  */
 const selectTruthyResults = <T, > (array: Array<T>): Array<T> => {
-    const list = _.concat([], array);
+    const list = _.concat([], array)
     return list.reduce((acc: Array<T>, element: T) => {
         const item = typeof element === 'function'
             ? element() as T // let's assume its T aka JSX.Element
-            : element;
+            : element
 
         return item
             ? acc.concat(item)
-            : acc;
-    }, []);
-};
+            : acc
+    }, [])
+}
 
 /**
  * @internal
  */
 const waterfallValues = <T, > (defaultValue: T, valueArray: T[]): T[] => {
-    const len = valueArray.length;
+    const len = valueArray.length
     if (valueArray.length > 0) {
-        const value = valueArray[0] || defaultValue;
+        const value = valueArray[0] || defaultValue
         if (len > 1) {
-            return [value, ...waterfallValues(value, _.takeRight(valueArray, len - 1)),];
+            return [value, ...waterfallValues(value, _.takeRight(valueArray, len - 1))]
         }
-        return [value,];
+        return [value]
     }
-    return [];
-};
+    return []
+}
 
 /**
  * https://www.w3schools.com/cssref/pr_text_text-align.asp
  */
-export type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit';
+export type TextAlign = 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
 
 export interface IFlexProps {
     alignContent?: GridContentAlignment;
@@ -113,11 +113,11 @@ const Flex: FunctionComponent<IFlexProps> = ({
     xl,
 }) => {
     const elements = React.useMemo(() => {
-        const [xsVal, smVal, mdVal, lgVal, xlVal,] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl,]);
+        const [xsVal, smVal, mdVal, lgVal, xlVal] = waterfallValues<GridSize | undefined>('auto', [xs, sm, md, lg, xl])
         const childrenArray = Array.isArray(children)
             ? children
-            : [children,];
-        const truthyChildren = selectTruthyResults(childrenArray);
+            : [children]
+        const truthyChildren = selectTruthyResults(childrenArray)
         return truthyChildren.map((child, index) => (
             <Grid
                 className={className}
@@ -126,14 +126,14 @@ const Flex: FunctionComponent<IFlexProps> = ({
                 lg={lgVal}
                 md={mdVal}
                 sm={smVal}
-                style={{ textAlign: textAlign, }}
+                style={{ textAlign: textAlign }}
                 xl={xlVal}
                 xs={xsVal}
             >
                 {child}
             </Grid>
-        ));
-    }, [className, children, xs, sm, md, lg, xl, textAlign,]);
+        ))
+    }, [className, children, xs, sm, md, lg, xl, textAlign])
 
     return (
         <Grid
@@ -148,7 +148,7 @@ const Flex: FunctionComponent<IFlexProps> = ({
         >
             {elements}
         </Grid>
-    );
-};
+    )
+}
 
-export default Flex;
+export default Flex

@@ -7,4 +7,4 @@ enum StatusEnum {
     Failed = 'Failed',
 }
 
-export default StatusEnum;
+export default StatusEnum

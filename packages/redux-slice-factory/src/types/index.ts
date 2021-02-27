@@ -1,5 +1,5 @@
-import { CaseReducerActions, Reducer, SliceCaseReducers, } from '@reduxjs/toolkit';
-import StatusEnum from '../constants/StatusEnum';
+import { CaseReducerActions, Reducer, SliceCaseReducers } from '@reduxjs/toolkit'
+import StatusEnum from '../constants/StatusEnum'
 
 /**
  * @public

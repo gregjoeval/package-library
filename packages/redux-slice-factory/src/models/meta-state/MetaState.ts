@@ -1,4 +1,4 @@
-import StatusEnum from '../../constants/StatusEnum';
+import StatusEnum from '../../constants/StatusEnum'
 
 /**
  * @public
@@ -18,13 +18,13 @@ const create = <
     error: args.error ?? null,
     lastModified: args.lastModified ?? null,
     lastHydrated: args.lastHydrated ?? null,
-});
+})
 
 /**
  * @public
  */
 const MetaState = {
     create: create,
-};
+}
 
-export default MetaState;
+export default MetaState

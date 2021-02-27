@@ -1,2 +1,2 @@
-export { default, } from './MetaState';
-export type { IMetaState, } from './MetaState';
+export { default } from './MetaState'
+export type { IMetaState } from './MetaState'

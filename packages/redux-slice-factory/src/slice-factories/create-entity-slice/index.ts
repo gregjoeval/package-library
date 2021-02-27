@@ -1,1 +1,1 @@
-export { default, IEntitySlice, IEntitySliceReducers, IEntitySliceSelectors, ICreateEntitySliceOptions, } from './CreateEntitySlice';
+export { default, IEntitySlice, IEntitySliceReducers, IEntitySliceSelectors, ICreateEntitySliceOptions } from './CreateEntitySlice'

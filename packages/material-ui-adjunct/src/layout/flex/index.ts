@@ -1,4 +1,4 @@
-import Flex, { IFlexProps, TextAlign, } from './Flex';
+import Flex, { IFlexProps, TextAlign } from './Flex'
 
-export default Flex;
-export { IFlexProps, TextAlign, };
+export default Flex
+export { IFlexProps, TextAlign }
