@@ -1,3 +1,3 @@
-import FlexLayout, { IFlexProps as IFlexLayoutProps, TextAlign } from './flex';
+import FlexLayout, { IFlexProps as IFlexLayoutProps, TextAlign } from './flex'
 
-export { FlexLayout, IFlexLayoutProps, TextAlign };
+export { FlexLayout, IFlexLayoutProps, TextAlign }

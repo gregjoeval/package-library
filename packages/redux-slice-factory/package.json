@@ -1,24 +1,27 @@
 {
   "name": "@gjv/redux-slice-factory",
-  "version": "0.4.2",
+  "version": "0.6.2",
   "description": "Generic factory functions for common slice data structures",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
-  "homepage": "https://github.com/gregjoeval/lib#readme",
+  "homepage": "https://github.com/gregjoeval/package-library#readme",
   "license": "MIT",
-  "module": "dist/index.js",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "types": "dist/redux-slice-factory.d.ts",
+  "typings": "dist/redux-slice-factory.d.ts",
+  "module": "dist/redux-slice-factory.esm.js",
+  "sideEffects": false,
   "scripts": {
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",
     "setup:clean": "rimraf ./node_modules",
-    "build": "tsc",
-    "build:clean": "rimraf ./dist",
+    "build": "tsdx build --format cjs,esm --name redux-slice-factory && api-extractor run",
+    "build:clean": "rimraf ./dist && rimraf ./temp",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "typecheck": "tsc --noEmit",
-    "test": "jest ./src --runInBand --watchAll=false",
-    "check": "npm run lint && npm run build && npm run test && npm run build:clean",
+    "lint:config": "eslint --print-config ./src/index.ts",
+    "typecheck": "npm run build && npm run build:clean",
+    "test": "tsdx test ./src --runInBand --watchAll=false",
+    "check": "npm run lint && npm run typecheck && npm run test",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {
@@ -28,43 +31,47 @@
     "lib": "src"
   },
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/*.js.map",
+    "dist/redux-slice-factory.d.ts",
+    "dist/tsdoc-metadata.json",
     "src"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregjoeval/lib.git"
+    "url": "git+https://github.com/gregjoeval/package-library.git"
   },
   "bugs": {
-    "url": "https://github.com/gregjoeval/lib/issues"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
+    "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.4.0"
   },
   "devDependencies": {
-    "@gjv/eslint-config": "^0.4.1",
-    "@gjv/eslint-config-typescript": "^0.4.2",
-    "@reduxjs/toolkit": "^1.4.0",
-    "@types/jest": "^26.0.3",
-    "@types/lodash": "^4.14.157",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "jest": "^26.1.0",
-    "lodash": "^4.17.15",
-    "redux": "^4.0.5",
-    "ts-jest": "^26.1.1",
-    "typescript": "^3.9.5"
+    "@gjv/eslint-config-typescript": "^0.6.1",
+    "@microsoft/api-extractor": "^7.13.0",
+    "@reduxjs/toolkit": "^1.5.0",
+    "@types/jest": "^26.0.20",
+    "@types/lodash.merge": "^4.6.6",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
-  }
+    "lodash.merge": "^4.6.2"
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "starter",
+    "toolkit",
+    "reducer",
+    "slice",
+    "immer",
+    "immutable",
+    "action",
+    "selector",
+    "factory"
+  ]
 }
