@@ -32,6 +32,8 @@ export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum ex
     // (undocumented)
     selectId: (o: TEntity) => EntityId;
     // (undocumented)
+    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
+    // (undocumented)
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
     // (undocumented)
     sortComparer: false | Comparer<TEntity>;
@@ -45,6 +47,8 @@ export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum exte
     initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
     // (undocumented)
     name: string;
+    // (undocumented)
+    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
     // (undocumented)
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
 }
@@ -143,6 +147,8 @@ export interface ISlice<TGlobalState, TSliceState, TCaseReducers extends SliceCa
 
 // @public (undocumented)
 export interface ISliceSelectors<TGlobalState, TSliceState> {
+    // (undocumented)
+    selectShouldRequest?: (state: TGlobalState) => boolean;
     // (undocumented)
     selectSliceState: (state: TGlobalState) => TSliceState;
 }

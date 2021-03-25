@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.9.2",
+    "toolVersion": "7.13.0",
     "schemaVersion": 1003,
     "oldestForwardsCompatibleVersion": 1001
   },
@@ -446,6 +446,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "debug",
               "propertyTypeTokenRange": {
@@ -485,6 +486,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "initialState",
               "propertyTypeTokenRange": {
@@ -510,6 +512,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "name",
               "propertyTypeTokenRange": {
@@ -540,11 +543,47 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectId",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectShouldRequest:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectShouldRequest?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(sliceState: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IEntityState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TEntity, TStatusEnum, TError>) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "selectShouldRequest",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
               }
             },
             {
@@ -574,6 +613,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectSliceState",
               "propertyTypeTokenRange": {
@@ -608,6 +648,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "sortComparer",
               "propertyTypeTokenRange": {
@@ -747,6 +788,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "debug",
               "propertyTypeTokenRange": {
@@ -786,6 +828,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "initialState",
               "propertyTypeTokenRange": {
@@ -811,11 +854,47 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "name",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectShouldRequest:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectShouldRequest?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(sliceState: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IModelState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TModel, TStatusEnum, TError>) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "selectShouldRequest",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
               }
             },
             {
@@ -845,6 +924,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectSliceState",
               "propertyTypeTokenRange": {
@@ -1988,6 +2068,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectError",
               "propertyTypeTokenRange": {
@@ -2013,6 +2094,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectLastHydrated",
               "propertyTypeTokenRange": {
@@ -2038,6 +2120,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectLastModified",
               "propertyTypeTokenRange": {
@@ -2063,6 +2146,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectStatus",
               "propertyTypeTokenRange": {
@@ -2180,6 +2264,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "error",
               "propertyTypeTokenRange": {
@@ -2205,6 +2290,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "lastHydrated",
               "propertyTypeTokenRange": {
@@ -2230,6 +2316,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "lastModified",
               "propertyTypeTokenRange": {
@@ -2255,6 +2342,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "status",
               "propertyTypeTokenRange": {
@@ -2758,7 +2846,34 @@
             }
           ],
           "name": "IModelSliceSelectors",
-          "members": [],
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelSliceSelectors#selectModel:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectModel: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => TModel"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "selectModel",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
           "extendsTokenRanges": [
             {
               "startIndex": 13,
@@ -2897,6 +3012,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "model",
               "propertyTypeTokenRange": {
@@ -3020,6 +3136,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "actions",
               "propertyTypeTokenRange": {
@@ -3045,6 +3162,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "name",
               "propertyTypeTokenRange": {
@@ -3075,6 +3193,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "reducer",
               "propertyTypeTokenRange": {
@@ -3100,6 +3219,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectors",
               "propertyTypeTokenRange": {
@@ -3149,6 +3269,32 @@
           "members": [
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectShouldRequest:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectShouldRequest?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "selectShouldRequest",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectSliceState:member",
               "docComment": "",
               "excerptTokens": [
@@ -3165,6 +3311,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectSliceState",
               "propertyTypeTokenRange": {
