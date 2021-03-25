@@ -54,7 +54,7 @@ describe('createEntitySlice', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
         expect(Object.values(slice.actions)).toHaveLength(16)
-        expect(Object.values(slice.selectors)).toHaveLength(10)
+        expect(Object.values(slice.selectors)).toHaveLength(11)
     })
 
     it('does not affect state with unregistered action types', () => {
