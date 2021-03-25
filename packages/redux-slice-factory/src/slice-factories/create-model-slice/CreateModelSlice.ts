@@ -149,6 +149,13 @@ function createModelSlice<
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
         selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
+        selectShouldFetch: (reFetchOnError = false, overwriteAllData = false) => createSelector(
+            selectSliceState,
+            (sliceState) => sliceState.status !== StatusEnum.Requesting
+                && !sliceState.lastHydrated
+                && (!reFetchOnError ? !sliceState.error : true)
+                && (!overwriteAllData ? !sliceState.lastModified : true)
+        ),
     }
 
     const modelSlice: IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = {
