@@ -9,7 +9,6 @@ export interface ISliceSelectors<
     TSliceState
 > {
     selectSliceState: (state: TGlobalState) => TSliceState;
-    selectShouldFetch: (reFetchOnError?: boolean, overwriteAllData?: boolean) => (state: TGlobalState) => boolean;
 }
 
 /**
