@@ -63,6 +63,7 @@ export interface ICreateModelSliceOptions<
 > {
     name: string;
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
+    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
     initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
     debug?: boolean;
 }
@@ -78,7 +79,7 @@ function createModelSlice<
 >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
-    const { name, selectSliceState, initialState, debug } = options
+    const { name, selectSliceState, selectShouldRequest, initialState, debug } = options
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -142,6 +143,13 @@ function createModelSlice<
         },
     })
 
+    const shouldRequestSelector = createSelector(selectSliceState, (sliceState) => (selectShouldRequest
+        ? selectShouldRequest(sliceState)
+        : sliceState.status !== StatusEnum.Requesting
+        && sliceState.lastHydrated === null
+        && sliceState.error === null
+        && sliceState.lastModified === null))
+
     const selectors: IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError> = {
         selectSliceState: createSelector(selectSliceState, (sliceState) => sliceState),
         selectModel: createSelector(selectSliceState, (sliceState) => sliceState.model),
@@ -149,6 +157,7 @@ function createModelSlice<
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
         selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
+        selectShouldRequest: shouldRequestSelector,
     }
 
     const modelSlice: IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = {
