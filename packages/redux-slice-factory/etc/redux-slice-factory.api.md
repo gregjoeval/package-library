@@ -30,9 +30,11 @@ export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum ex
     // (undocumented)
     name: string;
     // (undocumented)
+    selectCanRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
+    // (undocumented)
     selectId: (o: TEntity) => EntityId;
     // (undocumented)
-    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
+    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>, canRequest: boolean) => boolean;
     // (undocumented)
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
     // (undocumented)
@@ -48,7 +50,9 @@ export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum exte
     // (undocumented)
     name: string;
     // (undocumented)
-    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
+    selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
+    // (undocumented)
+    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean;
     // (undocumented)
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
 }
@@ -147,6 +151,8 @@ export interface ISlice<TGlobalState, TSliceState, TCaseReducers extends SliceCa
 
 // @public (undocumented)
 export interface ISliceSelectors<TGlobalState, TSliceState> {
+    // (undocumented)
+    selectCanRequest?: (state: TGlobalState) => boolean;
     // (undocumented)
     selectShouldRequest?: (state: TGlobalState) => boolean;
     // (undocumented)

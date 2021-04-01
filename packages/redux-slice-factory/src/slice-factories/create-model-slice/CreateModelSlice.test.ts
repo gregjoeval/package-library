@@ -52,7 +52,7 @@ describe('createModelSlice', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
         expect(Object.values(slice.actions)).toHaveLength(6)
-        expect(Object.values(slice.selectors)).toHaveLength(7)
+        expect(Object.values(slice.selectors)).toHaveLength(8)
     })
 
     it('does not affect state with unregistered action types', () => {

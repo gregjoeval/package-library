@@ -80,7 +80,8 @@ export interface ICreateEntitySliceOptions<
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;
-    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
+    selectCanRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
+    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>, canRequest: boolean) => boolean;
     initialState?: Partial<IEntityState<TEntity, TStatusEnum, TError>>;
     debug?: boolean;
 }
@@ -96,7 +97,13 @@ function createEntitySlice<
 >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
-    const { name, selectSliceState, selectId, sortComparer, selectShouldRequest, initialState, debug } = options
+    const defaultCanRequestSelector = (sliceState: ISliceState): boolean => sliceState.status !== StatusEnum.Requesting
+        && sliceState.error === null
+        && sliceState.lastModified === null
+
+    const defaultShouldRequestSelector = (sliceState: ISliceState, canRequest: boolean): boolean => canRequest && sliceState.lastHydrated === null
+
+    const { name, selectSliceState, selectId, sortComparer, selectShouldRequest = defaultShouldRequestSelector, selectCanRequest = defaultCanRequestSelector, initialState, debug } = options
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -210,14 +217,6 @@ function createEntitySlice<
     })
 
     const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectSliceState(state))
-
-    const shouldRequestSelector = createSelector(selectSliceState, (sliceState) => (selectShouldRequest
-        ? selectShouldRequest(sliceState)
-        : sliceState.status !== StatusEnum.Requesting
-        && sliceState.lastHydrated === null
-        && sliceState.error === null
-        && sliceState.lastModified === null))
-
     const selectors: IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError> = {
         selectIds: entitySelectors.selectIds,
         selectEntities: entitySelectors.selectEntities,
@@ -229,7 +228,8 @@ function createEntitySlice<
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
         selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
-        selectShouldRequest: shouldRequestSelector,
+        selectCanRequest: createSelector(selectSliceState, (sliceState) => selectCanRequest(sliceState)),
+        selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
     }
 
     const entitySlice: IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> = {

@@ -522,6 +522,41 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectCanRequest:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectCanRequest?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(sliceState: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IEntityState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TEntity, TStatusEnum, TError>) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "selectCanRequest",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectId:member",
               "docComment": "",
               "excerptTokens": [
@@ -571,7 +606,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<TEntity, TStatusEnum, TError>) => boolean"
+                  "text": "<TEntity, TStatusEnum, TError>, canRequest: boolean) => boolean"
                 },
                 {
                   "kind": "Content",
@@ -864,6 +899,41 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectCanRequest:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectCanRequest?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(sliceState: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IModelState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TModel, TStatusEnum, TError>) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "selectCanRequest",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectShouldRequest:member",
               "docComment": "",
               "excerptTokens": [
@@ -882,7 +952,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<TModel, TStatusEnum, TError>) => boolean"
+                  "text": "<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean"
                 },
                 {
                   "kind": "Content",
@@ -3267,6 +3337,32 @@
           ],
           "name": "ISliceSelectors",
           "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectCanRequest:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "selectCanRequest?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(state: TGlobalState) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "selectCanRequest",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectShouldRequest:member",
