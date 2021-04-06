@@ -108,3 +108,5 @@ dist
 
 # Api Extractor temp files
 temp
+
+.npmrc

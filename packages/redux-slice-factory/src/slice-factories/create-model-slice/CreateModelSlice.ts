@@ -63,6 +63,8 @@ export interface ICreateModelSliceOptions<
 > {
     name: string;
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
+    selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
+    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean;
     initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
     debug?: boolean;
 }
@@ -78,7 +80,13 @@ function createModelSlice<
 >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
-    const { name, selectSliceState, initialState, debug } = options
+    const defaultCanRequestSelector = (sliceState: ISliceState): boolean => sliceState.status !== StatusEnum.Requesting
+        && sliceState.error === null
+        && sliceState.lastModified === null
+
+    const defaultShouldRequestSelector = (sliceState: ISliceState, canRequest: boolean): boolean => canRequest && sliceState.lastHydrated === null
+
+    const { name, selectSliceState, selectCanRequest = defaultCanRequestSelector, selectShouldRequest = defaultShouldRequestSelector, initialState, debug } = options
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -149,6 +157,8 @@ function createModelSlice<
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
         selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
+        selectCanRequest: createSelector(selectSliceState, (sliceState) => selectCanRequest(sliceState)),
+        selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
     }
 
     const modelSlice: IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = {
