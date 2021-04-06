@@ -1,3 +1,3 @@
-import FlexLayout, { IFlexProps as IFlexLayoutProps, TextAlign } from './flex'
+import Stack, { IStackProps } from './Stack'
 
-export { FlexLayout, IFlexLayoutProps, TextAlign }
+export { Stack, IStackProps }
