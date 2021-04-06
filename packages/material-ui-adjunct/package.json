@@ -50,8 +50,8 @@
     "react": "~16"
   },
   "devDependencies": {
-    "@gjv/eslint-config-react": "^0.7.1",
-    "@gjv/eslint-config-typescript": "^0.7.1",
+    "@gjv/eslint-config-react": "latest",
+    "@gjv/eslint-config-typescript": "latest",
     "@material-ui/core": "^4.11.3",
     "@material-ui/styles": "^4.11.3",
     "@types/lodash.concat": "^4.5.6",
@@ -63,5 +63,5 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0"
   },
-  "gitHead": "8e33739f247f19e3df2a0a931edb74134f43b9f2"
+  "gitHead": "89be455bfb72a7da511346115321debac238b3c1"
 }

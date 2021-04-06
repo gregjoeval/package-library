@@ -48,7 +48,7 @@
     "@reduxjs/toolkit": "^1.4.0"
   },
   "devDependencies": {
-    "@gjv/eslint-config-typescript": "^0.7.1",
+    "@gjv/eslint-config-typescript": "latest",
     "@microsoft/api-extractor": "^7.13.0",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/jest": "^26.0.20",
@@ -74,5 +74,5 @@
     "selector",
     "factory"
   ],
-  "gitHead": "8e33739f247f19e3df2a0a931edb74134f43b9f2"
+  "gitHead": "89be455bfb72a7da511346115321debac238b3c1"
 }
