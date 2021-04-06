@@ -1,4 +1,5 @@
 import Grid, { GridProps } from '@material-ui/core/Grid'
+import concat from 'lodash.concat'
 import takeRight from 'lodash.takeright'
 import React from 'react'
 
@@ -10,7 +11,7 @@ import React from 'react'
  * @returns {Array<*>} - list of only truthy values
  */
 const selectTruthyResults = <T, > (array: Array<T>): Array<T> => {
-    const list = ([] as Array<T>).concat(array) // this will prevent nested arrays 1 level down
+    const list = concat([], array) // this will prevent nested arrays 1 level down
     return list.reduce((acc: Array<T>, element: T) => {
         const item: unknown = typeof element === 'function'
             ? element()
