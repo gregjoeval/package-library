@@ -152,9 +152,9 @@ export interface ISlice<TGlobalState, TSliceState, TCaseReducers extends SliceCa
 // @public (undocumented)
 export interface ISliceSelectors<TGlobalState, TSliceState> {
     // (undocumented)
-    selectCanRequest?: (state: TGlobalState) => boolean;
+    selectCanRequest: (state: TGlobalState) => boolean;
     // (undocumented)
-    selectShouldRequest?: (state: TGlobalState) => boolean;
+    selectShouldRequest: (state: TGlobalState) => boolean;
     // (undocumented)
     selectSliceState: (state: TGlobalState) => TSliceState;
 }

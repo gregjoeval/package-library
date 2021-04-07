@@ -9,8 +9,8 @@ export interface ISliceSelectors<
     TSliceState
 > {
     selectSliceState: (state: TGlobalState) => TSliceState;
-    selectCanRequest?: (state: TGlobalState) => boolean;
-    selectShouldRequest?: (state: TGlobalState) => boolean
+    selectCanRequest: (state: TGlobalState) => boolean;
+    selectShouldRequest: (state: TGlobalState) => boolean
 }
 
 /**
