@@ -3344,7 +3344,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "selectCanRequest?: "
+                  "text": "selectCanRequest: "
                 },
                 {
                   "kind": "Content",
@@ -3355,7 +3355,7 @@
                   "text": ";"
                 }
               ],
-              "isOptional": true,
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectCanRequest",
               "propertyTypeTokenRange": {
@@ -3370,7 +3370,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "selectShouldRequest?: "
+                  "text": "selectShouldRequest: "
                 },
                 {
                   "kind": "Content",
@@ -3381,7 +3381,7 @@
                   "text": ";"
                 }
               ],
-              "isOptional": true,
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "selectShouldRequest",
               "propertyTypeTokenRange": {
