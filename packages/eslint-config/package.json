@@ -12,7 +12,8 @@
     "setup:clean": "rimraf ./node_modules",
     "lint": "eslint ./index.js --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "lint:config": "eslint --print-config ./index.js"
+    "lint:config": "eslint --print-config ./index.js",
+    "check": "npm run lint"
   },
   "publishConfig": {
     "access": "public"
