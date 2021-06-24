@@ -8,11 +8,8 @@
 > A light-weight package with generic factory functions for common slice data structures
 
 ## Install 💾
-Install from NPM:
 ```shell
 npm install @gjv/redux-slice-factory
-
-yarn add @gjv/redux-slice-factory
 ```
 
 ## What's the goal? 🏆
