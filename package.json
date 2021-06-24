@@ -4,6 +4,7 @@
   "scripts": {
     "setup:install": "npm install && lerna run setup:install",
     "setup:clean-install": "npm ci && lerna run setup:clean-install",
+    "setup:update": "npm-check -u && lerna run setup:update",
     "setup:bootstrap": "lerna bootstrap --hoist --strict",
     "setup:clean": "lerna clean --yes && rimraf ./node_modules",
     "build": "lerna run build",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "lerna": "^4.0.0",
+    "npm-check": "^5.9.2",
     "rimraf": "^3.0.2"
   }
 }

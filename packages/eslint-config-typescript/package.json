@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.29.0",
-    "npm-check": "^4.1.4",
+    "npm-check": "^5.9.2",
     "typescript": "^4.3.4"
   },
   "peerDependencies": {
