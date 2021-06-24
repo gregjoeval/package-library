@@ -45,12 +45,10 @@ export interface IEntitySliceSelectors<
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
->
-    extends
+> extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
-    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
-}
+    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {}
 
 /**
  * @public
@@ -76,7 +74,7 @@ export interface ICreateEntitySliceOptions<
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
 > {
-    name: string;
+    name: keyof TGlobalState & string;
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;

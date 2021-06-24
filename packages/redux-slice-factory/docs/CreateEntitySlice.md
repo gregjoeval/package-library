@@ -31,7 +31,7 @@ A `boolean` value that, when `true`, logs information about the slice to the con
 
 ```
 {
-    name: string;
+    name: keyof TGlobalState & string;
     reducer: Reducer<TSliceState>;
     actions: CaseReducerActions<TCaseReducers>;
     selectors: TSliceSelectors;
@@ -57,7 +57,7 @@ enum UserSliceStatusEnum {
     Saved = 'Saved',
 }
 
-const { name, reducer, actions, selectors } = createEntitySlice<
+const slice = createEntitySlice<
     GlobalStateType,
     IUserModel,
     keyof typeof UserSliceStatusEnum
@@ -70,32 +70,32 @@ const { name, reducer, actions, selectors } = createEntitySlice<
 
 // Custom Async Thunk
 const save = (model: IUserModel) => async (dispatch) => {
-    dispatch(actions.setStatus(UserSliceStatusEnum.Saving));
-    dispatch(actions.updateOne(model)); // Update state before save request if necessary
+    dispatch(slice.actions.setStatus(UserSliceStatusEnum.Saving));
+    dispatch(slice.actions.updateOne(model)); // Update state before save request if necessary
 
     try {
         const response = await saveModelToExternalDataSource(model)
         
         // Let's assume our save operation was a POST and returns the model we just saved
-        dispatch(actions.hydrateOne(response.model));
-        dispatch(actions.setStatus(UserSliceStatusEnum.Saved));
+        dispatch(slice.actions.hydrateOne(response.model));
+        dispatch(slice.actions.setStatus(UserSliceStatusEnum.Saved));
     } catch (error) {
         // Use the error that bubbled up from the save operation or create your own Error object
-        dispatch(actions.setError(error));
-        dispatch(actions.setStatus(UserSliceStatusEnum.Failed));
+        dispatch(slice.actions.setError(error));
+        dispatch(slice.actions.setStatus(UserSliceStatusEnum.Failed));
     }
 };
 
 const _actions = {
-    ...actions,
+    ...slice.actions,
     save: save
 };
 
 const UsersSlice = {
-    name: name,
-    reducer: reducer,
+    name: slice.name,
+    reducer: slice.reducer,
     actions: _actions
-    selectors: selectors
+    selectors: slice.selectors
 };
 
 export default UsersSlice;

@@ -42,7 +42,7 @@ describe('createEntitySlice', () => {
 
     beforeEach(() => {
         sliceState = EntityState.create<ITestUserModel>()
-        slice = createEntitySlice<Record<string, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum>({
+        slice = createEntitySlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum>({
             name: testName,
             selectSliceState: () => sliceState,
             selectId: (model) => model.id,

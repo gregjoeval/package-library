@@ -28,7 +28,7 @@ export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum ex
     // (undocumented)
     initialState?: Partial<IEntityState<TEntity, TStatusEnum, TError>>;
     // (undocumented)
-    name: string;
+    name: keyof TGlobalState & string;
     // (undocumented)
     selectCanRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
     // (undocumented)
@@ -48,7 +48,7 @@ export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum exte
     // (undocumented)
     initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
     // (undocumented)
-    name: string;
+    name: keyof TGlobalState & string;
     // (undocumented)
     selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
     // (undocumented)

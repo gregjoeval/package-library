@@ -61,7 +61,7 @@ export interface ICreateModelSliceOptions<
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
 > {
-    name: string;
+    name: keyof TGlobalState & string;
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
     selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
     selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean;
