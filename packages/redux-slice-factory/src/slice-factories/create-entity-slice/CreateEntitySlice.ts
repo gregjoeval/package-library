@@ -12,7 +12,7 @@ import {
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types'
+import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
 import { getISOStringWithOffset, logSlice } from '../../utilities'
 
 /**
@@ -74,7 +74,7 @@ export interface ICreateEntitySliceOptions<
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
 > {
-    name: keyof TGlobalState & string;
+    name: ISliceName<TGlobalState>;
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;
@@ -148,7 +148,7 @@ function createEntitySlice<
     const initialEntityState = entityAdapter.getInitialState(initialState ?? {})
     const initialSliceState = EntityState.create<TEntity, TStatusEnum, TError>(initialEntityState)
 
-    const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>>({
+    const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>, ISliceName<TGlobalState>>({
         name: name,
         initialState: initialSliceState,
         reducers: {

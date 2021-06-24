@@ -658,8 +658,13 @@
                   "text": "name: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "ISliceName",
+                  "canonicalReference": "@gjv/redux-slice-factory!ISliceName:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "keyof TGlobalState & string"
+                  "text": "<TGlobalState>"
                 },
                 {
                   "kind": "Content",
@@ -671,7 +676,7 @@
               "name": "name",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -1035,8 +1040,13 @@
                   "text": "name: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "ISliceName",
+                  "canonicalReference": "@gjv/redux-slice-factory!ISliceName:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "keyof TGlobalState & string"
+                  "text": "<TGlobalState>"
                 },
                 {
                   "kind": "Content",
@@ -1048,7 +1058,7 @@
               "name": "name",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -3378,8 +3388,13 @@
                   "text": "name: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "ISliceName",
+                  "canonicalReference": "@gjv/redux-slice-factory!ISliceName:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "string"
+                  "text": "<TGlobalState>"
                 },
                 {
                   "kind": "Content",
@@ -3391,7 +3406,7 @@
               "name": "name",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
