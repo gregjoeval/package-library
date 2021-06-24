@@ -18,11 +18,9 @@ See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#init
 A `boolean` value that, when `true`, logs information about the slice to the console.
 
 ## Return Value
-// TODO add a better description
-
 ```
 {
-    name: string;
+    name: keyof TGlobalState & string;
     reducer: Reducer<TSliceState>;
     actions: CaseReducerActions<TCaseReducers>;
     selectors: TSliceSelectors;
@@ -48,7 +46,7 @@ enum UserSliceStatusEnum {
     Saved = 'Saved',
 }
 
-const { name, reducer, actions, selectors } = createModelSlice<
+const slice = createModelSlice<
     GlobalStateType,
     IUserModel,
     keyof typeof UserSliceStatusEnum
@@ -59,32 +57,32 @@ const { name, reducer, actions, selectors } = createModelSlice<
 
 // Custom Async Thunk
 const save = (model: IUserModel) => async (dispatch) => {
-    dispatch(actions.setStatus(UserSliceStatusEnum.Saving));
-    dispatch(actions.update(model)); // Update state before save request if necessary
+    dispatch(slice.actions.setStatus(UserSliceStatusEnum.Saving));
+    dispatch(slice.actions.update(model)); // Update state before save request if necessary
 
     try {
         const response = await saveModelToExternalDataSource(model)
         
         // Let's assume our save operation was a POST and returns the model we just saved
-        dispatch(actions.hydrate(response.model));
-        dispatch(actions.setStatus(UserSliceStatusEnum.Saved));
+        dispatch(slice.actions.hydrate(response.model));
+        dispatch(slice.actions.setStatus(UserSliceStatusEnum.Saved));
     } catch (error) {
         // Use the error that bubbled up from the save operation or create your own Error object
-        dispatch(actions.setError(error));
-        dispatch(actions.setStatus(UserSliceStatusEnum.Failed));
+        dispatch(slice.actions.setError(error));
+        dispatch(slice.actions.setStatus(UserSliceStatusEnum.Failed));
     }
 };
 
 const _actions = {
-    ...actions,
+    ...slice.actions,
     save: save
 };
 
 const UserSlice = {
-    name: name,
-    reducer: reducer,
+    name: slice.name,
+    reducer: slice.reducer,
     actions: _actions
-    selectors: selectors
+    selectors: slice.selectors
 };
 
 export default UserSlice;

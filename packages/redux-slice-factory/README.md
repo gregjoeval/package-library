@@ -8,13 +8,8 @@
 > A light-weight package with generic factory functions for common slice data structures
 
 ## Install 💾
-Install from the NPM registry using `npm`, `yarn`, or `pnpm`:
 ```shell
 npm install @gjv/redux-slice-factory
-
-yarn add @gjv/redux-slice-factory
-
-pnpm add @gjv/redux-slice-factory
 ```
 
 ## What's the goal? 🏆
@@ -59,8 +54,12 @@ console.log(`${actions.update}`)
 For a more extensive, real-world use case check out the [examples](#What's-included?) listed above.
 
 ```typescript
-import { combineReducers, createStore } from 'redux';
-import { createModelSlice, StatusEnum } from '@gjv/redux-slice-factory';
+//
+// STEP 1: create the slice
+// UserSlice.ts
+//
+import { createModelSlice, IModelState, StatusEnum } from '@gjv/redux-slice-factory';
+import { IGlobalState } from './configureStore';
 
 interface IUserModel {
     id: string;
@@ -74,33 +73,49 @@ const bob: IUserModel = {
     age: '30'
 };
 
-//
-// STEP 1: create it
-//
-const { name, reducer, actions, selectors } = createModelSlice<GlobalStateType, IUserModel>({
-    name: 'User',
-    selectSliceState: (globalState) => globalState.user,
+type IUserSliceState = IModelState<IUserModel>
+
+const slice = createModelSlice<IGlobalState, IUserModel>({
+    name: 'user',
+    selectSliceState: (globalState) => globalState.User,
     initialState: bob
 });
 
-const userSlice = {
-    name: name,
-    reducer: reducer,
-    actions: actions,
-    selectors: selectors
+const UserSlice = {
+    name: slice.name,
+    reducer: slice.reducer,
+    actions: slice.actions,
+    selectors: slice.selectors
 };
 
+export default UserSlice;
+export type { IUserSliceState }
+
 //
-// STEP 2: attach it
+// STEP 2: attach the slice to the global store
+// configureStore.ts
 //
-const reducers = combineReducers({
-    user: userSlice.reducer
+import { configureStore } from '@reduxjs/toolkit'
+import UserSlice, { IUserSliceState } from './UserSlice'
+
+interface IGlobalState {
+  user: IUserSliceState;
+}
+
+const reducers = {
+    user: UserSlice.reducer
+};
+
+const store = rtkConfigureStore({
+  reducer: reducers,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
-const store = createStore(reducers);
+export default store;
+export type { IGlobalState };
 
 //
-// STEP 3: use it
+// STEP 3: use the slice
 //
 
 // initial state of state.user
