@@ -27,8 +27,10 @@ export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum ex
     debug?: boolean;
     // (undocumented)
     initialState?: Partial<IEntityState<TEntity, TStatusEnum, TError>>;
+    // Warning: (ae-forgotten-export) The symbol "ISliceName" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    name: keyof TGlobalState & string;
+    name: ISliceName<TGlobalState>;
     // (undocumented)
     selectCanRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
     // (undocumented)
@@ -48,7 +50,7 @@ export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum exte
     // (undocumented)
     initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
     // (undocumented)
-    name: keyof TGlobalState & string;
+    name: ISliceName<TGlobalState>;
     // (undocumented)
     selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
     // (undocumented)
@@ -142,7 +144,7 @@ export interface ISlice<TGlobalState, TSliceState, TCaseReducers extends SliceCa
     // (undocumented)
     actions: CaseReducerActions<TCaseReducers>;
     // (undocumented)
-    name: string;
+    name: ISliceName<TGlobalState>;
     // (undocumented)
     reducer: Reducer<TSliceState>;
     // (undocumented)

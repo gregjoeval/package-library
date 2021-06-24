@@ -7,7 +7,7 @@ import {
 import merge from 'lodash.merge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceSelectors, ISlice, ISliceSelectors } from '../../types'
+import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
 import { getISOStringWithOffset, logSlice } from '../../utilities'
 
 /**
@@ -61,7 +61,7 @@ export interface ICreateModelSliceOptions<
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends Error = Error
 > {
-    name: keyof TGlobalState & string;
+    name: ISliceName<TGlobalState>;
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
     selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
     selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean;
@@ -126,7 +126,7 @@ function createModelSlice<
 
     const initialSliceState = ModelState.create<TModel, TStatusEnum, TError>(initialState ?? {})
 
-    const slice = createSlice<ISliceState, IModelSliceReducers<ISliceState, TModel, TStatusEnum, TError>>({
+    const slice = createSlice<ISliceState, IModelSliceReducers<ISliceState, TModel, TStatusEnum, TError>, ISliceName<TGlobalState>>({
         name: name,
         initialState: initialSliceState,
         reducers: {

@@ -14,15 +14,20 @@ export interface ISliceSelectors<
 }
 
 /**
+ * @internal
+ */
+export type ISliceName<TGlobalState> = keyof TGlobalState & string
+
+/**
  * @public
  */
-export interface ISlice <
+export interface ISlice<
     TGlobalState,
     TSliceState,
     TCaseReducers extends SliceCaseReducers<TSliceState>,
     TSliceSelectors extends ISliceSelectors<TGlobalState, TSliceState>
 > {
-    name: string;
+    name: ISliceName<TGlobalState>;
     reducer: Reducer<TSliceState>;
     actions: CaseReducerActions<TCaseReducers>;
     selectors: TSliceSelectors;
