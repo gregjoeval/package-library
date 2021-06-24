@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config-react",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "gregjoeval's ESLint config for react",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/package-library#readme",
