@@ -4,17 +4,26 @@ import StatusEnum from '../constants/StatusEnum'
 /**
  * @public
  */
+export type ISelectCanRequest<TSliceState> = (sliceState: TSliceState) => boolean
+
+/**
+ * @public
+ */
+export type ISelectShouldRequest<TSliceState> = (sliceState: TSliceState, canRequest: ReturnType<ISelectCanRequest<TSliceState>>) => boolean
+
+/**
+ * @public
+ */
 export interface ISliceOptions<
     TGlobalState,
     TSliceState
 > {
     name: ISliceName<TGlobalState>;
     selectSliceState: (state: TGlobalState) => TSliceState;
-    selectCanRequest?: (sliceState: TSliceState) => boolean;
-    selectShouldRequest?: (sliceState: TSliceState, canRequest: boolean) => boolean;
+    selectCanRequest?: ISelectCanRequest<TSliceState>;
+    selectShouldRequest?: ISelectShouldRequest<TSliceState>;
     initialState?: Partial<TSliceState>;
     createTimestamp?: (datetime?: Date) => string;
-    debug?: boolean;
 }
 
 /**
