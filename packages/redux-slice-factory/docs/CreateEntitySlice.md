@@ -7,9 +7,6 @@ creates a slice for a collection of entities.
 A `string` name for this slice. Generated action type constants will use this as a prefix. <br>
 See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#name).
 
-### `selectSliceState`
-A selector `function` that accepts the entire Redux state tree and returns the slice's state object.
-
 ### `selectId`
 A `function` that accepts a single `Entity` instance, and returns the entity's unique ID field. <br>
 See the [`createEntityAdapter()` docs](https://redux-toolkit.js.org/api/createEntityAdapter#selectid).
@@ -23,12 +20,38 @@ See [`createEntityAdapter()` docs](https://redux-toolkit.js.org/api/createEntity
 An initial value for the reducer of the slice. Should satisfy the type `Partial<TSliceState>`. <br>
 See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#initialstate).
 
+### `selectSliceState`
+A selector `function` that returns the slice's state object.
+
+### `selectCanRequest`
+`optional` <br>
+A selector `function` that returns true if the slice is able the make a request. <br>
+The default behavior returns true if the slice is not requesting, doesn't have an error, and hasn't been modified.
+
+### `selectShouldRequest`
+`optional` <br>
+A selector `function` that returns true if the slice should make a request. <br>
+The default behavior returns true if `selectCanRequest` returns true, and the slice has not been hydrated.
+
+### `createTimestamp`
+`optional` <br>
+A function that takes a `Date` object and returns a string. <br>
+The default behavior returns an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp with an offset.
+
 ### `debug`
+`optional` <br>
 A `boolean` value that, when `true`, logs information about the slice to the console.
 
-## Return Value
-// TODO add a better description
 
+    name: ISliceName<TGlobalState>;
+    selectSliceState: (state: TGlobalState) => TSliceState;
+    selectCanRequest?: (sliceState: TSliceState) => boolean;
+    selectShouldRequest?: (sliceState: TSliceState, canRequest: boolean) => boolean;
+    initialState?: Partial<TSliceState>;
+    createTimestamp?: (datetime?: Date) => string;
+    debug?: boolean;
+
+## Return Value
 ```
 {
     name: keyof TGlobalState & string;

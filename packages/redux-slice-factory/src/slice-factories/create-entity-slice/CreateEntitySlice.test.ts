@@ -1,6 +1,7 @@
+import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities'
+import { getISOStringWithOffset } from '../../utilities'
 import createEntitySlice, { IEntitySlice } from './CreateEntitySlice'
 
 enum UsersSliceStatusEnum {
@@ -38,11 +39,11 @@ const carl: ITestUserModel = {
 describe('createEntitySlice', () => {
     const testName = 'FooBarThing'
     let sliceState: IEntityState<ITestUserModel>
-    let slice: IEntitySlice<Record<string, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum>
+    let slice: IEntitySlice<Record<string, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
 
     beforeEach(() => {
         sliceState = EntityState.create<ITestUserModel>()
-        slice = createEntitySlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum>({
+        slice = createEntitySlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>({
             name: testName,
             selectSliceState: () => sliceState,
             selectId: (model) => model.id,
@@ -74,12 +75,12 @@ describe('createEntitySlice', () => {
         const error = new Error('this was a test')
 
         // WHEN
-        const nextState = slice.reducer(sliceState, slice.actions.setError(mapErrorToSerializableObject(error)))
+        const nextState = slice.reducer(sliceState, slice.actions.setError(miniSerializeError(error)))
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids) // should be unaffected
         expect(nextState.entities).toEqual(previousState.entities) // should be unaffected
-        expect(nextState.error).toEqual(mapErrorToSerializableObject(error))
+        expect(nextState.error).toEqual(miniSerializeError(error))
         expect(nextState.status).toEqual(previousState.status) // should be unaffected
         expect(nextState.lastModified).toEqual(previousState.lastModified) // should be unaffected
         expect(nextState.lastHydrated).toEqual(previousState.lastHydrated) // should be unaffected
@@ -200,7 +201,7 @@ describe('createEntitySlice', () => {
             ids: Object.keys(previousData),
             entities: previousData,
             status: StatusEnum.Failed,
-            error: new Error('Oopsie Doopsie'),
+            error: new Error('Whoops.'),
             lastHydrated: getISOStringWithOffset(),
             lastModified: getISOStringWithOffset(),
         })

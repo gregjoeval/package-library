@@ -9,7 +9,7 @@
   "scripts": {
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",
-    "setup:update": "npm-check -u",
+    "setup:update": "npx npm-check -u",
     "setup:clean": "rimraf ./node_modules",
     "lint": "eslint ./index.js --ext .js,.jsx,.ts,.tsx  --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
@@ -26,11 +26,10 @@
     "eslint-plugin-promise": "^5.1.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.28.0",
-    "@typescript-eslint/parser": "^4.28.0",
-    "eslint": "^7.29.0",
-    "npm-check": "^5.9.2",
-    "typescript": "^4.3.4"
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
+    "typescript": "^4.3.5"
   },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "~4",

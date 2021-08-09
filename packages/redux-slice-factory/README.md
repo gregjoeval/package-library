@@ -26,12 +26,12 @@ by providing
 
 ## What's included? 📦
 - `createModelSlice()` creates a slice for a <b>single model</b>. <br>
-Here's an [example](docs/CreateModelSlice.md) with a slice for a user profile.
+Here's an [example](https://github.com/gregjoeval/package-library/blob/master/packages/redux-slice-factory/docs/CreateModelSlice.md) with a slice for a user profile.
 - `createEntitySlice()` creates a slice for a <b>collection of entities</b>. <br>
-Here's an [example](docs/CreateEntitySlice.md) with a slice for multiple user profiles.
+Here's an [example](https://github.com/gregjoeval/package-library/blob/master/packages/redux-slice-factory/docs/CreateEntitySlice.md) with a slice for multiple user profiles.
 
 ## What's a slice? 🍕
-Very similar to the [Ducks](https://github.com/erikras/ducks-modular-redux) and [Ducks++](https://github.com/dhassaine/ducks-modular-redux) proposals, a slice is a bundle of everything associated to a piece of state (i.e. `{ name, reducer, actions, selectors }`)
+Similar to the [Ducks](https://github.com/erikras/ducks-modular-redux) and [Ducks++](https://github.com/dhassaine/ducks-modular-redux) proposals, a slice is a bundle of everything associated to a piece of state (i.e. `{ name, reducer, actions, selectors }`)
 
 the `name` describes the domain the slice is responsible for, 
 
@@ -51,7 +51,7 @@ console.log(`${actions.update}`)
 ```
 
 ## Show me the code 💻
-For a more extensive, real-world use case check out the [examples](#What's-included?) listed above.
+For a more extensive, real-world use cases check out the [examples](#What's-included?) listed above.
 
 ```typescript
 //

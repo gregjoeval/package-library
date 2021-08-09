@@ -1,6 +1,8 @@
+import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
+import merge from 'lodash.merge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { getISOStringWithOffset, mapErrorToSerializableObject } from '../../utilities'
+import { getISOStringWithOffset } from '../../utilities'
 import createModelSlice, { IModelSlice } from './CreateModelSlice'
 
 enum UserSliceStatusEnum {
@@ -38,12 +40,13 @@ const carl: ITestUserModel = {
 describe('createModelSlice', () => {
     const testName = 'FooBarThing'
     let sliceState: IModelState<ITestUserModel>
-    let slice: IModelSlice<Record<string, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum>
+    let slice: IModelSlice<Record<string, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>
 
     beforeEach(() => {
         sliceState = ModelState.create<ITestUserModel>()
-        slice = createModelSlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum>({
+        slice = createModelSlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>({
             name: testName,
+            handleUpdate: merge,
             selectSliceState: () => sliceState,
         })
     })
@@ -72,11 +75,11 @@ describe('createModelSlice', () => {
         const error = new Error('this was a test')
 
         // WHEN
-        const nextState = slice.reducer(sliceState, slice.actions.setError(mapErrorToSerializableObject(error)))
+        const nextState = slice.reducer(sliceState, slice.actions.setError(miniSerializeError(error)))
 
         // THEN
         expect(nextState.model).toEqual(previousState.model) // should be unaffected
-        expect(nextState.error).toEqual(mapErrorToSerializableObject(error))
+        expect(nextState.error).toEqual(miniSerializeError(error))
         expect(nextState.status).toEqual(previousState.status) // should be unaffected
         expect(nextState.lastModified).toEqual(previousState.lastModified) // should be unaffected
         expect(nextState.lastHydrated).toEqual(previousState.lastHydrated) // should be unaffected
@@ -173,7 +176,7 @@ describe('createModelSlice', () => {
         const previousStateWithData = ModelState.create({
             model: previousData,
             status: StatusEnum.Failed,
-            error: new Error('Oopsie Doopsie'),
+            error: new Error('Whoops.'),
             lastHydrated: getISOStringWithOffset(),
             lastModified: getISOStringWithOffset(),
         })

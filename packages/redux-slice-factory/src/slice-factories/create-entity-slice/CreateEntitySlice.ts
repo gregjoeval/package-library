@@ -8,11 +8,11 @@ import {
     EntitySelectors,
     EntityState as ReduxEntityState,
     PayloadAction,
-    Update,
+    Update, SerializedError,
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
+import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
 import { getISOStringWithOffset, logSlice } from '../../utilities'
 
 /**
@@ -44,7 +44,7 @@ export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
@@ -57,7 +57,7 @@ export type IEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > = ISlice<
 TGlobalState,
 IEntityState<TEntity, TStatusEnum, TError>,
@@ -72,16 +72,10 @@ export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
-> {
-    name: ISliceName<TGlobalState>;
-    selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
+    TError extends SerializedError = Error
+> extends ISliceOptions<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>> {
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;
-    selectCanRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
-    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>, canRequest: boolean) => boolean;
-    initialState?: Partial<IEntityState<TEntity, TStatusEnum, TError>>;
-    debug?: boolean;
 }
 
 /**
@@ -91,7 +85,7 @@ function createEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
@@ -101,7 +95,17 @@ function createEntitySlice<
 
     const defaultShouldRequestSelector = (sliceState: ISliceState, canRequest: boolean): boolean => canRequest && sliceState.lastHydrated === null
 
-    const { name, selectSliceState, selectId, sortComparer, selectShouldRequest = defaultShouldRequestSelector, selectCanRequest = defaultCanRequestSelector, initialState, debug } = options
+    const {
+        name,
+        selectSliceState,
+        selectId,
+        sortComparer,
+        selectShouldRequest = defaultShouldRequestSelector,
+        selectCanRequest = defaultCanRequestSelector,
+        initialState,
+        createTimestamp = getISOStringWithOffset,
+        debug,
+    } = options
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -130,14 +134,14 @@ function createEntitySlice<
     const modifyState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         setEntityState(state, entityState)
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastModified(state, getISOStringWithOffset())
+        setLastModified(state, createTimestamp())
     }
 
     const hydrateState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         setEntityState(state, entityState)
         setLastModified(state, null)
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastHydrated(state, getISOStringWithOffset())
+        setLastHydrated(state, createTimestamp())
     }
 
     const entityAdapter = createEntityAdapter({

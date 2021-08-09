@@ -19,20 +19,6 @@ export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
 /**
  * @internal
  */
-export const mapErrorToSerializableObject = <TError extends Error = Error> (error: TError): Record<keyof Error, string> => {
-    const propertyNames = Object.getOwnPropertyNames(error)
-    return propertyNames.reduce((accumulator, propertyName) => {
-        const propertyDescriptorValue: unknown = Object.getOwnPropertyDescriptor(error, propertyName)?.value
-        return {
-            ...accumulator,
-            [propertyName]: propertyDescriptorValue,
-        }
-    }, {} as Record<keyof Error, string>)
-}
-
-/**
- * @internal
- */
 export const logSlice = <
     TGlobalState,
     TSliceState,

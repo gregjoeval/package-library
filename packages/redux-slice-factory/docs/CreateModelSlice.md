@@ -7,14 +7,35 @@ creates a slice for a single model.
 A `string` name for this slice. Generated action type constants will use this as a prefix. <br>
 See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#name).
 
-### `selectSliceState`
-A selector `function` that accepts the entire Redux state tree and returns the slice's state object.
+### `handleUpdate`
+A `function` that takes the current model state, a partial model, and returns an updated model. <br>
+Note: In previous versions, the update reducer used [lodash.merge](https://www.npmjs.com/package/lodash.merge), but to decrease package size and provide more control over behavior, this is now configurable.
 
 ### `initialState`
+`optional` <br>
 An initial value for the reducer of the slice. Should satisfy the type `Partial<TSliceState>`. <br>
 See the [`createSlice()` docs](https://redux-toolkit.js.org/api/createSlice#initialstate).
 
+### `selectSliceState`
+A selector `function` that returns the slice's state object.
+
+### `selectCanRequest`
+`optional` <br>
+A selector `function` that returns true if the slice is able the make a request. <br>
+The default behavior returns true if the slice is not requesting, doesn't have an error, and hasn't been modified.
+
+### `selectShouldRequest`
+`optional` <br>
+A selector `function` that returns true if the slice should make a request. <br>
+The default behavior returns true if `selectCanRequest` returns true, and the slice has not been hydrated.
+
+### `createTimestamp`
+`optional` <br>
+A `function` that takes a `Date` object and returns a string. <br>
+The default behavior returns an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp with an offset.
+
 ### `debug`
+`optional` <br>
 A `boolean` value that, when `true`, logs information about the slice to the console.
 
 ## Return Value
@@ -31,6 +52,7 @@ A `boolean` value that, when `true`, logs information about the slice to the con
 
 ```typescript
 import { createModelSlice } from '@gjv/redux-slice-factory';
+import merge from 'lodash.merge';
 
 interface IUserModel {
     id: string;
@@ -53,6 +75,7 @@ const slice = createModelSlice<
     >({
         name: 'User',
         selectSliceState: (globalState) => globalState.User,
+        handleUpdate: merge,
     });
 
 // Custom Async Thunk
@@ -81,7 +104,7 @@ const _actions = {
 const UserSlice = {
     name: slice.name,
     reducer: slice.reducer,
-    actions: _actions
+    actions: _actions,
     selectors: slice.selectors
 };
 

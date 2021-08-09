@@ -13,7 +13,7 @@
   "scripts": {
     "setup:install": "npm install",
     "setup:clean-install": "npm ci",
-    "setup:update": "npm-check -u",
+    "setup:update": "npx npm-check -u",
     "setup:clean": "rimraf ./node_modules",
     "build": "tsdx build --format cjs,esm --name redux-slice-factory && api-extractor run",
     "build:clean": "rimraf ./dist && rimraf ./temp",
@@ -46,22 +46,20 @@
     "url": "https://github.com/gregjoeval/package-library/issues"
   },
   "peerDependencies": {
-    "@reduxjs/toolkit": "^1.4.0"
+    "@reduxjs/toolkit": "~1"
   },
   "devDependencies": {
     "@gjv/eslint-config-typescript": "^0.8.1",
-    "@microsoft/api-extractor": "^7.16.1",
-    "@reduxjs/toolkit": "^1.6.0",
-    "@types/jest": "^26.0.23",
+    "@microsoft/api-extractor": "^7.18.4",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@types/jest": "^26.0.24",
     "@types/lodash.merge": "^4.6.6",
-    "@typescript-eslint/eslint-plugin": "^4.28.0",
-    "@typescript-eslint/parser": "^4.28.0",
-    "npm-check": "^5.9.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "lodash.merge": "^4.6.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0"
-  },
-  "dependencies": {
-    "lodash.merge": "^4.6.2"
   },
   "keywords": [
     "redux",

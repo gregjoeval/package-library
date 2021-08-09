@@ -1,13 +1,12 @@
 import {
     CaseReducer,
     createSelector,
-    createSlice,
-    PayloadAction,
+    createSlice, Draft,
+    PayloadAction, SerializedError,
 } from '@reduxjs/toolkit'
-import merge from 'lodash.merge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
+import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
 import { getISOStringWithOffset, logSlice } from '../../utilities'
 
 /**
@@ -29,7 +28,7 @@ export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
@@ -44,7 +43,7 @@ export type IModelSlice<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > = ISlice<
 TGlobalState,
 IModelState<TModel, TStatusEnum, TError>,
@@ -59,14 +58,9 @@ export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
-> {
-    name: ISliceName<TGlobalState>;
-    selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
-    selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
-    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean;
-    initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
-    debug?: boolean;
+    TError extends SerializedError = Error
+> extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
+    handleUpdate: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
 }
 
 /**
@@ -76,7 +70,7 @@ function createModelSlice<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
@@ -86,7 +80,7 @@ function createModelSlice<
 
     const defaultShouldRequestSelector = (sliceState: ISliceState, canRequest: boolean): boolean => canRequest && sliceState.lastHydrated === null
 
-    const { name, selectSliceState, selectCanRequest = defaultCanRequestSelector, selectShouldRequest = defaultShouldRequestSelector, initialState, debug } = options
+    const { name, selectSliceState, handleUpdate, selectCanRequest = defaultCanRequestSelector, selectShouldRequest = defaultShouldRequestSelector, initialState, debug, createTimestamp = getISOStringWithOffset } = options
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -114,14 +108,14 @@ function createModelSlice<
     const modifyState = (state: ISliceState, model: TModel): void => {
         setModelState(state, model)
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastModified(state, getISOStringWithOffset())
+        setLastModified(state, createTimestamp())
     }
 
     const hydrateState = (state: ISliceState, model: TModel): void => {
         setModelState(state, model)
         setLastModified(state, null)
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastHydrated(state, getISOStringWithOffset())
+        setLastHydrated(state, createTimestamp())
     }
 
     const initialSliceState = ModelState.create<TModel, TStatusEnum, TError>(initialState ?? {})
@@ -134,7 +128,7 @@ function createModelSlice<
                 hydrateState(state as ISliceState, action.payload)
             },
             update: (state, action) => {
-                const newModel = merge(state.model, action.payload) as TModel
+                const newModel = handleUpdate(state.model, action.payload)
                 modifyState(state as ISliceState, newModel)
             },
             reset: () => initialSliceState,

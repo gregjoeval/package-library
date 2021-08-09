@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.16.1",
+    "toolVersion": "7.18.4",
     "schemaVersion": 1004,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -210,8 +210,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -361,8 +361,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -512,8 +512,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -530,7 +530,25 @@
             },
             {
               "kind": "Content",
-              "text": "> "
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISliceOptions",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntityState",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity, TStatusEnum, TError>> "
             }
           ],
           "releaseTag": "Public",
@@ -584,138 +602,6 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#debug:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "debug?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "debug",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#initialState:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "initialState?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IEntityState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TEntity, TStatusEnum, TError>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "initialState",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#name:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "name: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISliceName",
-                  "canonicalReference": "@gjv/redux-slice-factory!ISliceName:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TGlobalState>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "name",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectCanRequest:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectCanRequest?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(sliceState: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IEntityState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TEntity, TStatusEnum, TError>) => boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "selectCanRequest",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              }
-            },
-            {
-              "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectId:member",
               "docComment": "",
               "excerptTokens": [
@@ -743,76 +629,6 @@
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectShouldRequest:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectShouldRequest?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(sliceState: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IEntityState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TEntity, TStatusEnum, TError>, canRequest: boolean) => boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "selectShouldRequest",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateEntitySliceOptions#selectSliceState:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectSliceState: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(state: TGlobalState) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IEntityState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TEntity, TStatusEnum, TError>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "selectSliceState",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
               }
             },
             {
@@ -851,7 +667,12 @@
               }
             }
           ],
-          "extendsTokenRanges": []
+          "extendsTokenRanges": [
+            {
+              "startIndex": 13,
+              "endIndex": 17
+            }
+          ]
         },
         {
           "kind": "Interface",
@@ -894,8 +715,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -912,7 +733,25 @@
             },
             {
               "kind": "Content",
-              "text": "> "
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ISliceOptions",
+              "canonicalReference": "@gjv/redux-slice-factory!ISliceOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelState",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel, TStatusEnum, TError>> "
             }
           ],
           "releaseTag": "Public",
@@ -966,38 +805,25 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#debug:member",
+              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#handleUpdate:member",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "debug?: "
+                  "text": "handleUpdate: "
                 },
                 {
                   "kind": "Content",
-                  "text": "boolean"
+                  "text": "(current: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Draft",
+                  "canonicalReference": "immer!Draft:type"
                 },
                 {
                   "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "debug",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#initialState:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "initialState?: "
+                  "text": "<TModel>, update: "
                 },
                 {
                   "kind": "Reference",
@@ -1006,47 +832,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IModelState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TModel, TStatusEnum, TError>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "initialState",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 5
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#name:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "name: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ISliceName",
-                  "canonicalReference": "@gjv/redux-slice-factory!ISliceName:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TGlobalState>"
+                  "text": "<TModel>) => TModel"
                 },
                 {
                   "kind": "Content",
@@ -1055,119 +841,19 @@
               ],
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "name",
+              "name": "handleUpdate",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectCanRequest:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectCanRequest?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(sliceState: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IModelState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TModel, TStatusEnum, TError>) => boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "selectCanRequest",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectShouldRequest:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectShouldRequest?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(sliceState: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IModelState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": true,
-              "releaseTag": "Public",
-              "name": "selectShouldRequest",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#selectSliceState:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "selectSliceState: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(state: TGlobalState) => "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IModelState",
-                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<TModel, TStatusEnum, TError>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "selectSliceState",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "endIndex": 6
               }
             }
           ],
-          "extendsTokenRanges": []
+          "extendsTokenRanges": [
+            {
+              "startIndex": 13,
+              "endIndex": 17
+            }
+          ]
         },
         {
           "kind": "TypeAlias",
@@ -1210,8 +896,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -1922,8 +1608,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -2092,8 +1778,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -2187,7 +1873,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors:interface",
-          "docComment": "/**\n * @public\n */\n",
+          "docComment": "/**\n * @see\n *\n * IMetaState\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2225,8 +1911,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -2432,8 +2118,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -2628,8 +2314,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -2980,8 +2666,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -3160,8 +2846,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -3509,7 +3195,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectCanRequest:member",
-              "docComment": "",
+              "docComment": "/**\n * @description (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified\n *\n * @see\n *\n * IMetaState\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3535,7 +3221,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectShouldRequest:member",
-              "docComment": "",
+              "docComment": "/**\n * @description (overrideable) The slice should request if it can request and it has not been hydrated\n *\n * @see\n *\n * IMetaState\n *\n * @see\n *\n * ISliceSelectors.selectCanRequest\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
