@@ -53,13 +53,14 @@
     "@microsoft/api-extractor": "^7.18.4",
     "@reduxjs/toolkit": "^1.6.1",
     "@types/jest": "^26.0.24",
-    "@types/lodash.merge": "^4.6.6",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "eslint-plugin-tsdoc": "^0.2.14",
-    "lodash.merge": "^4.6.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0"
+  },
+  "dependencies": {
+    "ts-deepmerge": "^1.0.8"
   },
   "keywords": [
     "redux",
@@ -68,11 +69,22 @@
     "toolkit",
     "reducer",
     "slice",
+    "state",
     "immer",
     "immutable",
+    "predictable",
+    "functional",
     "action",
     "selector",
-    "factory"
+    "factory",
+    "shape",
+    "model",
+    "entity",
+    "createSlice",
+    "createModelSlice",
+    "createEntitySlice",
+    "redux-toolkit",
+    "redux-slice-factory"
   ],
   "gitHead": "89be455bfb72a7da511346115321debac238b3c1"
 }
