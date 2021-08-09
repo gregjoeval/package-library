@@ -1,7 +1,7 @@
 import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { getISOStringWithOffset } from '../../utilities'
+import { getISOString } from '../../utilities'
 import createEntitySlice, { IEntitySlice } from './CreateEntitySlice'
 
 enum UsersSliceStatusEnum {
@@ -202,8 +202,8 @@ describe('createEntitySlice', () => {
             entities: previousData,
             status: StatusEnum.Failed,
             error: new Error('Whoops.'),
-            lastHydrated: getISOStringWithOffset(),
-            lastModified: getISOStringWithOffset(),
+            lastHydrated: getISOString(),
+            lastModified: getISOString(),
         })
 
         // WHEN

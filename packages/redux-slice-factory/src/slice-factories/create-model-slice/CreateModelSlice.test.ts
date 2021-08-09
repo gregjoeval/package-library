@@ -1,8 +1,8 @@
 import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
-import merge from 'lodash.merge'
+import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { getISOStringWithOffset } from '../../utilities'
+import { getISOString } from '../../utilities'
 import createModelSlice, { IModelSlice } from './CreateModelSlice'
 
 enum UserSliceStatusEnum {
@@ -177,8 +177,8 @@ describe('createModelSlice', () => {
             model: previousData,
             status: StatusEnum.Failed,
             error: new Error('Whoops.'),
-            lastHydrated: getISOStringWithOffset(),
-            lastModified: getISOStringWithOffset(),
+            lastHydrated: getISOString(),
+            lastModified: getISOString(),
         })
 
         // WHEN

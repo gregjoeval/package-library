@@ -13,7 +13,7 @@ import {
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
 import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
-import { getISOStringWithOffset, logSlice } from '../../utilities'
+import { getISOString } from '../../utilities'
 
 /**
  * @public
@@ -97,14 +97,13 @@ function createEntitySlice<
 
     const {
         name,
-        selectSliceState,
         selectId,
         sortComparer,
+        selectSliceState,
         selectShouldRequest = defaultShouldRequestSelector,
         selectCanRequest = defaultCanRequestSelector,
-        initialState,
-        createTimestamp = getISOStringWithOffset,
-        debug,
+        initialState = {},
+        createTimestamp = getISOString,
     } = options
 
     // intentional, necessary with immer
@@ -149,7 +148,7 @@ function createEntitySlice<
         sortComparer: sortComparer,
     })
 
-    const initialEntityState = entityAdapter.getInitialState(initialState ?? {})
+    const initialEntityState = entityAdapter.getInitialState(initialState)
     const initialSliceState = EntityState.create<TEntity, TStatusEnum, TError>(initialEntityState)
 
     const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>, ISliceName<TGlobalState>>({
@@ -234,18 +233,12 @@ function createEntitySlice<
         selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
     }
 
-    const entitySlice: IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> = {
+    return {
         name: slice.name,
         reducer: slice.reducer,
         actions: slice.actions,
         selectors: selectors,
     }
-
-    if (debug) {
-        logSlice(entitySlice, initialSliceState)
-    }
-
-    return entitySlice
 }
 
 export default createEntitySlice
