@@ -52,7 +52,7 @@
     "@gjv/eslint-config-typescript": "^0.8.1",
     "@microsoft/api-extractor": "^7.16.1",
     "@reduxjs/toolkit": "^1.6.0",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.0.0",
     "@types/lodash.merge": "^4.6.6",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
