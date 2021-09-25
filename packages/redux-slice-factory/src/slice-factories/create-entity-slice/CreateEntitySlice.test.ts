@@ -53,7 +53,7 @@ describe('createEntitySlice', () => {
     it('initializes', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
-        expect(Object.values(slice.actions)).toHaveLength(16)
+        expect(Object.values(slice.actions)).toHaveLength(18)
         expect(Object.values(slice.selectors)).toHaveLength(12)
     })
 
@@ -74,7 +74,7 @@ describe('createEntitySlice', () => {
         const error = new Error('this was a test')
 
         // WHEN
-        const nextState = slice.reducer(sliceState, slice.actions.setError(mapErrorToSerializableObject(error)))
+        const nextState = slice.reducer(sliceState, slice.actions.setError(error))
 
         // THEN
         expect(nextState.ids).toEqual(previousState.ids) // should be unaffected

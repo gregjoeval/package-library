@@ -3,23 +3,21 @@ import {
     createSelector,
     createSlice,
     PayloadAction,
+    SerializedError,
 } from '@reduxjs/toolkit'
 import merge from 'lodash.merge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
-import { getISOStringWithOffset, logSlice } from '../../utilities'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
+import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities'
 
 /**
  * @public
  */
-export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
+export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = IMetaSliceReducers <TSliceState, TStatusEnum, TError> & {
     hydrate: CaseReducer<TSliceState, PayloadAction<TModel>>;
     update: CaseReducer<TSliceState, PayloadAction<Partial<TModel>>>;
     set: CaseReducer<TSliceState, PayloadAction<TModel>>;
-    reset: CaseReducer<TSliceState, PayloadAction>;
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
 /**
@@ -29,7 +27,7 @@ export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
@@ -44,7 +42,7 @@ export type IModelSlice<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 > = ISlice<
 TGlobalState,
 IModelState<TModel, TStatusEnum, TError>,
@@ -59,7 +57,7 @@ export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 > {
     name: ISliceName<TGlobalState>;
     selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
@@ -76,7 +74,7 @@ function createModelSlice<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
@@ -95,7 +93,7 @@ function createModelSlice<
     }
 
     const setError = (state: ISliceState, error: TError | null): void => {
-        state.error = error === null ? null : error
+        state.error = mapErrorToSerializableObject(error);
     }
 
     const setStatus = (state: ISliceState, status: TStatusEnum): void => {
@@ -146,6 +144,14 @@ function createModelSlice<
             },
             setStatus: (state, action) => {
                 setStatus(state as ISliceState, action.payload)
+            },
+            succeed: (state, action) => {
+                setStatus(state as ISliceState, action.payload)
+                setError(state as ISliceState, null)
+            },
+            fail: (state, action) => {
+                setStatus(state as ISliceState, action.payload.status)
+                setError(state as ISliceState, action.payload.error)
             },
         },
     })

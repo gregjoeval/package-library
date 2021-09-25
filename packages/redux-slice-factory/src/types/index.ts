@@ -1,4 +1,4 @@
-import { CaseReducerActions, Reducer, SliceCaseReducers } from '@reduxjs/toolkit'
+import { CaseReducer, CaseReducerActions, PayloadAction, Reducer, SerializedError, SliceCaseReducers } from '@reduxjs/toolkit'
 import StatusEnum from '../constants/StatusEnum'
 
 /**
@@ -39,10 +39,21 @@ export interface ISlice<
 export interface IMetaSliceSelectors<
     TGlobalState,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 > {
     selectStatus: (state: TGlobalState) => TStatusEnum;
     selectError: (state: TGlobalState) => TError | null;
     selectLastModified: (state: TGlobalState) => string | null;
     selectLastHydrated: (state: TGlobalState) => string | null;
+}
+
+/**
+ * @public
+ */
+ export type IMetaSliceReducers <TSliceState, TStatusEnum, TError> = {
+    reset: CaseReducer<TSliceState, PayloadAction>;
+    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
+    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
+    succeed: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
+    fail: CaseReducer<TSliceState, PayloadAction<{ status: TStatusEnum, error: TError | null }>>;
 }

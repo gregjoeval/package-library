@@ -9,16 +9,17 @@ import {
     EntityState as ReduxEntityState,
     PayloadAction,
     Update,
+    SerializedError,
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
-import { getISOStringWithOffset, logSlice } from '../../utilities'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
+import { getISOStringWithOffset, logSlice, mapErrorToSerializableObject } from '../../utilities'
 
 /**
  * @public
  */
-export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
+export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = IMetaSliceReducers <TSliceState, TStatusEnum, TError> & {
     addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
     addMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
     hydrateOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
@@ -31,10 +32,7 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
     removeOne: CaseReducer<TSliceState, PayloadAction<EntityId>>;
     removeMany: CaseReducer<TSliceState, PayloadAction<Array<EntityId>>>;
     removeAll: CaseReducer<TSliceState, PayloadAction>;
-    reset: CaseReducer<TSliceState, PayloadAction>;
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
 /**
@@ -44,7 +42,7 @@ export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
@@ -57,7 +55,7 @@ export type IEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 > = ISlice<
 TGlobalState,
 IEntityState<TEntity, TStatusEnum, TError>,
@@ -72,7 +70,7 @@ export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 > {
     name: ISliceName<TGlobalState>;
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
@@ -91,7 +89,7 @@ function createEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
@@ -111,7 +109,7 @@ function createEntitySlice<
     }
 
     const setError = (state: ISliceState, error: TError | null): void => {
-        state.error = error === null ? null : error
+        state.error = mapErrorToSerializableObject(error);
     }
 
     const setStatus = (state: ISliceState, status: TStatusEnum): void => {
@@ -210,6 +208,14 @@ function createEntitySlice<
             },
             setStatus: (state, action) => {
                 setStatus(state as ISliceState, action.payload)
+            },
+            succeed: (state, action) => {
+                setStatus(state as ISliceState, action.payload)
+                setError(state as ISliceState, null)
+            },
+            fail: (state, action) => {
+                setStatus(state as ISliceState, action.payload.status)
+                setError(state as ISliceState, action.payload.error)
             },
         },
     })

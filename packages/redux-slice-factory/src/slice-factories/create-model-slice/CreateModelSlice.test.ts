@@ -51,7 +51,7 @@ describe('createModelSlice', () => {
     it('initializes', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
-        expect(Object.values(slice.actions)).toHaveLength(6)
+        expect(Object.values(slice.actions)).toHaveLength(8)
         expect(Object.values(slice.selectors)).toHaveLength(8)
     })
 
@@ -72,7 +72,7 @@ describe('createModelSlice', () => {
         const error = new Error('this was a test')
 
         // WHEN
-        const nextState = slice.reducer(sliceState, slice.actions.setError(mapErrorToSerializableObject(error)))
+        const nextState = slice.reducer(sliceState, slice.actions.setError(error))
 
         // THEN
         expect(nextState.model).toEqual(previousState.model) // should be unaffected

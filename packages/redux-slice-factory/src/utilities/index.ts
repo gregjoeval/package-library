@@ -1,4 +1,4 @@
-import { SliceCaseReducers } from '@reduxjs/toolkit'
+import { SerializedError, SliceCaseReducers } from '@reduxjs/toolkit'
 import { ISlice, ISliceSelectors } from '../types'
 
 /**
@@ -19,7 +19,10 @@ export const getISOStringWithOffset = (dateTime: Date = new Date()): string => {
 /**
  * @internal
  */
-export const mapErrorToSerializableObject = <TError extends Error = Error> (error: TError): Record<keyof Error, string> => {
+export const mapErrorToSerializableObject = <TError extends SerializedError = SerializedError> (error: TError | null): TError | null => {
+    if (error === null) {
+        return null;
+    }
     const propertyNames = Object.getOwnPropertyNames(error)
     return propertyNames.reduce((accumulator, propertyName) => {
         const propertyDescriptorValue: unknown = Object.getOwnPropertyDescriptor(error, propertyName)?.value
@@ -27,7 +30,7 @@ export const mapErrorToSerializableObject = <TError extends Error = Error> (erro
             ...accumulator,
             [propertyName]: propertyDescriptorValue,
         }
-    }, {} as Record<keyof Error, string>)
+    }, {} as TError)
 }
 
 /**
