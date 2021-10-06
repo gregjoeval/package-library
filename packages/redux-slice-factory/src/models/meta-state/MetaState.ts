@@ -18,12 +18,12 @@ export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & str
     error: TError | null;
 
     /**
-     * The ISO string of the last time the slice was modified.
+     * The timestamp of the last time the slice was modified.
      */
     lastModified: string | null;
 
     /**
-     * The ISO string of the last time the slice was hydrated.
+     * The timestamp of the last time the slice was hydrated.
      */
     lastHydrated: string | null;
 }

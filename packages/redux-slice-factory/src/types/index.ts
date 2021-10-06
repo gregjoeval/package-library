@@ -18,11 +18,34 @@ export interface ISliceOptions<
     TGlobalState,
     TSliceState
 > {
+    /**
+     * The name of the slice in the redux store.
+     */
     name: ISliceName<TGlobalState>;
+
+    /**
+     * @see {@link ISliceSelectors.selectSliceState}
+     */
     selectSliceState: (state: TGlobalState) => TSliceState;
+
+    /**
+     * @see {@link ISliceSelectors.selectCanRequest}
+     */
     selectCanRequest?: ISelectCanRequest<TSliceState>;
+
+    /**
+     * @see {@link ISliceSelectors.selectShouldRequest}
+     */
     selectShouldRequest?: ISelectShouldRequest<TSliceState>;
+
+    /**
+     * The initial state of the slice.
+     */
     initialState?: Partial<TSliceState>;
+
+    /**
+     * The function for mapping a `Date` to a timestamp.
+     */
     createTimestamp?: (datetime?: Date) => string;
 }
 
@@ -34,6 +57,7 @@ export interface ISliceSelectors<
     TSliceState
 > {
     /**
+     * @public
      * Selects the entire slice state.
      */
     selectSliceState: (state: TGlobalState) => TSliceState;
