@@ -10,6 +10,9 @@ export interface IModelState<
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends SerializedError = Error
 > extends IMetaState<TStatusEnum, TError> {
+    /**
+     * The model of the slice.
+     */
     model: T;
 }
 

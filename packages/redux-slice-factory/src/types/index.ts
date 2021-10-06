@@ -33,16 +33,19 @@ export interface ISliceSelectors<
     TGlobalState,
     TSliceState
 > {
-    selectSliceState: (state: TGlobalState) => TSliceState;
     /**
-     * (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified
-     * @see IMetaState
+     * Selects the entire slice state.
+     */
+    selectSliceState: (state: TGlobalState) => TSliceState;
+
+    /**
+     * @defaultValue (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified
      */
     selectCanRequest: (state: TGlobalState) => boolean;
+
     /**
-     * (overrideable) The slice should request if it can request and it has not been hydrated
-     * @see IMetaState
-     * @see ISliceSelectors.selectCanRequest
+     * @defaultValue (overrideable) The slice should request if it can request and it has not been hydrated
+     * @see {@link ISliceSelectors.selectCanRequest}
      */
     selectShouldRequest: (state: TGlobalState) => boolean
 }
@@ -76,8 +79,27 @@ export interface IMetaSliceSelectors<
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
     TError extends SerializedError = Error
 > {
+    /**
+     * This selects the status of the slice.
+     * @see {@link IMetaState.status}
+     */
     selectStatus: (state: TGlobalState) => TStatusEnum;
+
+    /**
+     * This selects the error of the slice.
+     * @see {@link IMetaState.error}
+     */
     selectError: (state: TGlobalState) => TError | null;
+
+    /**
+     * This selects the lastModified of the slice.
+     * @see {@link IMetaState.lastModified}
+     */
     selectLastModified: (state: TGlobalState) => string | null;
+
+    /**
+     * This selects the status of the slice.
+     * @see {@link IMetaState.lastHydrated}
+     */
     selectLastHydrated: (state: TGlobalState) => string | null;
 }

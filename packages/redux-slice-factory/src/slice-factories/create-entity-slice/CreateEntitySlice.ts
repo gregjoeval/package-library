@@ -19,21 +19,97 @@ import { getISOString } from '../../utilities'
  * @public
  */
 export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
+    /**
+     * This will modify the slice. This adds one entity to the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter}
+     */
     addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+
+    /**
+     * This will modify the slice. This adds many entities to the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter}
+     */
     addMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will hydrate the slice. This sets one entity of the slice and lastHydrated, and resets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setOne}
+     */
     hydrateOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+
+    /**
+     * This will hydrate the slice. This sets many entities of the slice and lastHydrated, and resets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setMany}
+     */
     hydrateMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will hydrate the slice. This sets all entities of the slice and lastHydrated, and resets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setAll}
+     */
     hydrateAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will modify the slice. This updates one entity of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.updateOne}
+     */
     updateOne: CaseReducer<TSliceState, PayloadAction<Update<TEntity>>>;
+
+    /**
+     * This will modify the slice. This updates many entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.updateMany}
+     */
     updateMany: CaseReducer<TSliceState, PayloadAction<Array<Update<TEntity>>>>;
+
+    /**
+     * This will modify the slice. This updates or inserts one entity of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.upsertOne}
+     */
     upsertOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+
+    /**
+     * This will modify the slice. This updates or inserts many entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.upsertMany}
+     */
     upsertMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will modify the slice. This removes one entity of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.removeOne}
+     */
     removeOne: CaseReducer<TSliceState, PayloadAction<EntityId>>;
+
+    /**
+     * This will modify the slice. This removes many entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.removeMany}
+     */
     removeMany: CaseReducer<TSliceState, PayloadAction<Array<EntityId>>>;
+
+    /**
+     * This will modify the slice. This removes all entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.removeAll}
+     */
     removeAll: CaseReducer<TSliceState, PayloadAction>;
+
+    /**
+     * This will reset the slice to its initial state.
+     */
     reset: CaseReducer<TSliceState, PayloadAction>;
+
+    /**
+     * This will modify the slice. This sets all entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setAll}
+     */
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will set the status of the slice.
+     */
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
+
+    /**
+     * This will set the error of the slice.
+     */
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 

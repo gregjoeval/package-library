@@ -7,6 +7,7 @@ import {
     PayloadAction,
     SerializedError,
 } from '@reduxjs/toolkit'
+import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
 import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
@@ -16,11 +17,34 @@ import { getISOString } from '../../utilities'
  * @public
  */
 export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
+    /**
+     * This will hydrate the slice. This sets the model and lastHydrated, and resets lastModified.
+     */
     hydrate: CaseReducer<TSliceState, PayloadAction<TModel>>;
+
+    /**
+     * This will modify the slice. This updates the model and sets lastModified.
+     */
     update: CaseReducer<TSliceState, PayloadAction<Partial<TModel>>>;
+
+    /**
+     * This will modify the slice. This sets the model and sets lastModified.
+     */
     set: CaseReducer<TSliceState, PayloadAction<TModel>>;
+
+    /**
+     * This will reset the slice to its initial state.
+     */
     reset: CaseReducer<TSliceState, PayloadAction>;
+
+    /**
+     * This will set the status of the slice.
+     */
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
+
+    /**
+     * This will set the error of the slice.
+     */
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
@@ -36,6 +60,9 @@ export interface IModelSliceSelectors <
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
     IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    /**
+     * This selects the slice model.
+     */
     selectModel: (state: TGlobalState) => TModel;
 }
 
@@ -63,6 +90,10 @@ export interface ICreateModelSliceOptions<
     TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
     TError extends SerializedError = Error
 > extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
+    /**
+     * This is how the slice will merge the current model and the update model during an update action
+     * @defaultValue `merge` from {@link https://www.npmjs.com/package/ts-deepmerge}
+     */
     handleUpdate: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
 }
 
@@ -85,7 +116,7 @@ function createModelSlice<
 
     const {
         name,
-        handleUpdate,
+        handleUpdate = merge,
         selectSliceState,
         selectCanRequest = defaultCanRequestSelector,
         selectShouldRequest = defaultShouldRequestSelector,

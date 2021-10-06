@@ -5,9 +5,26 @@ import StatusEnum from '../../constants/StatusEnum'
  * @public
  */
 export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> {
+    /**
+     * The status of the slice.
+     * @defaultValue `StatusEnum`
+     */
     status: TStatusEnum;
+
+    /**
+     * The status of the slice.
+     * @defaultValue `SerializedError`
+     */
     error: TError | null;
+
+    /**
+     * The ISO string of the last time the slice was modified.
+     */
     lastModified: string | null;
+
+    /**
+     * The ISO string of the last time the slice was hydrated.
+     */
     lastHydrated: string | null;
 }
 
