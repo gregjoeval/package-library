@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.18.4",
+    "toolVersion": "7.18.13",
     "schemaVersion": 1004,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -806,7 +806,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ICreateModelSliceOptions#handleUpdate:member",
-              "docComment": "",
+              "docComment": "/**\n * This is how the slice will merge the current model and the update model during an update action\n *\n * @defaultValue\n *\n * `merge` from {@link https://www.npmjs.com/package/ts-deepmerge}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1973,7 +1973,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectError:member",
-              "docComment": "",
+              "docComment": "/**\n * This selects the error of the slice.\n *\n * @see\n *\n * {@link IMetaState.error}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1999,7 +1999,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectLastHydrated:member",
-              "docComment": "",
+              "docComment": "/**\n * This selects the status of the slice.\n *\n * @see\n *\n * {@link IMetaState.lastHydrated}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2025,7 +2025,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectLastModified:member",
-              "docComment": "",
+              "docComment": "/**\n * This selects the lastModified of the slice.\n *\n * @see\n *\n * {@link IMetaState.lastModified}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2051,7 +2051,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaSliceSelectors#selectStatus:member",
-              "docComment": "",
+              "docComment": "/**\n * This selects the status of the slice.\n *\n * @see\n *\n * {@link IMetaState.status}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2131,8 +2131,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -2169,7 +2169,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaState#error:member",
-              "docComment": "",
+              "docComment": "/**\n * The status of the slice.\n *\n * @defaultValue\n *\n * `SerializedError`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2195,7 +2195,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaState#lastHydrated:member",
-              "docComment": "",
+              "docComment": "/**\n * The ISO string of the last time the slice was hydrated.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2221,7 +2221,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaState#lastModified:member",
-              "docComment": "",
+              "docComment": "/**\n * The ISO string of the last time the slice was modified.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2247,7 +2247,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaState#status:member",
-              "docComment": "",
+              "docComment": "/**\n * The status of the slice.\n *\n * @defaultValue\n *\n * `StatusEnum`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2662,6 +2662,10 @@
             },
             {
               "kind": "Content",
+              "text": " | string"
+            },
+            {
+              "kind": "Content",
               "text": ", TError extends "
             },
             {
@@ -2750,18 +2754,18 @@
               },
               "defaultTypeTokenRange": {
                 "startIndex": 5,
-                "endIndex": 7
+                "endIndex": 8
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 9,
+                "endIndex": 11
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 12,
+                "endIndex": 13
               }
             }
           ],
@@ -2770,7 +2774,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IModelSliceSelectors#selectModel:member",
-              "docComment": "",
+              "docComment": "/**\n * This selects the slice model.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2796,12 +2800,12 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 13,
-              "endIndex": 17
+              "startIndex": 14,
+              "endIndex": 18
             },
             {
-              "startIndex": 18,
-              "endIndex": 20
+              "startIndex": 19,
+              "endIndex": 21
             }
           ]
         },
@@ -2917,7 +2921,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IModelState#model:member",
-              "docComment": "",
+              "docComment": "/**\n * The model of the slice.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3195,7 +3199,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectCanRequest:member",
-              "docComment": "/**\n * @description (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified\n *\n * @see\n *\n * IMetaState\n */\n",
+              "docComment": "/**\n * @defaultValue\n *\n * (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3221,7 +3225,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectShouldRequest:member",
-              "docComment": "/**\n * @description (overrideable) The slice should request if it can request and it has not been hydrated\n *\n * @see\n *\n * IMetaState\n *\n * @see\n *\n * ISliceSelectors.selectCanRequest\n */\n",
+              "docComment": "/**\n * @defaultValue\n *\n * (overrideable) The slice should request if it can request and it has not been hydrated\n *\n * @see\n *\n * {@link ISliceSelectors.selectCanRequest}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3247,7 +3251,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectSliceState:member",
-              "docComment": "",
+              "docComment": "/**\n * Selects the entire slice state.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
