@@ -57,12 +57,12 @@
     "@material-ui/styles": "^4.11.4",
     "@types/lodash.concat": "^4.5.6",
     "@types/lodash.takeright": "^4.1.6",
-    "@typescript-eslint/eslint-plugin": "^4.28.0",
-    "@typescript-eslint/parser": "^4.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "react": "^17.0.1",
     "rimraf": "^3.0.2",
     "tsdx": "^0.14.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.1"
   },
   "gitHead": "89be455bfb72a7da511346115321debac238b3c1"
 }
