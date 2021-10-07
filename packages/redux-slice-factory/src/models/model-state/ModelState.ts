@@ -1,3 +1,4 @@
+import { SerializedError } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import MetaState, { IMetaState } from '../meta-state'
 
@@ -7,15 +8,18 @@ import MetaState, { IMetaState } from '../meta-state'
 export interface IModelState<
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > extends IMetaState<TStatusEnum, TError> {
+    /**
+     * The model of the slice.
+     */
     model: T;
 }
 
 const create = <
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > (args: Partial<IModelState<T, TStatusEnum, TError>> = {}): IModelState<T, TStatusEnum, TError> => {
     const metaState = MetaState.create(args)
     return {

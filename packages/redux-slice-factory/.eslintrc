@@ -11,14 +11,13 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "plugins": [
+    "eslint-plugin-tsdoc"
+  ],
   "extends": [
     "@gjv/eslint-config-typescript"
   ],
   "rules": {
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
-
-    "no-redeclare": "off",
-    "@typescript-eslint/no-redeclare": ["error"]
+    "tsdoc/syntax": "warn"
   }
 }

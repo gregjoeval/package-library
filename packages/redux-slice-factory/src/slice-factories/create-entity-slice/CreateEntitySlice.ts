@@ -8,32 +8,108 @@ import {
     EntitySelectors,
     EntityState as ReduxEntityState,
     PayloadAction,
-    Update,
+    Update, SerializedError,
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
-import { getISOStringWithOffset, logSlice } from '../../utilities'
+import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { getISOString } from '../../utilities'
 
 /**
  * @public
  */
 export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
+    /**
+     * This will modify the slice. This adds one entity to the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter}
+     */
     addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+
+    /**
+     * This will modify the slice. This adds many entities to the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter}
+     */
     addMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will hydrate the slice. This sets one entity of the slice and lastHydrated, and resets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setOne}
+     */
     hydrateOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+
+    /**
+     * This will hydrate the slice. This sets many entities of the slice and lastHydrated, and resets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setMany}
+     */
     hydrateMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will hydrate the slice. This sets all entities of the slice and lastHydrated, and resets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setAll}
+     */
     hydrateAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will modify the slice. This updates one entity of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.updateOne}
+     */
     updateOne: CaseReducer<TSliceState, PayloadAction<Update<TEntity>>>;
+
+    /**
+     * This will modify the slice. This updates many entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.updateMany}
+     */
     updateMany: CaseReducer<TSliceState, PayloadAction<Array<Update<TEntity>>>>;
+
+    /**
+     * This will modify the slice. This updates or inserts one entity of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.upsertOne}
+     */
     upsertOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+
+    /**
+     * This will modify the slice. This updates or inserts many entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.upsertMany}
+     */
     upsertMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will modify the slice. This removes one entity of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.removeOne}
+     */
     removeOne: CaseReducer<TSliceState, PayloadAction<EntityId>>;
+
+    /**
+     * This will modify the slice. This removes many entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.removeMany}
+     */
     removeMany: CaseReducer<TSliceState, PayloadAction<Array<EntityId>>>;
+
+    /**
+     * This will modify the slice. This removes all entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.removeAll}
+     */
     removeAll: CaseReducer<TSliceState, PayloadAction>;
+
+    /**
+     * This will reset the slice to its initial state.
+     */
     reset: CaseReducer<TSliceState, PayloadAction>;
+
+    /**
+     * This will modify the slice. This sets all entities of the slice and sets lastModified.
+     * @see {@link @reduxjs/toolkit#EntityStateAdapter.setAll}
+     */
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+
+    /**
+     * This will set the status of the slice.
+     */
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
+
+    /**
+     * This will set the error of the slice.
+     */
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
@@ -44,7 +120,7 @@ export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
@@ -57,7 +133,7 @@ export type IEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 > = ISlice<
 TGlobalState,
 IEntityState<TEntity, TStatusEnum, TError>,
@@ -72,16 +148,10 @@ export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
-> {
-    name: ISliceName<TGlobalState>;
-    selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
+    TError extends SerializedError = Error
+> extends ISliceOptions<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>> {
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;
-    selectCanRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>) => boolean;
-    selectShouldRequest?: (sliceState: IEntityState<TEntity, TStatusEnum, TError>, canRequest: boolean) => boolean;
-    initialState?: Partial<IEntityState<TEntity, TStatusEnum, TError>>;
-    debug?: boolean;
 }
 
 /**
@@ -91,7 +161,7 @@ function createEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = Error
 >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
@@ -101,7 +171,16 @@ function createEntitySlice<
 
     const defaultShouldRequestSelector = (sliceState: ISliceState, canRequest: boolean): boolean => canRequest && sliceState.lastHydrated === null
 
-    const { name, selectSliceState, selectId, sortComparer, selectShouldRequest = defaultShouldRequestSelector, selectCanRequest = defaultCanRequestSelector, initialState, debug } = options
+    const {
+        name,
+        selectId,
+        sortComparer,
+        selectSliceState,
+        selectShouldRequest = defaultShouldRequestSelector,
+        selectCanRequest = defaultCanRequestSelector,
+        initialState = {},
+        createTimestamp = getISOString,
+    } = options
 
     // intentional, necessary with immer
     /* eslint-disable no-param-reassign */
@@ -130,14 +209,14 @@ function createEntitySlice<
     const modifyState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         setEntityState(state, entityState)
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastModified(state, getISOStringWithOffset())
+        setLastModified(state, createTimestamp())
     }
 
     const hydrateState = (state: ISliceState, entityState: ReduxEntityState<TEntity>): void => {
         setEntityState(state, entityState)
         setLastModified(state, null)
         // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastHydrated(state, getISOStringWithOffset())
+        setLastHydrated(state, createTimestamp())
     }
 
     const entityAdapter = createEntityAdapter({
@@ -145,7 +224,7 @@ function createEntitySlice<
         sortComparer: sortComparer,
     })
 
-    const initialEntityState = entityAdapter.getInitialState(initialState ?? {})
+    const initialEntityState = entityAdapter.getInitialState(initialState)
     const initialSliceState = EntityState.create<TEntity, TStatusEnum, TError>(initialEntityState)
 
     const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>, ISliceName<TGlobalState>>({
@@ -230,18 +309,12 @@ function createEntitySlice<
         selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
     }
 
-    const entitySlice: IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> = {
+    return {
         name: slice.name,
         reducer: slice.reducer,
         actions: slice.actions,
         selectors: selectors,
     }
-
-    if (debug) {
-        logSlice(entitySlice, initialSliceState)
-    }
-
-    return entitySlice
 }
 
 export default createEntitySlice

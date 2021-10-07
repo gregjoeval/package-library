@@ -1,24 +1,50 @@
 import {
     CaseReducer,
+    createNextState,
     createSelector,
     createSlice,
+    Draft,
     PayloadAction,
+    SerializedError,
 } from '@reduxjs/toolkit'
-import merge from 'lodash.merge'
+import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
-import { getISOStringWithOffset, logSlice } from '../../utilities'
+import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { getISOString } from '../../utilities'
 
 /**
  * @public
  */
 export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
+    /**
+     * This will hydrate the slice. This sets the model and lastHydrated, and resets lastModified.
+     */
     hydrate: CaseReducer<TSliceState, PayloadAction<TModel>>;
+
+    /**
+     * This will modify the slice. This updates the model and sets lastModified.
+     */
     update: CaseReducer<TSliceState, PayloadAction<Partial<TModel>>>;
+
+    /**
+     * This will modify the slice. This sets the model and sets lastModified.
+     */
     set: CaseReducer<TSliceState, PayloadAction<TModel>>;
+
+    /**
+     * This will reset the slice to its initial state.
+     */
     reset: CaseReducer<TSliceState, PayloadAction>;
+
+    /**
+     * This will set the status of the slice.
+     */
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
+
+    /**
+     * This will set the error of the slice.
+     */
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
@@ -28,12 +54,15 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum |& string,
+    TError extends SerializedError = Error
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
     IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    /**
+     * This selects the slice model.
+     */
     selectModel: (state: TGlobalState) => TModel;
 }
 
@@ -43,8 +72,8 @@ export interface IModelSliceSelectors <
 export type IModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
+    TError extends SerializedError = Error
 > = ISlice<
 TGlobalState,
 IModelState<TModel, TStatusEnum, TError>,
@@ -58,15 +87,14 @@ IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
 export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
-> {
-    name: ISliceName<TGlobalState>;
-    selectSliceState: (state: TGlobalState) => IModelState<TModel, TStatusEnum, TError>;
-    selectCanRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>) => boolean;
-    selectShouldRequest?: (sliceState: IModelState<TModel, TStatusEnum, TError>, canRequest: boolean) => boolean;
-    initialState?: Partial<IModelState<TModel, TStatusEnum, TError>>;
-    debug?: boolean;
+    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
+    TError extends SerializedError = Error
+> extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
+    /**
+     * This is how the slice will merge the current model and the update model during an update action
+     * @defaultValue `merge` from {@link https://www.npmjs.com/package/ts-deepmerge}
+     */
+    handleUpdate: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
 }
 
 /**
@@ -75,79 +103,60 @@ export interface ICreateModelSliceOptions<
 function createModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
+    TError extends SerializedError = Error
 >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
-    const defaultCanRequestSelector = (sliceState: ISliceState): boolean => sliceState.status !== StatusEnum.Requesting
+    const defaultCanRequestSelector = (sliceState: ISliceState): boolean => sliceState.status !== 'Requesting'
         && sliceState.error === null
         && sliceState.lastModified === null
 
     const defaultShouldRequestSelector = (sliceState: ISliceState, canRequest: boolean): boolean => canRequest && sliceState.lastHydrated === null
 
-    const { name, selectSliceState, selectCanRequest = defaultCanRequestSelector, selectShouldRequest = defaultShouldRequestSelector, initialState, debug } = options
+    const {
+        name,
+        handleUpdate = merge,
+        selectSliceState,
+        selectCanRequest = defaultCanRequestSelector,
+        selectShouldRequest = defaultShouldRequestSelector,
+        initialState = {},
+        createTimestamp = getISOString,
+    } = options
 
-    // intentional, necessary with immer
-    /* eslint-disable no-param-reassign */
-    const setModelState = (state: ISliceState, model: TModel): void => {
-        state.model = model
-    }
-
-    const setError = (state: ISliceState, error: TError | null): void => {
-        state.error = error === null ? null : error
-    }
-
-    const setStatus = (state: ISliceState, status: TStatusEnum): void => {
-        state.status = status
-    }
-
-    const setLastModified = (state: ISliceState, lastModified: string | null): void => {
-        state.lastModified = lastModified
-    }
-
-    const setLastHydrated = (state: ISliceState, lastHydrated: string | null): void => {
-        state.lastHydrated = lastHydrated
-    }
-    /* eslint-enable no-param-reassign */
-
-    const modifyState = (state: ISliceState, model: TModel): void => {
-        setModelState(state, model)
-        // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastModified(state, getISOStringWithOffset())
-    }
-
-    const hydrateState = (state: ISliceState, model: TModel): void => {
-        setModelState(state, model)
-        setLastModified(state, null)
-        // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
-        setLastHydrated(state, getISOStringWithOffset())
-    }
-
-    const initialSliceState = ModelState.create<TModel, TStatusEnum, TError>(initialState ?? {})
+    const initialSliceState = ModelState.create<TModel, TStatusEnum, TError>(initialState)
 
     const slice = createSlice<ISliceState, IModelSliceReducers<ISliceState, TModel, TStatusEnum, TError>, ISliceName<TGlobalState>>({
         name: name,
         initialState: initialSliceState,
+        // intentional, necessary with immer
+        /* eslint-disable no-param-reassign */
         reducers: {
             hydrate: (state, action) => {
-                hydrateState(state as ISliceState, action.payload)
+                state.model = createNextState(state.model, () => action.payload)
+                state.lastModified = null
+                // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
+                state.lastHydrated = createTimestamp()
             },
             update: (state, action) => {
-                const newModel = merge(state.model, action.payload) as TModel
-                modifyState(state as ISliceState, newModel)
+                state.model = createNextState(state.model, () => handleUpdate(state.model, action.payload))
+                // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
+                state.lastModified = createTimestamp()
             },
             reset: () => initialSliceState,
             set: (state, action) => {
-                modifyState(state as ISliceState, action.payload)
+                state.model = createNextState(state.model, () => action.payload)
+                // TODO: should not have a side effect: https://redux.js.org/style-guide/style-guide#reducers-must-not-have-side-effects
+                state.lastModified = createTimestamp()
             },
             setError: (state, action) => {
-                setError(state as ISliceState, action.payload)
+                state.error = createNextState(state.error, () => action.payload)
             },
             setStatus: (state, action) => {
-                setStatus(state as ISliceState, action.payload)
+                state.status = createNextState(state.status, () => action.payload)
             },
         },
+        /* eslint-enable no-param-reassign */
     })
 
     const selectors: IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError> = {
@@ -161,18 +170,12 @@ function createModelSlice<
         selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
     }
 
-    const modelSlice: IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = {
+    return {
         name: slice.name,
         reducer: slice.reducer,
         actions: slice.actions,
         selectors: selectors,
     }
-
-    if (debug) {
-        logSlice(modelSlice, initialSliceState)
-    }
-
-    return modelSlice
 }
 
 export default createModelSlice

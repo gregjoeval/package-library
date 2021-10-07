@@ -15,4 +15,3 @@
 | [eslint-config-typescript](packages/eslint-config-typescript) | [![npm version](https://badgen.net/npm/v/@gjv/eslint-config-typescript)](https://www.npmjs.com/package/@gjv/eslint-config-typescript) | eslint rules for Typescript |
 | [material-ui-adjunct](packages/material-ui-adjunct) | [![npm version](https://badgen.net/npm/v/@gjv/material-ui-adjunct)](https://www.npmjs.com/package/@gjv/material-ui-adjunct) | React components to use with Material-UI |
 | [redux-slice-factory](packages/redux-slice-factory) | [![npm version](https://badgen.net/npm/v/@gjv/redux-slice-factory)](https://www.npmjs.com/package/@gjv/redux-slice-factory) | generic factory functions for common slice data structures to use with Redux |
-|  |  |  |
