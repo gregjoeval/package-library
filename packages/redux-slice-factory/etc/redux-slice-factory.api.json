@@ -210,8 +210,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -223,8 +223,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -361,8 +361,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -374,8 +374,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -478,59 +478,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> "
+              "text": "export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError> "
             }
           ],
           "releaseTag": "Public",
@@ -560,23 +508,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -860,59 +808,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> "
+              "text": "export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError> "
             }
           ],
           "releaseTag": "Public",
@@ -942,23 +838,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -1176,59 +1072,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IEntitySlice<TGlobalState, TEntity, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> = "
+              "text": "export declare type IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> = "
             },
             {
               "kind": "Reference",
@@ -1308,29 +1152,29 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
           "typeTokenRange": {
-            "startIndex": 13,
-            "endIndex": 23
+            "startIndex": 1,
+            "endIndex": 11
           }
         },
         {
@@ -1821,7 +1665,43 @@
             },
             {
               "kind": "Content",
-              "text": "<TError | null>>;\n}"
+              "text": "<TError | null>>;\n    setMetaState: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IMetaState",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TStatusEnum, TError>>>>;\n}"
             },
             {
               "kind": "Content",
@@ -1878,7 +1758,7 @@
           ],
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 108
+            "endIndex": 116
           }
         },
         {
@@ -1888,59 +1768,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> extends "
+              "text": "export interface IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError> extends "
             },
             {
               "kind": "Reference",
@@ -2014,23 +1842,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -2038,16 +1866,16 @@
           "members": [],
           "extendsTokenRanges": [
             {
-              "startIndex": 13,
-              "endIndex": 15
+              "startIndex": 1,
+              "endIndex": 3
             },
             {
-              "startIndex": 16,
-              "endIndex": 20
+              "startIndex": 4,
+              "endIndex": 8
             },
             {
-              "startIndex": 21,
-              "endIndex": 23
+              "startIndex": 9,
+              "endIndex": 11
             }
           ]
         },
@@ -2058,59 +1886,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IEntityState<T, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> extends "
+              "text": "export interface IEntityState<T, TStatusEnum, TError> extends "
             },
             {
               "kind": "Reference",
@@ -2151,23 +1927,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -2175,12 +1951,12 @@
           "members": [],
           "extendsTokenRanges": [
             {
-              "startIndex": 13,
-              "endIndex": 15
+              "startIndex": 1,
+              "endIndex": 3
             },
             {
-              "startIndex": 16,
-              "endIndex": 18
+              "startIndex": 4,
+              "endIndex": 6
             }
           ]
         },
@@ -2191,59 +1967,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IMetaSliceSelectors<TGlobalState, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> "
+              "text": "export interface IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> "
             }
           ],
           "releaseTag": "Public",
@@ -2262,23 +1986,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -2398,59 +2122,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IMetaState<TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> "
+              "text": "export interface IMetaState<TStatusEnum, TError> "
             }
           ],
           "releaseTag": "Public",
@@ -2458,23 +2130,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -2594,59 +2266,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IModelSlice<TGlobalState, TModel, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> = "
+              "text": "export declare type IModelSlice<TGlobalState, TModel, TStatusEnum, TError> = "
             },
             {
               "kind": "Reference",
@@ -2726,29 +2346,29 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
           "typeTokenRange": {
-            "startIndex": 13,
-            "endIndex": 23
+            "startIndex": 1,
+            "endIndex": 11
           }
         },
         {
@@ -2879,7 +2499,43 @@
             },
             {
               "kind": "Content",
-              "text": "<TError | null>>;\n}"
+              "text": "<TError | null>>;\n    setMetaState: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CaseReducer",
+              "canonicalReference": "@reduxjs/toolkit!CaseReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TSliceState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "PayloadAction",
+              "canonicalReference": "@reduxjs/toolkit!PayloadAction:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "IMetaState",
+              "canonicalReference": "@gjv/redux-slice-factory!IMetaState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TStatusEnum, TError>>>>;\n}"
             },
             {
               "kind": "Content",
@@ -2936,7 +2592,7 @@
           ],
           "typeTokenRange": {
             "startIndex": 1,
-            "endIndex": 28
+            "endIndex": 36
           }
         },
         {
@@ -2946,59 +2602,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IModelSliceSelectors<TGlobalState, TModel, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> extends "
+              "text": "export interface IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError> extends "
             },
             {
               "kind": "Reference",
@@ -3059,23 +2663,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -3110,12 +2714,12 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 13,
-              "endIndex": 17
+              "startIndex": 1,
+              "endIndex": 5
             },
             {
-              "startIndex": 18,
-              "endIndex": 20
+              "startIndex": 6,
+              "endIndex": 8
             }
           ]
         },
@@ -3126,59 +2730,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IModelState<T, TStatusEnum extends "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": " | string "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Content",
-              "text": "keyof typeof "
-            },
-            {
-              "kind": "Reference",
-              "text": "StatusEnum",
-              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
-            },
-            {
-              "kind": "Content",
-              "text": ", TError extends "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": " "
-            },
-            {
-              "kind": "Content",
-              "text": "= "
-            },
-            {
-              "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "> extends "
+              "text": "export interface IModelState<T, TStatusEnum, TError> extends "
             },
             {
               "kind": "Reference",
@@ -3206,23 +2758,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 1,
-                "endIndex": 4
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 5,
-                "endIndex": 7
+                "startIndex": 0,
+                "endIndex": 0
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
+                "startIndex": 0,
+                "endIndex": 0
               },
               "defaultTypeTokenRange": {
-                "startIndex": 11,
-                "endIndex": 12
+                "startIndex": 0,
+                "endIndex": 0
               }
             }
           ],
@@ -3257,8 +2809,8 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 13,
-              "endIndex": 15
+              "startIndex": 1,
+              "endIndex": 3
             }
           ]
         },

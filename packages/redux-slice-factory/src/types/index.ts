@@ -38,8 +38,8 @@ export interface ISlice<
  */
 export interface IMetaSliceSelectors<
     TGlobalState,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum,
+    TError
 > {
     selectStatus: (state: TGlobalState) => TStatusEnum;
     selectError: (state: TGlobalState) => TError | null;

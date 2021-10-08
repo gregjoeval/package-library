@@ -9,7 +9,9 @@ import {
     EntityState as ReduxEntityState,
     PayloadAction,
     Update,
+    SerializedError,
 } from '@reduxjs/toolkit'
+import { IMetaState } from '../..'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
 import { IMetaSliceSelectors, ISlice, ISliceName, ISliceSelectors } from '../../types'
@@ -35,6 +37,7 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
     setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
     setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
+    setMetaState: CaseReducer<TSliceState, PayloadAction<Partial<IMetaState<TStatusEnum, TError>>>>;
 }
 
 /**
@@ -43,8 +46,8 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
 export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum,
+    TError
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
@@ -56,8 +59,8 @@ export interface IEntitySliceSelectors<
 export type IEntitySlice<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum,
+    TError
 > = ISlice<
 TGlobalState,
 IEntityState<TEntity, TStatusEnum, TError>,
@@ -71,8 +74,8 @@ IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
 export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TStatusEnum,
+    TError
 > {
     name: ISliceName<TGlobalState>;
     selectSliceState: (state: TGlobalState) => IEntityState<TEntity, TStatusEnum, TError>;
@@ -91,7 +94,7 @@ function createEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends Error = Error
+    TError extends SerializedError = SerializedError
 >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
@@ -211,6 +214,22 @@ function createEntitySlice<
             setStatus: (state, action) => {
                 setStatus(state as ISliceState, action.payload)
             },
+            setMetaState: (state, action) => {
+                const { status, error, lastHydrated, lastModified } = action.payload;
+                if (status !== undefined)
+                {
+                    setStatus(state as ISliceState, status)
+                }
+                if (error !== undefined) {
+                    setError(state as ISliceState, error)
+                }
+                if (lastHydrated !== undefined) {
+                    setLastHydrated(state as ISliceState, lastHydrated)
+                }
+                if (lastModified !== undefined) {
+                    setLastModified(state as ISliceState, lastModified)
+                }
+            }
         },
     })
 
