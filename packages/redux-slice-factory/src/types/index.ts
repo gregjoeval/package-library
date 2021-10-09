@@ -1,5 +1,4 @@
 import { CaseReducerActions, Reducer, SerializedError, SliceCaseReducers } from '@reduxjs/toolkit'
-import StatusEnum from '../constants/StatusEnum'
 
 /**
  * @public
@@ -100,8 +99,8 @@ export interface ISlice<
  */
 export interface IMetaSliceSelectors<
     TGlobalState,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum,
+    TError
 > {
     /**
      * This selects the status of the slice.

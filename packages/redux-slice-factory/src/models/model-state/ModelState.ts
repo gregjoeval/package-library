@@ -7,8 +7,8 @@ import MetaState, { IMetaState } from '../meta-state'
  */
 export interface IModelState<
     T,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum,
+    TError
 > extends IMetaState<TStatusEnum, TError> {
     /**
      * The model of the slice.

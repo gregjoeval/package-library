@@ -12,11 +12,12 @@ import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
 import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
 import { getISOString } from '../../utilities'
+import { IMetaSliceReducers } from '../meta-slice'
 
 /**
  * @public
  */
-export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
+export interface IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     /**
      * This will hydrate the slice. This sets the model and lastHydrated, and resets lastModified.
      */
@@ -36,16 +37,6 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
      * This will reset the slice to its initial state.
      */
     reset: CaseReducer<TSliceState, PayloadAction>;
-
-    /**
-     * This will set the status of the slice.
-     */
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-
-    /**
-     * This will set the error of the slice.
-     */
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
 /**
@@ -54,8 +45,8 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum |& string,
-    TError extends SerializedError = Error
+    TStatusEnum,
+    TError
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
@@ -72,8 +63,8 @@ export interface IModelSliceSelectors <
 export type IModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum,
+    TError
 > = ISlice<
 TGlobalState,
 IModelState<TModel, TStatusEnum, TError>,
@@ -87,8 +78,8 @@ IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
 export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum,
+    TError
 > extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
     /**
      * This is how the slice will merge the current model and the update model during an update action
@@ -155,6 +146,9 @@ function createModelSlice<
             setStatus: (state, action) => {
                 state.status = createNextState(state.status, () => action.payload)
             },
+            setMetaState: (state, action) => {
+                state.status = createNextState(state.status, () => action.payload)
+            }
         },
         /* eslint-enable no-param-reassign */
     })

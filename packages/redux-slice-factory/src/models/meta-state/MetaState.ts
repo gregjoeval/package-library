@@ -4,7 +4,7 @@ import StatusEnum from '../../constants/StatusEnum'
 /**
  * @public
  */
-export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> {
+export interface IMetaState <TStatusEnum, TError> {
     /**
      * The status of the slice.
      * @defaultValue `StatusEnum`
