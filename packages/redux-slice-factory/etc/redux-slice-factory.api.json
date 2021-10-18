@@ -810,7 +810,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "handleUpdate: "
+                  "text": "handleUpdate?: "
                 },
                 {
                   "kind": "Content",
@@ -839,7 +839,7 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "handleUpdate",
               "propertyTypeTokenRange": {
@@ -2195,7 +2195,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaState#lastHydrated:member",
-              "docComment": "/**\n * The ISO string of the last time the slice was hydrated.\n */\n",
+              "docComment": "/**\n * The timestamp of the last time the slice was hydrated.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2221,7 +2221,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!IMetaState#lastModified:member",
-              "docComment": "/**\n * The ISO string of the last time the slice was modified.\n */\n",
+              "docComment": "/**\n * The timestamp of the last time the slice was modified.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3251,7 +3251,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@gjv/redux-slice-factory!ISliceSelectors#selectSliceState:member",
-              "docComment": "/**\n * Selects the entire slice state.\n */\n",
+              "docComment": "/**\n * Selects the entire slice state.\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

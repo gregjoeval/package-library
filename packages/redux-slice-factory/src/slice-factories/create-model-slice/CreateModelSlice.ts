@@ -94,7 +94,7 @@ export interface ICreateModelSliceOptions<
      * This is how the slice will merge the current model and the update model during an update action
      * @defaultValue `merge` from {@link https://www.npmjs.com/package/ts-deepmerge}
      */
-    handleUpdate: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
+    handleUpdate?: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
 }
 
 /**
