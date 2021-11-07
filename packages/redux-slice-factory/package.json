@@ -1,6 +1,6 @@
 {
   "name": "@gjv/redux-slice-factory",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Generic factory functions for common slice data structures",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/package-library#readme",
