@@ -10,9 +10,8 @@ import {
 import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
 import { getISOString } from '../../utilities'
-import { IMetaSliceReducers } from '../meta-slice'
 
 /**
  * @public
@@ -148,7 +147,7 @@ function createModelSlice<
             },
             setMetaState: (state, action) => {
                 state.status = createNextState(state.status, () => action.payload)
-            }
+            },
         },
         /* eslint-enable no-param-reassign */
     })

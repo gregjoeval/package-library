@@ -39,7 +39,7 @@ const carl: ITestUserModel = {
 
 describe('createModelSlice', () => {
     const testName = 'FooBarThing'
-    let sliceState: IModelState<ITestUserModel>
+    let sliceState: IModelState<ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>
     let slice: IModelSlice<Record<string, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>
 
     beforeEach(() => {
@@ -54,7 +54,7 @@ describe('createModelSlice', () => {
     it('initializes', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
-        expect(Object.values(slice.actions)).toHaveLength(6)
+        expect(Object.values(slice.actions)).toHaveLength(7)
         expect(Object.values(slice.selectors)).toHaveLength(8)
     })
 

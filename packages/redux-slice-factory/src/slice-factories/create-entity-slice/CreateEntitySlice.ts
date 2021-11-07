@@ -12,9 +12,8 @@ import {
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
 import { getISOString } from '../../utilities'
-import { IMetaSliceReducers } from '../meta-slice'
 
 /**
  * @public
@@ -218,6 +217,7 @@ function createEntitySlice<
     const initialEntityState = entityAdapter.getInitialState(initialState)
     const initialSliceState = EntityState.create<TEntity, TStatusEnum, TError>(initialEntityState)
 
+    /* eslint-disable no-param-reassign */
     const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>, ISliceName<TGlobalState>>({
         name: name,
         initialState: initialSliceState,
@@ -283,9 +283,10 @@ function createEntitySlice<
             },
             setMetaState: (state, action) => {
                 state.status = createNextState(state.status, () => action.payload)
-            }
+            },
         },
     })
+    /* eslint-disable no-param-reassign */
 
     const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectSliceState(state))
     const selectors: IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError> = {

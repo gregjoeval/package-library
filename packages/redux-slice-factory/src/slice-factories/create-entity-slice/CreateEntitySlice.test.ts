@@ -38,7 +38,7 @@ const carl: ITestUserModel = {
 
 describe('createEntitySlice', () => {
     const testName = 'FooBarThing'
-    let sliceState: IEntityState<ITestUserModel>
+    let sliceState: IEntityState<ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
     let slice: IEntitySlice<Record<string, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
 
     beforeEach(() => {
@@ -54,7 +54,7 @@ describe('createEntitySlice', () => {
     it('initializes', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
-        expect(Object.values(slice.actions)).toHaveLength(16)
+        expect(Object.values(slice.actions)).toHaveLength(17)
         expect(Object.values(slice.selectors)).toHaveLength(12)
     })
 
