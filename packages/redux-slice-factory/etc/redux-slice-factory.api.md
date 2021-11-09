@@ -35,7 +35,7 @@ export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, T
 
 // @public (undocumented)
 export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError> extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
-    handleUpdate: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
+    handleUpdate?: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
 }
 
 // @public (undocumented)

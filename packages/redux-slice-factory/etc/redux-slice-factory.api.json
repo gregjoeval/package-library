@@ -706,7 +706,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "handleUpdate: "
+                  "text": "handleUpdate?: "
                 },
                 {
                   "kind": "Content",
@@ -735,7 +735,7 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "handleUpdate",
               "propertyTypeTokenRange": {
