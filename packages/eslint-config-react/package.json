@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb": "^19.0.1",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.9.0",
