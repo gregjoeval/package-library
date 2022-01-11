@@ -300,7 +300,7 @@ function createEntitySlice<
         selectAll: entitySelectors.selectAll,
         selectTotal: entitySelectors.selectTotal,
         selectById: entitySelectors.selectById,
-        selectSliceState: createSelector(selectSliceState, (sliceState) => sliceState),
+        selectSliceState: createSelector((state) => selectSliceState(state), (sliceState) => sliceState),
         selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
         selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
         selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
