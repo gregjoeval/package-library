@@ -16,7 +16,12 @@ import { getISOString } from '../../utilities'
 /**
  * @public
  */
-export interface IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
+export interface IModelSliceReducers <
+    TSliceState,
+    TModel,
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
+> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     /**
      * This will hydrate the slice. This sets the model and lastHydrated, and resets lastModified.
      */
@@ -44,8 +49,8 @@ export interface IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> 
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
@@ -62,8 +67,8 @@ export interface IModelSliceSelectors <
 export type IModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
 > = ISlice<
 TGlobalState,
 IModelState<TModel, TStatusEnum, TError>,
@@ -77,8 +82,8 @@ IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
 export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
 > extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
     /**
      * This is how the slice will merge the current model and the update model during an update action

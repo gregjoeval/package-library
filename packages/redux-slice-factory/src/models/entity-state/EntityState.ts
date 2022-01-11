@@ -7,8 +7,8 @@ import MetaState, { IMetaState } from '../meta-state'
  */
 export interface IEntityState<
     T,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum | & string,
+    TError extends SerializedError
 > extends ReduxEntityState<T>, IMetaState<TStatusEnum, TError> {}
 
 const create = <

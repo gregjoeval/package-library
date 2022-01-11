@@ -18,7 +18,12 @@ import { getISOString } from '../../utilities'
 /**
  * @public
  */
-export interface IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
+export interface IEntitySliceReducers <
+    TSliceState,
+    TEntity,
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
+> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     /**
      * This will modify the slice. This adds one entity to the slice and sets lastModified.
      * @see {@link @reduxjs/toolkit#EntityStateAdapter}
@@ -109,8 +114,8 @@ export interface IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError
 export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
@@ -122,8 +127,8 @@ export interface IEntitySliceSelectors<
 export type IEntitySlice<
     TGlobalState,
     TEntity,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
 > = ISlice<
 TGlobalState,
 IEntityState<TEntity, TStatusEnum, TError>,
@@ -137,8 +142,8 @@ IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
 export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum |& string,
+    TError extends SerializedError
 > extends ISliceOptions<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>> {
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;
