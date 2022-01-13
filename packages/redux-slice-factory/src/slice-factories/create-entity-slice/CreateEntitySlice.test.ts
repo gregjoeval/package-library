@@ -37,14 +37,18 @@ const carl: ITestUserModel = {
     age: '35',
 }
 
-const testName = 'FooBarThing'
+type SliceState = IEntityState<ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
+
 type IGlobalState = {
-    [testName]: ITestUserModel
+    FooBarThing: SliceState
 }
 
+type EntitySlice = IEntitySlice<IGlobalState, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
+
 describe('createEntitySlice', () => {
-    let sliceState: IEntityState<ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
-    let slice: IEntitySlice<IGlobalState, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
+    const testName = 'FooBarThing'
+    let sliceState: SliceState
+    let slice: EntitySlice
 
     // eslint-disable-next-line no-void
     void beforeEach(() => {
