@@ -8,7 +8,9 @@ import {
     EntitySelectors,
     EntityState as ReduxEntityState,
     PayloadAction,
-    Update, SerializedError, createNextState,
+    Update,
+    SerializedError,
+    createNextState,
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
@@ -119,7 +121,7 @@ export interface IEntitySliceSelectors<
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
-    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {}
+    IMetaSliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>, TStatusEnum, TError> {}
 
 /**
  * @public

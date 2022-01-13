@@ -1,5 +1,10 @@
-import { CaseReducer, CaseReducerActions, PayloadAction, Reducer, SliceCaseReducers } from '@reduxjs/toolkit'
+import { CaseReducer, CaseReducerActions, OutputSelector, PayloadAction, Reducer, Selector, SliceCaseReducers } from '@reduxjs/toolkit'
 import { IMetaState } from '..'
+
+/**
+ * @public
+ */
+export type ISelectSliceState<TGlobalState, TSliceState> = (globalState: TGlobalState) => TSliceState
 
 /**
  * @public
@@ -26,7 +31,7 @@ export interface ISliceOptions<
     /**
      * @see {@link ISliceSelectors.selectSliceState}
      */
-    selectSliceState: (state: TGlobalState) => TSliceState;
+    selectSliceState: ISelectSliceState<TGlobalState, TSliceState>;
 
     /**
      * @see {@link ISliceSelectors.selectCanRequest}
@@ -52,6 +57,11 @@ export interface ISliceOptions<
 /**
  * @public
  */
+export type IOutputSelector<TGlobalState, TSliceState, TResult> = OutputSelector<[Selector<TGlobalState, TSliceState>], TResult, (state: TSliceState) => TResult>
+
+/**
+ * @public
+ */
 export interface ISliceSelectors<
     TGlobalState,
     TSliceState
@@ -60,18 +70,18 @@ export interface ISliceSelectors<
      * @public
      * Selects the entire slice state.
      */
-    selectSliceState: (state: TGlobalState) => TSliceState;
+    selectSliceState: IOutputSelector<TGlobalState, TSliceState, TSliceState>
 
     /**
      * @defaultValue (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified
      */
-    selectCanRequest: (state: TGlobalState) => boolean;
+    selectCanRequest: IOutputSelector<TGlobalState, TSliceState, boolean>;
 
     /**
      * @defaultValue (overrideable) The slice should request if it can request and it has not been hydrated
      * @see {@link ISliceSelectors.selectCanRequest}
      */
-    selectShouldRequest: (state: TGlobalState) => boolean
+    selectShouldRequest: IOutputSelector<TGlobalState, TSliceState, boolean>;
 }
 
 /**
@@ -100,6 +110,7 @@ export interface ISlice<
  */
 export interface IMetaSliceSelectors<
     TGlobalState,
+    TSliceState,
     TStatusEnum,
     TError
 > {
@@ -107,25 +118,25 @@ export interface IMetaSliceSelectors<
      * This selects the status of the slice.
      * @see {@link IMetaState.status}
      */
-    selectStatus: (state: TGlobalState) => TStatusEnum;
+    selectStatus: IOutputSelector<TGlobalState, TSliceState, TStatusEnum>;
 
     /**
      * This selects the error of the slice.
      * @see {@link IMetaState.error}
      */
-    selectError: (state: TGlobalState) => TError | null;
+    selectError: IOutputSelector<TGlobalState, TSliceState, TError | null>;
 
     /**
      * This selects the lastModified of the slice.
      * @see {@link IMetaState.lastModified}
      */
-    selectLastModified: (state: TGlobalState) => string | null;
+    selectLastModified: IOutputSelector<TGlobalState, TSliceState, string | null>;
 
     /**
      * This selects the status of the slice.
      * @see {@link IMetaState.lastHydrated}
      */
-    selectLastHydrated: (state: TGlobalState) => string | null;
+    selectLastHydrated: IOutputSelector<TGlobalState, TSliceState, string | null>;
 }
 
 export interface IMetaSliceReducers<TSliceState, TStatusEnum, TError> extends SliceCaseReducers<TSliceState> {

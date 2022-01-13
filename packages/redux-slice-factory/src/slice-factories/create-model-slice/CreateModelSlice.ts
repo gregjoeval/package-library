@@ -10,7 +10,7 @@ import {
 import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors, IOutputSelector } from '../../types'
 import { getISOString } from '../../utilities'
 
 /**
@@ -54,11 +54,11 @@ export interface IModelSliceSelectors <
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
-    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    IMetaSliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>, TStatusEnum, TError> {
     /**
      * This selects the slice model.
      */
-    selectModel: (state: TGlobalState) => TModel;
+    selectModel: IOutputSelector<TGlobalState, IModelState<TModel, TStatusEnum, TError>, TModel>;
 }
 
 /**
