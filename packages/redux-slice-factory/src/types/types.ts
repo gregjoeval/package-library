@@ -1,5 +1,5 @@
-import { CaseReducer, CaseReducerActions, OutputSelector, PayloadAction, Reducer, Selector, SliceCaseReducers } from '@reduxjs/toolkit'
-import { IMetaState } from '..'
+import { CaseReducer, CaseReducerActions, OutputSelector, PayloadAction, Reducer, Selector, SerializedError, SliceCaseReducers } from '@reduxjs/toolkit'
+import { IMetaState, StatusEnum } from '..'
 
 /**
  * @public
@@ -57,7 +57,7 @@ export interface ISliceOptions<
 /**
  * @public
  */
-export type IOutputSelector<TGlobalState, TSliceState, TResult> = OutputSelector<[Selector<TGlobalState, TSliceState>], TResult, (state: TSliceState) => TResult>
+export type IOutputSelector<TGlobalState, TSliceState, TResult> = OutputSelector<[Selector<TGlobalState, TSliceState>], TResult, (sliceState: TSliceState) => TResult>
 
 /**
  * @public
@@ -70,7 +70,7 @@ export interface ISliceSelectors<
      * @public
      * Selects the entire slice state.
      */
-    selectSliceState: IOutputSelector<TGlobalState, TSliceState, TSliceState>
+    selectSliceState: IOutputSelector<TGlobalState, TSliceState, TSliceState>;
 
     /**
      * @defaultValue (overrideable) The slice can request if it is not requesting, error is empty, and the slice has not been modified
@@ -111,8 +111,8 @@ export interface ISlice<
 export interface IMetaSliceSelectors<
     TGlobalState,
     TSliceState,
-    TStatusEnum,
-    TError
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
 > {
     /**
      * This selects the status of the slice.
@@ -139,7 +139,11 @@ export interface IMetaSliceSelectors<
     selectLastHydrated: IOutputSelector<TGlobalState, TSliceState, string | null>;
 }
 
-export interface IMetaSliceReducers<TSliceState, TStatusEnum, TError> extends SliceCaseReducers<TSliceState> {
+export interface IMetaSliceReducers<
+    TSliceState,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
+> extends SliceCaseReducers<TSliceState> {
     /**
      * This will set the status of the slice.
      */

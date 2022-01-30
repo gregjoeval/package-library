@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.18.15",
+    "toolVersion": "7.19.4",
     "schemaVersion": 1004,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -223,8 +223,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -374,8 +374,8 @@
             },
             {
               "kind": "Reference",
-              "text": "Error",
-              "canonicalReference": "!Error:interface"
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
             },
             {
               "kind": "Content",
@@ -491,11 +491,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -556,19 +582,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -643,8 +669,8 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 11
+              "startIndex": 13,
+              "endIndex": 17
             }
           ]
         },
@@ -668,11 +694,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -733,19 +785,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -798,8 +850,8 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 11
+              "startIndex": 13,
+              "endIndex": 17
             }
           ]
         },
@@ -823,11 +875,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -920,25 +998,25 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
           "typeTokenRange": {
-            "startIndex": 7,
-            "endIndex": 17
+            "startIndex": 13,
+            "endIndex": 23
           }
         },
         {
@@ -961,11 +1039,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -1017,19 +1121,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -1787,8 +1891,8 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 9
+              "startIndex": 13,
+              "endIndex": 15
             }
           ]
         },
@@ -1812,11 +1916,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -1869,7 +1999,16 @@
             },
             {
               "kind": "Content",
-              "text": "<TGlobalState, TStatusEnum, TError> "
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IEntityState",
+              "canonicalReference": "@gjv/redux-slice-factory!IEntityState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TEntity, TStatusEnum, TError>, TStatusEnum, TError> "
             }
           ],
           "releaseTag": "Public",
@@ -1903,19 +2042,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -1923,16 +2062,16 @@
           "members": [],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 9
+              "startIndex": 13,
+              "endIndex": 15
             },
             {
-              "startIndex": 10,
-              "endIndex": 14
+              "startIndex": 16,
+              "endIndex": 20
             },
             {
-              "startIndex": 15,
-              "endIndex": 17
+              "startIndex": 21,
+              "endIndex": 25
             }
           ]
         },
@@ -1956,11 +2095,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -2014,19 +2179,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -2034,12 +2199,12 @@
           "members": [],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 9
+              "startIndex": 13,
+              "endIndex": 15
             },
             {
-              "startIndex": 10,
-              "endIndex": 12
+              "startIndex": 16,
+              "endIndex": 18
             }
           ]
         },
@@ -2050,7 +2215,59 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> "
+              "text": "export interface IMetaSliceSelectors<TGlobalState, TSliceState, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
             }
           ],
           "releaseTag": "Public",
@@ -2067,7 +2284,7 @@
               }
             },
             {
-              "typeParameterName": "TStatusEnum",
+              "typeParameterName": "TSliceState",
               "constraintTokenRange": {
                 "startIndex": 0,
                 "endIndex": 0
@@ -2078,14 +2295,25 @@
               }
             },
             {
-              "typeParameterName": "TError",
+              "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 1,
+                "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
+              }
+            },
+            {
+              "typeParameterName": "TError",
+              "constraintTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -2101,8 +2329,13 @@
                   "text": "selectError: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => TError | null"
+                  "text": "<TGlobalState, TSliceState, TError | null>"
                 },
                 {
                   "kind": "Content",
@@ -2114,7 +2347,7 @@
               "name": "selectError",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -2127,8 +2360,13 @@
                   "text": "selectLastHydrated: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => string | null"
+                  "text": "<TGlobalState, TSliceState, string | null>"
                 },
                 {
                   "kind": "Content",
@@ -2140,7 +2378,7 @@
               "name": "selectLastHydrated",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -2153,8 +2391,13 @@
                   "text": "selectLastModified: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => string | null"
+                  "text": "<TGlobalState, TSliceState, string | null>"
                 },
                 {
                   "kind": "Content",
@@ -2166,7 +2409,7 @@
               "name": "selectLastModified",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -2179,8 +2422,13 @@
                   "text": "selectStatus: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => TStatusEnum"
+                  "text": "<TGlobalState, TSliceState, TStatusEnum>"
                 },
                 {
                   "kind": "Content",
@@ -2192,7 +2440,7 @@
               "name": "selectStatus",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             }
           ],
@@ -2205,7 +2453,59 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IMetaState<TStatusEnum, TError> "
+              "text": "export interface IMetaState<TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
             }
           ],
           "releaseTag": "Public",
@@ -2213,23 +2513,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 1,
+                "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -2362,11 +2662,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -2459,25 +2785,25 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
           "typeTokenRange": {
-            "startIndex": 7,
-            "endIndex": 17
+            "startIndex": 13,
+            "endIndex": 23
           }
         },
         {
@@ -2500,11 +2826,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -2556,19 +2908,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -2746,8 +3098,8 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 9
+              "startIndex": 13,
+              "endIndex": 15
             }
           ]
         },
@@ -2771,11 +3123,37 @@
             },
             {
               "kind": "Content",
-              "text": " | string"
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
             },
             {
               "kind": "Content",
               "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
             },
             {
               "kind": "Reference",
@@ -2815,7 +3193,16 @@
             },
             {
               "kind": "Content",
-              "text": "<TGlobalState, TStatusEnum, TError> "
+              "text": "<TGlobalState, "
+            },
+            {
+              "kind": "Reference",
+              "text": "IModelState",
+              "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModel, TStatusEnum, TError>, TStatusEnum, TError> "
             }
           ],
           "releaseTag": "Public",
@@ -2849,19 +3236,19 @@
                 "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 5,
-                "endIndex": 6
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -2877,8 +3264,22 @@
                   "text": "selectModel: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => TModel"
+                  "text": "<TGlobalState, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IModelState",
+                  "canonicalReference": "@gjv/redux-slice-factory!IModelState:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<TModel, TStatusEnum, TError>, TModel>"
                 },
                 {
                   "kind": "Content",
@@ -2890,18 +3291,18 @@
               "name": "selectModel",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 5
               }
             }
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 7,
-              "endIndex": 11
+              "startIndex": 13,
+              "endIndex": 17
             },
             {
-              "startIndex": 12,
-              "endIndex": 14
+              "startIndex": 18,
+              "endIndex": 22
             }
           ]
         },
@@ -2912,7 +3313,59 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface IModelState<T, TStatusEnum, TError> extends "
+              "text": "export interface IModelState<T, TStatusEnum extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": " | string "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StatusEnum",
+              "canonicalReference": "@gjv/redux-slice-factory!~StatusEnum:enum"
+            },
+            {
+              "kind": "Content",
+              "text": ", TError extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Reference",
+              "text": "SerializedError",
+              "canonicalReference": "@reduxjs/toolkit!SerializedError:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
             },
             {
               "kind": "Reference",
@@ -2940,23 +3393,23 @@
             {
               "typeParameterName": "TStatusEnum",
               "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 1,
+                "endIndex": 4
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 5,
+                "endIndex": 7
               }
             },
             {
               "typeParameterName": "TError",
               "constraintTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 8,
+                "endIndex": 10
               },
               "defaultTypeTokenRange": {
-                "startIndex": 0,
-                "endIndex": 0
+                "startIndex": 11,
+                "endIndex": 12
               }
             }
           ],
@@ -2991,8 +3444,8 @@
           ],
           "extendsTokenRanges": [
             {
-              "startIndex": 1,
-              "endIndex": 3
+              "startIndex": 13,
+              "endIndex": 15
             }
           ]
         },
@@ -3250,8 +3703,13 @@
                   "text": "selectCanRequest: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => boolean"
+                  "text": "<TGlobalState, TSliceState, boolean>"
                 },
                 {
                   "kind": "Content",
@@ -3263,7 +3721,7 @@
               "name": "selectCanRequest",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -3276,8 +3734,13 @@
                   "text": "selectShouldRequest: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => boolean"
+                  "text": "<TGlobalState, TSliceState, boolean>"
                 },
                 {
                   "kind": "Content",
@@ -3289,7 +3752,7 @@
               "name": "selectShouldRequest",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             },
             {
@@ -3302,8 +3765,13 @@
                   "text": "selectSliceState: "
                 },
                 {
+                  "kind": "Reference",
+                  "text": "IOutputSelector",
+                  "canonicalReference": "@gjv/redux-slice-factory!IOutputSelector:type"
+                },
+                {
                   "kind": "Content",
-                  "text": "(state: TGlobalState) => TSliceState"
+                  "text": "<TGlobalState, TSliceState, TSliceState>"
                 },
                 {
                   "kind": "Content",
@@ -3315,7 +3783,7 @@
               "name": "selectSliceState",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             }
           ],
