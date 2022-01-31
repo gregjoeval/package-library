@@ -161,12 +161,12 @@ function createModelSlice<
     const selectors: ISelectors = {
         selectSliceState: createSelector([selectSliceState], (sliceState) => sliceState) as unknown as ISelectors['selectSliceState'],
         selectModel: createSelector([selectSliceState], (sliceState) => sliceState.model) as unknown as ISelectors['selectModel'],
-        selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status) as unknown as ISelectors['selectStatus'],
-        selectError: createSelector(selectSliceState, (sliceState) => sliceState.error) as unknown as ISelectors['selectError'],
-        selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified) as unknown as ISelectors['selectLastModified'],
-        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated) as unknown as ISelectors['selectLastHydrated'],
-        selectCanRequest: createSelector(selectSliceState, (sliceState) => selectCanRequest(sliceState)) as unknown as ISelectors['selectCanRequest'],
-        selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))) as unknown as ISelectors['selectShouldRequest'],
+        selectStatus: createSelector([selectSliceState], (sliceState) => sliceState.status) as unknown as ISelectors['selectStatus'],
+        selectError: createSelector([selectSliceState], (sliceState) => sliceState.error) as unknown as ISelectors['selectError'],
+        selectLastModified: createSelector([selectSliceState], (sliceState) => sliceState.lastModified) as unknown as ISelectors['selectLastModified'],
+        selectLastHydrated: createSelector([selectSliceState], (sliceState) => sliceState.lastHydrated) as unknown as ISelectors['selectLastHydrated'],
+        selectCanRequest: createSelector([selectSliceState], (sliceState) => selectCanRequest(sliceState)) as unknown as ISelectors['selectCanRequest'],
+        selectShouldRequest: createSelector([selectSliceState], (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))) as unknown as ISelectors['selectShouldRequest'],
     }
 
     return {
