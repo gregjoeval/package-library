@@ -4,7 +4,10 @@ import StatusEnum from '../../constants/StatusEnum'
 /**
  * @public
  */
-export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> {
+export interface IMetaState <
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
+> {
     /**
      * The status of the slice.
      * @defaultValue `StatusEnum`
@@ -30,7 +33,7 @@ export interface IMetaState <TStatusEnum extends keyof typeof StatusEnum | & str
 
 const create = <
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 > (args: Partial<IMetaState<TStatusEnum, TError>> = {}): IMetaState<TStatusEnum, TError> => ({
     status: args.status ?? StatusEnum.Settled as unknown as TStatusEnum,
     error: args.error ?? null,

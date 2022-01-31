@@ -1,3 +1,4 @@
+import { describe, beforeEach, it, expect } from '@jest/globals'
 import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
@@ -36,14 +37,23 @@ const carl: ITestUserModel = {
     age: '35',
 }
 
+type SliceState = IEntityState<ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
+
+type IGlobalState = {
+    FooBarThing: SliceState
+}
+
+type EntitySlice = IEntitySlice<IGlobalState, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
+
 describe('createEntitySlice', () => {
     const testName = 'FooBarThing'
-    let sliceState: IEntityState<ITestUserModel>
-    let slice: IEntitySlice<Record<string, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>
+    let sliceState: SliceState
+    let slice: EntitySlice
 
-    beforeEach(() => {
+    // eslint-disable-next-line no-void
+    void beforeEach(() => {
         sliceState = EntityState.create<ITestUserModel>()
-        slice = createEntitySlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>({
+        slice = createEntitySlice<IGlobalState, ITestUserModel, keyof typeof UsersSliceStatusEnum, SerializedError>({
             name: testName,
             selectSliceState: () => sliceState,
             selectId: (model) => model.id,
@@ -54,7 +64,7 @@ describe('createEntitySlice', () => {
     it('initializes', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
-        expect(Object.values(slice.actions)).toHaveLength(16)
+        expect(Object.values(slice.actions)).toHaveLength(17)
         expect(Object.values(slice.selectors)).toHaveLength(12)
     })
 

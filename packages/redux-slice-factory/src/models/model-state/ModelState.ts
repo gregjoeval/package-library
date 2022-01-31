@@ -8,7 +8,7 @@ import MetaState, { IMetaState } from '../meta-state'
 export interface IModelState<
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 > extends IMetaState<TStatusEnum, TError> {
     /**
      * The model of the slice.
@@ -19,7 +19,7 @@ export interface IModelState<
 const create = <
     T,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 > (args: Partial<IModelState<T, TStatusEnum, TError>> = {}): IModelState<T, TStatusEnum, TError> => {
     const metaState = MetaState.create(args)
     return {

@@ -1,3 +1,4 @@
+import { describe, beforeEach, it, expect } from '@jest/globals'
 import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
 import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
@@ -37,14 +38,19 @@ const carl: ITestUserModel = {
     age: '35',
 }
 
-describe('createModelSlice', () => {
-    const testName = 'FooBarThing'
-    let sliceState: IModelState<ITestUserModel>
-    let slice: IModelSlice<Record<string, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>
+const testName = 'FooBarThing'
+type IGlobalState = {
+    [testName]: ITestUserModel
+}
 
-    beforeEach(() => {
+describe('createModelSlice', () => {
+    let sliceState: IModelState<ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>
+    let slice: IModelSlice<IGlobalState, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>
+
+    // eslint-disable-next-line no-void
+    void beforeEach(() => {
         sliceState = ModelState.create<ITestUserModel>()
-        slice = createModelSlice<Record<typeof testName, unknown>, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>({
+        slice = createModelSlice<IGlobalState, ITestUserModel, keyof typeof UserSliceStatusEnum, SerializedError>({
             name: testName,
             handleUpdate: merge,
             selectSliceState: () => sliceState,
@@ -54,7 +60,7 @@ describe('createModelSlice', () => {
     it('initializes', () => {
         expect(slice.name).toEqual(testName)
         expect(typeof slice.reducer).toEqual('function')
-        expect(Object.values(slice.actions)).toHaveLength(6)
+        expect(Object.values(slice.actions)).toHaveLength(7)
         expect(Object.values(slice.selectors)).toHaveLength(8)
     })
 

@@ -8,17 +8,24 @@ import {
     EntitySelectors,
     EntityState as ReduxEntityState,
     PayloadAction,
-    Update, SerializedError,
+    Update,
+    SerializedError,
+    createNextState,
 } from '@reduxjs/toolkit'
 import StatusEnum from '../../constants/StatusEnum'
 import EntityState, { IEntityState } from '../../models/entity-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
 import { getISOString } from '../../utilities'
 
 /**
  * @public
  */
-export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
+export interface IEntitySliceReducers <
+    TSliceState,
+    TEntity,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
+> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     /**
      * This will modify the slice. This adds one entity to the slice and sets lastModified.
      * @see {@link @reduxjs/toolkit#EntityStateAdapter}
@@ -101,16 +108,6 @@ export type IEntitySliceReducers <TSliceState, TEntity, TStatusEnum, TError> = {
      * @see {@link @reduxjs/toolkit#EntityStateAdapter.setAll}
      */
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
-
-    /**
-     * This will set the status of the slice.
-     */
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-
-    /**
-     * This will set the error of the slice.
-     */
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
 /**
@@ -120,11 +117,11 @@ export interface IEntitySliceSelectors<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 > extends
     EntitySelectors<TEntity, TGlobalState>,
     ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>,
-    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {}
+    IMetaSliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>, TStatusEnum, TError> {}
 
 /**
  * @public
@@ -133,7 +130,7 @@ export type IEntitySlice<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 > = ISlice<
 TGlobalState,
 IEntityState<TEntity, TStatusEnum, TError>,
@@ -148,7 +145,7 @@ export interface ICreateEntitySliceOptions<
     TGlobalState,
     TEntity,
     TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 > extends ISliceOptions<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>> {
     selectId: (o: TEntity) => EntityId;
     sortComparer: false | Comparer<TEntity>;
@@ -160,8 +157,8 @@ export interface ICreateEntitySliceOptions<
 function createEntitySlice<
     TGlobalState,
     TEntity,
-    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
 >(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError> {
     type ISliceState = IEntityState<TEntity, TStatusEnum, TError>
 
@@ -227,6 +224,7 @@ function createEntitySlice<
     const initialEntityState = entityAdapter.getInitialState(initialState)
     const initialSliceState = EntityState.create<TEntity, TStatusEnum, TError>(initialEntityState)
 
+    /* eslint-disable no-param-reassign */
     const slice = createSlice<ISliceState, IEntitySliceReducers<ISliceState, TEntity, TStatusEnum, TError>, ISliceName<TGlobalState>>({
         name: name,
         initialState: initialSliceState,
@@ -290,23 +288,29 @@ function createEntitySlice<
             setStatus: (state, action) => {
                 setStatus(state as ISliceState, action.payload)
             },
+            setMetaState: (state, action) => {
+                state.status = createNextState(state.status, () => action.payload)
+            },
         },
     })
+    /* eslint-disable no-param-reassign */
 
+    type ISelectors = IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>
     const entitySelectors = entityAdapter.getSelectors((state: TGlobalState) => selectSliceState(state))
-    const selectors: IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError> = {
+    const selectors: ISelectors = {
         selectIds: entitySelectors.selectIds,
         selectEntities: entitySelectors.selectEntities,
         selectAll: entitySelectors.selectAll,
         selectTotal: entitySelectors.selectTotal,
         selectById: entitySelectors.selectById,
-        selectSliceState: createSelector(selectSliceState, (sliceState) => sliceState),
-        selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
-        selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
-        selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
-        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
-        selectCanRequest: createSelector(selectSliceState, (sliceState) => selectCanRequest(sliceState)),
-        selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
+        /* TODO remove type assertion */
+        selectSliceState: createSelector([selectSliceState], (sliceState) => sliceState) as unknown as ISelectors['selectSliceState'],
+        selectStatus: createSelector([selectSliceState], (sliceState) => sliceState.status) as unknown as ISelectors['selectStatus'],
+        selectError: createSelector([selectSliceState], (sliceState) => sliceState.error) as unknown as ISelectors['selectError'],
+        selectLastModified: createSelector([selectSliceState], (sliceState) => sliceState.lastModified) as unknown as ISelectors['selectLastModified'],
+        selectLastHydrated: createSelector([selectSliceState], (sliceState) => sliceState.lastHydrated) as unknown as ISelectors['selectLastHydrated'],
+        selectCanRequest: createSelector([selectSliceState], (sliceState) => selectCanRequest(sliceState)) as unknown as ISelectors['selectCanRequest'],
+        selectShouldRequest: createSelector([selectSliceState], (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))) as unknown as ISelectors['selectShouldRequest'],
     }
 
     return {

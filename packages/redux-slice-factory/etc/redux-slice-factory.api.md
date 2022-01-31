@@ -11,22 +11,24 @@ import { Draft } from '@reduxjs/toolkit';
 import { EntityId } from '@reduxjs/toolkit';
 import { EntitySelectors } from '@reduxjs/toolkit';
 import { EntityState } from '@reduxjs/toolkit';
+import { OutputSelector } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { Reducer } from '@reduxjs/toolkit';
+import { Selector } from '@reduxjs/toolkit';
 import { SerializedError } from '@reduxjs/toolkit';
 import { SliceCaseReducers } from '@reduxjs/toolkit';
 import { Update } from '@reduxjs/toolkit';
 
 // @public (undocumented)
-export function createEntitySlice<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error>(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError>;
+export function createEntitySlice<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError>(options: ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum, TError>): IEntitySlice<TGlobalState, TEntity, TStatusEnum, TError>;
 
 // @public (undocumented)
-export function createModelSlice<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error>(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError>;
+export function createModelSlice<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError>(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError>;
 
 // Warning: (ae-forgotten-export) The symbol "ISliceOptions" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> extends ISliceOptions<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>> {
+export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends ISliceOptions<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>> {
     // (undocumented)
     selectId: (o: TEntity) => EntityId;
     // (undocumented)
@@ -34,47 +36,48 @@ export interface ICreateEntitySliceOptions<TGlobalState, TEntity, TStatusEnum ex
 }
 
 // @public (undocumented)
-export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
+export interface ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
     handleUpdate?: (current: Draft<TModel>, update: Partial<TModel>) => TModel;
 }
 
 // @public (undocumented)
-export type IEntitySlice<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> = ISlice<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>, IEntitySliceReducers<IEntityState<TEntity, TStatusEnum, TError>, TEntity, TStatusEnum, TError>, IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>>;
+export type IEntitySlice<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> = ISlice<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>, IEntitySliceReducers<IEntityState<TEntity, TStatusEnum, TError>, TEntity, TStatusEnum, TError>, IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum, TError>>;
 
+// Warning: (ae-forgotten-export) The symbol "IMetaSliceReducers" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type IEntitySliceReducers<TSliceState, TEntity, TStatusEnum, TError> = {
-    addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
+export interface IEntitySliceReducers<TSliceState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     addMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
-    hydrateOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
-    hydrateMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+    addOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
     hydrateAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
-    updateOne: CaseReducer<TSliceState, PayloadAction<Update<TEntity>>>;
-    updateMany: CaseReducer<TSliceState, PayloadAction<Array<Update<TEntity>>>>;
-    upsertOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
-    upsertMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
-    removeOne: CaseReducer<TSliceState, PayloadAction<EntityId>>;
-    removeMany: CaseReducer<TSliceState, PayloadAction<Array<EntityId>>>;
+    hydrateMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+    hydrateOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
     removeAll: CaseReducer<TSliceState, PayloadAction>;
+    removeMany: CaseReducer<TSliceState, PayloadAction<Array<EntityId>>>;
+    removeOne: CaseReducer<TSliceState, PayloadAction<EntityId>>;
     reset: CaseReducer<TSliceState, PayloadAction>;
     setAll: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
-};
-
-// @public (undocumented)
-export interface IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> extends EntitySelectors<TEntity, TGlobalState>, ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>, IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    updateMany: CaseReducer<TSliceState, PayloadAction<Array<Update<TEntity>>>>;
+    updateOne: CaseReducer<TSliceState, PayloadAction<Update<TEntity>>>;
+    upsertMany: CaseReducer<TSliceState, PayloadAction<Array<TEntity> | Record<EntityId, TEntity>>>;
+    upsertOne: CaseReducer<TSliceState, PayloadAction<TEntity>>;
 }
 
 // @public (undocumented)
-export interface IEntityState<T, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> extends EntityState<T>, IMetaState<TStatusEnum, TError> {
+export interface IEntitySliceSelectors<TGlobalState, TEntity, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends EntitySelectors<TEntity, TGlobalState>, ISliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>>, IMetaSliceSelectors<TGlobalState, IEntityState<TEntity, TStatusEnum, TError>, TStatusEnum, TError> {
 }
 
 // @public (undocumented)
-export interface IMetaSliceSelectors<TGlobalState, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> {
-    selectError: (state: TGlobalState) => TError | null;
-    selectLastHydrated: (state: TGlobalState) => string | null;
-    selectLastModified: (state: TGlobalState) => string | null;
-    selectStatus: (state: TGlobalState) => TStatusEnum;
+export interface IEntityState<T, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends EntityState<T>, IMetaState<TStatusEnum, TError> {
+}
+
+// @public (undocumented)
+export interface IMetaSliceSelectors<TGlobalState, TSliceState, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> {
+    selectError: IOutputSelector<TGlobalState, TSliceState, TError | null>;
+    selectLastHydrated: IOutputSelector<TGlobalState, TSliceState, string | null>;
+    selectLastModified: IOutputSelector<TGlobalState, TSliceState, string | null>;
+    // Warning: (ae-forgotten-export) The symbol "IOutputSelector" needs to be exported by the entry point index.d.ts
+    selectStatus: IOutputSelector<TGlobalState, TSliceState, TStatusEnum>;
 }
 
 // @public (undocumented)
@@ -86,25 +89,23 @@ export interface IMetaState<TStatusEnum extends keyof typeof StatusEnum | string
 }
 
 // @public (undocumented)
-export type IModelSlice<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> = ISlice<TGlobalState, IModelState<TModel, TStatusEnum, TError>, IModelSliceReducers<IModelState<TModel, TStatusEnum, TError>, TModel, TStatusEnum, TError>, IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>>;
+export type IModelSlice<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> = ISlice<TGlobalState, IModelState<TModel, TStatusEnum, TError>, IModelSliceReducers<IModelState<TModel, TStatusEnum, TError>, TModel, TStatusEnum, TError>, IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>>;
 
 // @public (undocumented)
-export type IModelSliceReducers<TSliceState, TModel, TStatusEnum, TError> = {
+export interface IModelSliceReducers<TSliceState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     hydrate: CaseReducer<TSliceState, PayloadAction<TModel>>;
-    update: CaseReducer<TSliceState, PayloadAction<Partial<TModel>>>;
-    set: CaseReducer<TSliceState, PayloadAction<TModel>>;
     reset: CaseReducer<TSliceState, PayloadAction>;
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
-};
-
-// @public (undocumented)
-export interface IModelSliceSelectors<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum | string, TError extends SerializedError = Error> extends ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>, IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
-    selectModel: (state: TGlobalState) => TModel;
+    set: CaseReducer<TSliceState, PayloadAction<TModel>>;
+    update: CaseReducer<TSliceState, PayloadAction<Partial<TModel>>>;
 }
 
 // @public (undocumented)
-export interface IModelState<T, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = Error> extends IMetaState<TStatusEnum, TError> {
+export interface IModelSliceSelectors<TGlobalState, TModel, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>, IMetaSliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>, TStatusEnum, TError> {
+    selectModel: IOutputSelector<TGlobalState, IModelState<TModel, TStatusEnum, TError>, TModel>;
+}
+
+// @public (undocumented)
+export interface IModelState<T, TStatusEnum extends keyof typeof StatusEnum | string = keyof typeof StatusEnum, TError extends SerializedError = SerializedError> extends IMetaState<TStatusEnum, TError> {
     model: T;
 }
 
@@ -125,10 +126,10 @@ export interface ISlice<TGlobalState, TSliceState, TCaseReducers extends SliceCa
 // @public (undocumented)
 export interface ISliceSelectors<TGlobalState, TSliceState> {
     // (undocumented)
-    selectCanRequest: (state: TGlobalState) => boolean;
+    selectCanRequest: IOutputSelector<TGlobalState, TSliceState, boolean>;
     // (undocumented)
-    selectShouldRequest: (state: TGlobalState) => boolean;
-    selectSliceState: (state: TGlobalState) => TSliceState;
+    selectShouldRequest: IOutputSelector<TGlobalState, TSliceState, boolean>;
+    selectSliceState: IOutputSelector<TGlobalState, TSliceState, TSliceState>;
 }
 
 // @public (undocumented)

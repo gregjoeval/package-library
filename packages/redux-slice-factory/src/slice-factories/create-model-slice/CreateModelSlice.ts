@@ -10,13 +10,18 @@ import {
 import merge from 'ts-deepmerge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
-import { IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors } from '../../types'
+import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors, IOutputSelector } from '../../types'
 import { getISOString } from '../../utilities'
 
 /**
  * @public
  */
-export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
+export interface IModelSliceReducers <
+    TSliceState,
+    TModel,
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
+> extends IMetaSliceReducers<TSliceState, TStatusEnum, TError> {
     /**
      * This will hydrate the slice. This sets the model and lastHydrated, and resets lastModified.
      */
@@ -36,16 +41,6 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
      * This will reset the slice to its initial state.
      */
     reset: CaseReducer<TSliceState, PayloadAction>;
-
-    /**
-     * This will set the status of the slice.
-     */
-    setStatus: CaseReducer<TSliceState, PayloadAction<TStatusEnum>>;
-
-    /**
-     * This will set the error of the slice.
-     */
-    setError: CaseReducer<TSliceState, PayloadAction<TError | null>>;
 }
 
 /**
@@ -54,16 +49,16 @@ export type IModelSliceReducers <TSliceState, TModel, TStatusEnum, TError> = {
 export interface IModelSliceSelectors <
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum |& string,
-    TError extends SerializedError = Error
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
 >
     extends
     ISliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>>,
-    IMetaSliceSelectors<TGlobalState, TStatusEnum, TError> {
+    IMetaSliceSelectors<TGlobalState, IModelState<TModel, TStatusEnum, TError>, TStatusEnum, TError> {
     /**
      * This selects the slice model.
      */
-    selectModel: (state: TGlobalState) => TModel;
+    selectModel: IOutputSelector<TGlobalState, IModelState<TModel, TStatusEnum, TError>, TModel>;
 }
 
 /**
@@ -72,8 +67,8 @@ export interface IModelSliceSelectors <
 export type IModelSlice<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
 > = ISlice<
 TGlobalState,
 IModelState<TModel, TStatusEnum, TError>,
@@ -87,8 +82,8 @@ IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
 export interface ICreateModelSliceOptions<
     TGlobalState,
     TModel,
-    TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TStatusEnum extends keyof typeof StatusEnum | & string = keyof typeof StatusEnum,
+    TError extends SerializedError = SerializedError
 > extends ISliceOptions<TGlobalState, IModelState<TModel, TStatusEnum, TError>> {
     /**
      * This is how the slice will merge the current model and the update model during an update action
@@ -104,7 +99,7 @@ function createModelSlice<
     TGlobalState,
     TModel,
     TStatusEnum extends keyof typeof StatusEnum |& string = keyof typeof StatusEnum,
-    TError extends SerializedError = Error
+    TError extends SerializedError = SerializedError
 >(options: ICreateModelSliceOptions<TGlobalState, TModel, TStatusEnum, TError>): IModelSlice<TGlobalState, TModel, TStatusEnum, TError> {
     type ISliceState = IModelState<TModel, TStatusEnum, TError>
 
@@ -155,19 +150,23 @@ function createModelSlice<
             setStatus: (state, action) => {
                 state.status = createNextState(state.status, () => action.payload)
             },
+            setMetaState: (state, action) => {
+                state.status = createNextState(state.status, () => action.payload)
+            },
         },
         /* eslint-enable no-param-reassign */
     })
 
-    const selectors: IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError> = {
-        selectSliceState: createSelector(selectSliceState, (sliceState) => sliceState),
-        selectModel: createSelector(selectSliceState, (sliceState) => sliceState.model),
-        selectStatus: createSelector(selectSliceState, (sliceState) => sliceState.status),
-        selectError: createSelector(selectSliceState, (sliceState) => sliceState.error),
-        selectLastModified: createSelector(selectSliceState, (sliceState) => sliceState.lastModified),
-        selectLastHydrated: createSelector(selectSliceState, (sliceState) => sliceState.lastHydrated),
-        selectCanRequest: createSelector(selectSliceState, (sliceState) => selectCanRequest(sliceState)),
-        selectShouldRequest: createSelector(selectSliceState, (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))),
+    type ISelectors = IModelSliceSelectors<TGlobalState, TModel, TStatusEnum, TError>
+    const selectors: ISelectors = {
+        selectSliceState: createSelector([selectSliceState], (sliceState) => sliceState) as unknown as ISelectors['selectSliceState'],
+        selectModel: createSelector([selectSliceState], (sliceState) => sliceState.model) as unknown as ISelectors['selectModel'],
+        selectStatus: createSelector([selectSliceState], (sliceState) => sliceState.status) as unknown as ISelectors['selectStatus'],
+        selectError: createSelector([selectSliceState], (sliceState) => sliceState.error) as unknown as ISelectors['selectError'],
+        selectLastModified: createSelector([selectSliceState], (sliceState) => sliceState.lastModified) as unknown as ISelectors['selectLastModified'],
+        selectLastHydrated: createSelector([selectSliceState], (sliceState) => sliceState.lastHydrated) as unknown as ISelectors['selectLastHydrated'],
+        selectCanRequest: createSelector([selectSliceState], (sliceState) => selectCanRequest(sliceState)) as unknown as ISelectors['selectCanRequest'],
+        selectShouldRequest: createSelector([selectSliceState], (sliceState) => selectShouldRequest(sliceState, selectCanRequest(sliceState))) as unknown as ISelectors['selectShouldRequest'],
     }
 
     return {
