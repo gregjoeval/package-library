@@ -1,6 +1,6 @@
 import { describe, beforeEach, it, expect } from '@jest/globals'
 import { miniSerializeError, SerializedError } from '@reduxjs/toolkit'
-import merge from 'ts-deepmerge'
+import merge from 'lodash.merge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
 import { getISOString } from '../../utilities'
