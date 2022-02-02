@@ -157,5 +157,5 @@ export interface IMetaSliceReducers<
     /**
       * This will set any meta state properties that are defined
       */
-    setMetaState: CaseReducer<TSliceState, PayloadAction<Partial<IMetaState<TStatusEnum, TError>>>>;
+    setMetaState: CaseReducer<TSliceState, PayloadAction<Partial<Pick<IMetaState<TStatusEnum, TError>, 'error' | 'status'>>>>;
 }

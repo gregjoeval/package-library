@@ -53,13 +53,14 @@
     "@jest/globals": "^27.4.6",
     "@microsoft/api-extractor": "^7.18.13",
     "@reduxjs/toolkit": "^1.6.2",
+    "@types/lodash.merge": "^4.6.6",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint-plugin-tsdoc": "^0.2.14",
     "tsdx": "^0.14.1"
   },
   "dependencies": {
-    "ts-deepmerge": "^1.0.8",
+    "lodash.merge": "^4.6.2",
     "tslib": "^2.3.1"
   },
   "keywords": [
