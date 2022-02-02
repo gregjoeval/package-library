@@ -289,7 +289,8 @@ function createEntitySlice<
                 setStatus(state as ISliceState, action.payload)
             },
             setMetaState: (state, action) => {
-                state.status = createNextState(state.status, () => action.payload)
+                state.status = createNextState(state.status, () => action.payload.status) ?? state.status
+                state.error = createNextState(state.error, () => action.payload.error) ?? state.error
             },
         },
     })

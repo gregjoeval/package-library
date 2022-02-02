@@ -82,7 +82,7 @@ describe('createEntitySlice', () => {
     it('sets error property in state', () => {
         // GIVEN
         const previousState = sliceState
-        const error = new Error('this was a test')
+        const error = new Error('Whoops.')
 
         // WHEN
         const nextState = slice.reducer(sliceState, slice.actions.setError(miniSerializeError(error)))
@@ -227,5 +227,66 @@ describe('createEntitySlice', () => {
         expect(nextState.status).toEqual(initialState.status)
         expect(nextState.lastModified).toEqual(initialState.lastModified)
         expect(nextState.lastHydrated).toEqual(initialState.lastHydrated)
+    })
+
+    it('sets meta state to request', () => {
+        // GIVEN
+        const previousState = sliceState
+        const status = StatusEnum.Requesting
+
+        // WHEN
+        const nextState = slice.reducer(previousState, slice.actions.setMetaState({
+            status: status,
+        }))
+
+        // THEN
+        expect(nextState.ids).toEqual(previousState.ids) // should be unaffected
+        expect(nextState.entities).toEqual(previousState.entities) // should be unaffected
+        expect(nextState.error).toEqual(previousState.error) // should be unaffected
+        expect(nextState.status).toEqual(status)
+        expect(nextState.lastModified).toEqual(previousState.lastModified) // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated) // should be unaffected
+    })
+
+    it('sets meta state to succeed', () => {
+        // GIVEN
+        const previousState = sliceState
+        const status = StatusEnum.Settled
+        const error = null
+
+        // WHEN
+        const nextState = slice.reducer(previousState, slice.actions.setMetaState({
+            status: status,
+            error: error,
+        }))
+
+        // THEN
+        expect(nextState.ids).toEqual(previousState.ids) // should be unaffected
+        expect(nextState.entities).toEqual(previousState.entities) // should be unaffected
+        expect(nextState.error).toEqual(error)
+        expect(nextState.status).toEqual(status)
+        expect(nextState.lastModified).toEqual(previousState.lastModified) // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated) // should be unaffected
+    })
+
+    it('sets meta state to fail', () => {
+        // GIVEN
+        const previousState = sliceState
+        const status = StatusEnum.Failed
+        const error = new Error('Whoops.')
+
+        // WHEN
+        const nextState = slice.reducer(previousState, slice.actions.setMetaState({
+            status: status,
+            error: miniSerializeError(error),
+        }))
+
+        // THEN
+        expect(nextState.ids).toEqual(previousState.ids) // should be unaffected
+        expect(nextState.entities).toEqual(previousState.entities) // should be unaffected
+        expect(nextState.error).toEqual(miniSerializeError(error))
+        expect(nextState.status).toEqual(status)
+        expect(nextState.lastModified).toEqual(previousState.lastModified) // should be unaffected
+        expect(nextState.lastHydrated).toEqual(previousState.lastHydrated) // should be unaffected
     })
 })

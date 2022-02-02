@@ -7,7 +7,7 @@ import {
     PayloadAction,
     SerializedError,
 } from '@reduxjs/toolkit'
-import merge from 'ts-deepmerge'
+import merge from 'lodash.merge'
 import StatusEnum from '../../constants/StatusEnum'
 import ModelState, { IModelState } from '../../models/model-state'
 import { IMetaSliceReducers, IMetaSliceSelectors, ISlice, ISliceName, ISliceOptions, ISliceSelectors, IOutputSelector } from '../../types'
@@ -111,7 +111,7 @@ function createModelSlice<
 
     const {
         name,
-        handleUpdate = merge,
+        handleUpdate = (current, update) => merge(current, update),
         selectSliceState,
         selectCanRequest = defaultCanRequestSelector,
         selectShouldRequest = defaultShouldRequestSelector,
@@ -151,7 +151,8 @@ function createModelSlice<
                 state.status = createNextState(state.status, () => action.payload)
             },
             setMetaState: (state, action) => {
-                state.status = createNextState(state.status, () => action.payload)
+                state.status = createNextState(state.status, () => action.payload.status) ?? state.status
+                state.error = createNextState(state.error, () => action.payload.error) ?? state.error
             },
         },
         /* eslint-enable no-param-reassign */
