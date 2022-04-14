@@ -111,6 +111,3 @@ temp
 
 # NPM configuration file
 .npmrc
-
-# NPM lockfile
-*package-lock.json
