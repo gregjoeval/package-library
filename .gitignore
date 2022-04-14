@@ -109,4 +109,8 @@ dist
 # Api Extractor temp files
 temp
 
+# NPM configuration file
 .npmrc
+
+# NPM lockfile
+*package-lock.json
