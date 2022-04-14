@@ -1,6 +1,6 @@
 {
   "name": "@gjv/eslint-config-react",
-  "version": "0.10.1",
+  "version": "0.10.1-alpha.10+547588c",
   "description": "gregjoeval's ESLint config for react",
   "author": "Greg Valentine <gregjoeval@gmail.com>",
   "homepage": "https://github.com/gregjoeval/package-library#readme",
@@ -45,5 +45,5 @@
   "bugs": {
     "url": "https://github.com/gregjoeval/package-library/issues"
   },
-  "gitHead": "4c1a9bcc8e7d5de4ad16c947613e634fd79ca534"
+  "gitHead": "547588c6ad7ff29b9b5070c8d7fc0fc80ce58464"
 }
