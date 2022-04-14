@@ -50,13 +50,13 @@
   },
   "devDependencies": {
     "@gjv/eslint-config-typescript": "^0.10.0",
-    "@jest/globals": "^27.4.6",
-    "@microsoft/api-extractor": "^7.19.4",
-    "@reduxjs/toolkit": "^1.7.1",
+    "@jest/globals": "^27.5.1",
+    "@microsoft/api-extractor": "^7.22.1",
+    "@reduxjs/toolkit": "^1.8.1",
     "@types/lodash.merge": "^4.6.6",
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
-    "@typescript-eslint/parser": "^5.10.2",
-    "eslint-plugin-tsdoc": "^0.2.14",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint-plugin-tsdoc": "^0.2.16",
     "tsdx": "^0.14.1"
   },
   "dependencies": {
