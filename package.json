@@ -22,7 +22,7 @@
     "publish-ci:patch": "npm run publish-ci -- patch"
   },
   "devDependencies": {
-    "lerna": "^4.0.0",
+    "lerna": "^5.6.1",
     "rimraf": "^3.0.2"
   }
 }
