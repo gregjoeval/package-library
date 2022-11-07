@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@gjv/eslint-config-typescript": "^0.10.3",
-    "@jest/globals": "^27.5.1",
+    "@jest/globals": "^29.3.0",
     "@microsoft/api-extractor": "^7.22.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@types/lodash.merge": "^4.6.6",
